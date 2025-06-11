@@ -1,0 +1,956 @@
+{
+  "ASA_TO_FMC" : {
+    "ASA_VERSION" : 9.2,
+    "FMC_VERSION" : 6.2,
+    "MIGRATED_FEATURES" : {
+      "Interfaces"            : [true, "InterfaceRules", "MtuRules","Ipv6EnforceEui64Rules"],
+      "Network_Objects"       : [true, "ObjectNetworkRules"],
+      "Port_Objects"          : [true, "ObjectServiceRules", "ObjectGroupRules"],
+      "Time_Ranges"           : [true, "TimeRangeObjectRule"],
+      "Sla_objects"           : [true, "SlaObjectRule"],
+      "Access_List"           : [true, "AccessListRules", "AccessGroupRules"],
+      "Access_List_standard"  : [true, "AccessListStandardRules"],
+      "NAT"                   : [true, "ManualNatRules", "AutoNatRules"],
+      "Routes"                : [true, "RouteRules"],
+      "Ike_Policies"          : [true, "IkePolicyRules"],
+      "S2S_Vpn"               : [true, "S2SVpnRules"],
+      "Dynamic_Route_Objects" : [true, "DynamicRouteObjectRules"],
+      "Bgp_Objects"           : [true, "BGPRules"],
+      "Route_Map_Objects"     : [true, "RouteMapObjectRules"],
+      "Tunnel_Group"          : [true, "TunnelGroupRules"],
+      "Address_Pool"          : [true, "AddressPoolRules"],
+      "Certificate_Map"       : [true, "CertificateMapRules"],
+      "AAA_Server"            : [true, "AAAServerRules"],
+      "Global_Ravpn"          : [true, "GlobalRavpnRules"],
+      "Any_Connect_Profile"   : [true, "AnyConnectProfileRules"],
+      "Group_Policy"          : [true, "GroupPolicyRules"],
+      "Dap"                   : [true, "DapRules"],
+      "Connection_Profile"    : [true, "ConnectionProfileRules"],
+      "Ldap_Attribute_Map"    : [true, "LdapAttributeMapRules"],
+      "Group_Aliase"          : [true, "GroupAliaseRules"],
+      "Eigrp_Objects"         : [true, "EigrpRules"],
+      "Eigrp_Interface"       : [true, "EigrpInterfaceRules"],
+      "Summary_Address"       : [true, "SummaryAddressRules"],
+      "CryptoAdvancedSettings_Objects"         : [true, "CryptoAdvancedSettingsRules"],
+      "ecmp_zones"            : [true, "EcmpZoneRules"],
+      "intrusion_rule"        : [true, "IntrusionRules"],
+      "intrusion_policy"      : [true, "IntrusionPolicyRules"],
+      "Path_Monitoring_Object" : [true, "PathMonitoringRules"],
+      "PBR_Object" : [true, "pbrRules"],
+      "Vpn_Load_Balance" : [true, "VpnLoadBalanceRules"],
+      "Custom_Attribute" : [true, "CustomAttributeRules"],
+      "Dhcpd"            : [true, "DhcpdServerRules"],
+      "Dhcprelay"            : [true, "DhcpRelayServerRules"],
+      "DDNS_Objects"     : [true, "DDNSRules"],
+      "SNMP_Objects" :[true,"SNMPRules"]
+    },
+    "RULES"       : {
+      "InterfaceRules" : {
+        "interface_initialization_rule"         : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_nameif_rule"                 : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_multi_context_rule"          : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_bridge_group_rule"           : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_bvi_rule"                    : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_port_channel_rule"           : {"execution_order": 6, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_speed_conversion_rule"       : {"execution_order": 7, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_channel_group_rule"          : {"execution_order": 8, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_interface_type_rule"         : {"execution_order": 9, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_switchport_mode_rule"        : {"execution_order": 10, "tags": ["cdo"]},
+        "interface_loopback_tunnel_rule"        : {"execution_order": 10, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_ip_address_rule"             : {"execution_order": 11, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_route_lookup_table_creation_rule"   : {"execution_order": 12,"tags": ["ipv4", "ipv6", "cdo", "route_look_up"]},
+        "eigrp_interface_rule"                  : {"execution_order": 13, "tags": ["ipv4", "ipv6", "cdo"]},
+        "summary_address_rule"                  : {"execution_order": 14, "tags": ["ipv4", "ipv6", "cdo"]},
+        "path_monitoring_object_rule"           : {"execution_order": 15, "tags": ["ipv4", "ipv6", "cdo"]},
+        "pbr_object_rule"                       : {"execution_order": 16, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_zone_member_rule"            : {"execution_order": 17, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_meta_creation_rule"          : {"execution_order": 18, "tags": ["ipv4", "ipv6", "cdo"]},
+        "dhcprelay_server_interface_rule"       : {"execution_order": 19, "tags": ["ipv4", "ipv6", "cdo"]},
+        "interface_many_management_rule"        : {"execution_order": 20, "tags": ["ipv4", "ipv6", "cdo"]},
+        "validate_configuration"                : {"execution_order": 21, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "MtuRules" : {
+        "mtu_initialization_rule" : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "Ipv6EnforceEui64Rules" : {
+        "ipv6EnforceEui64Rule_initialization_rule" : {"execution_order": 1, "tags": ["ipv6"]}
+      },
+      "ObjectNetworkRules" : {
+        "object_network_initialization_rule"         : {"execution_order": 1, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_object_name_rule"            : {"execution_order": 2, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_description_rule"            : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_host_ip_rule"                : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_subnet_rule"                 : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_range_rule"                  : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_fqdn_rule"                   : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_ipv6_rule"                   : {"execution_order": 4, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_network_meta_creation_rule"          : {"execution_order": 5, "tags": ["ipv6", "ipv4", "cdo"]},
+        "object_mcd_network_name_rule"               : {"execution_order": 5, "tags": ["ipv6", "ipv4", "cdo"]}
+      },
+      "TimeRangeObjectRule" : {
+        "time_range_object_initialization_rule"         : {"execution_order": 1, "tags": ["ipv6", "ipv4", "cdo"]},
+        "time_range_name_rule"                          : {"execution_order": 2, "tags": ["ipv6", "ipv4", "cdo"]},
+        "time_range_periodic_rule"                      : {"execution_order": 3, "tags": ["ipv6", "ipv4", "cdo"]},
+        "time_range_meta_creation_rule"                 : {"execution_order": 4, "tags": ["ipv6", "ipv4", "cdo"]}
+        },
+      "SlaObjectRule" : {
+        "sla_object_initialization_rule"         : {"execution_order": 1, "tags": ["ipv6", "ipv4", "cdo"]},
+        "sla_interface_name_rule"                          : {"execution_order": 2, "tags": ["ipv6", "ipv4", "cdo"]}
+        },
+      "ObjectServiceRules" : {
+        "object_service_initialization_rule"            : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_service_object_name_rule"               : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_service_description_rule"               : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_service_range_operator_rule"            : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_service_eq_range_model_creation_rule"   : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_service_meta_creation_rule"             : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_mcd_service_name_rule"                  : {"execution_order": 6, "tags": ["ipv6", "ipv4", "cdo"]}
+      },
+      "ObjectGroupRules" : {
+        "object_group_icmp_group_rule"                : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_group_protocol_group_rule"            : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_group_service_group_rule"             : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_group_network_group_rule"             : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "object_group_network_group_mcd_split_rule"   : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "AccessListRules" : {
+        "access_list_1_initialization_rule"               : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_2_name_creation_rule"                : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_3_handling_other_type_acl_rule"      : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_4_asa_live_connect_rule"             : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_4_create_access_group_rule"          : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_5_initial_meta_initialization_rule"  : {"execution_order": 6, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_time_range_rule"                     : {"execution_order": 7, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_6_protocol_port_rule"                : {"execution_order": 8, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_7_service_object_group_rule"         : {"execution_order": 9, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_8_network_argument_rule"             : {"execution_order": 10, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_9_icmp_rule"                         : {"execution_order": 11, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_10_processing_objects_rule"          : {"execution_order": 12, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_11_marking_unsupported_rule"         : {"execution_order": 13, "tags": ["ipv4", "ipv6", "cdo"]},
+        "MCD_unsupported_network_group"                   : {"execution_order": 13, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_12_logging_rule"                     : {"execution_order": 14, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_13_route_lookup"                     : {"execution_order": 15, "tags": ["ipv4", "ipv6","cdo","route_look_up"]},
+        "access_list_14_migrate_tunneled_routes"          : {"execution_order": 16, "tags": ["ipv4", "ipv6","migrate_tunneled_routes"]},
+        "access_list_16_vpn_access_group_rule"            : {"execution_order": 14, "tags": ["cdo"]},
+        "access_list_99_copy_data_to_new_acl_rule"        : {"execution_order": 14, "tags": ["ipv4", "ipv6", "cdo"]},
+        "access_list_mcd_acl_split"                       : {"execution_order": 14, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "AccessGroupRules" : {
+        "access_group_1_already_exits_access_group_rule"     : {"execution_order": 1,"tags": ["ipv4", "ipv6", "cdo"]},
+        "access_group_2_in_or_out_interface_processing_rule" : {"execution_order": 2,"tags": ["ipv4", "ipv6", "cdo"]},
+        "access_group_meta_creation_rule" : {"execution_order": 3,"tags": ["cdo"]}
+       },
+      "ManualNatRules" : {
+        "manual_nat_initialization_rule"       : {"execution_order": 1,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_interface_rule"            : {"execution_order": 2,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_source_rule"               : {"execution_order": 3,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_destination_rule"          : {"execution_order": 4,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_service_rule"              : {"execution_order": 5,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_with_pat_pool_rule_for_cdo"  : {"execution_order": 6,"tags": ["cdo"]},
+        "manual_nat_with_source_destination_port_rule_for_cdo"  : {"execution_order": 7,"tags": ["cdo"]},
+        "inactive_manual_nat_rule_for_cdo"      : {"execution_order": 8,"tags": ["cdo"]},
+        "unidirectional_manual_nat_rule_for_cdo": {"execution_order": 9,"tags": ["cdo"]},
+        "manual_nat_translated_source_network_rule" : {"execution_order": 10,"tags": ["ipv4", "ipv6", "cdo"]},
+        "manual_nat_meta_creation_rule"        : {"execution_order": 11,"tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "AutoNatRules" : {
+        "auto_nat_initialization_rule"                             : {"execution_order": 1,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_interface_rule"                                  : {"execution_order": 2,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_original_source_rule"                            : {"execution_order": 3,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_translated_source_network_group_rule"            : {"execution_order": 4,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_service_rule"                                    : {"execution_order": 5,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_route_look_up_with_two_any_interfaces_rule"      : {"execution_order": 6,"tags": ["ipv4", "ipv6", "cdo"]},
+        "auto_nat_with_pat_pool_rule_for_cdo"                      : {"execution_order": 7,"tags": ["cdo"]},
+        "auto_nat_meta_creation_rule"                              : {"execution_order": 8,"tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "RouteRules" : {
+        "route_initialization_rule"         : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_is_tunneled_or_metric_rule"  : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_max_metric_rule"              : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_interface_rule"              : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_destination_network_rule"    : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_network_address_exists_rule" : {"execution_order": 6, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_gateway_rule"                : {"execution_order": 7, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_metric_rule"                 : {"execution_order": 8, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_lookup_table_rule"           : {"execution_order": 9,"tags": ["ipv4", "ipv6", "cdo", "route_look_up"]},
+        "route_is_tunneled_CDO"             : {"execution_order": 10,"tags": ["cdo"]},
+        "route_with_management_interface"   : {"execution_order": 11,"tags": ["cdo"]},
+        "route_track_number_rule"           : {"execution_order": 12, "tags": ["ipv4", "ipv6", "cdo"]},
+        "route_meta_creation_rule"          : {"execution_order": 13, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "IkePolicyRules" : {
+        "ike_initialization_rule"           : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_encryption_rule"               : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_hash_rule"                     : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_authentication_rule"           : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_prf_hash_rule"                 : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_diffie_hellman_group_rule"     : {"execution_order": 6, "tags": ["ipv4", "ipv6", "cdo"]},
+        "ike_lifetime_rule"                 : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "ike_meta_creation_rule"            : {"execution_order": 7, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "S2SVpnRules" : {
+        "s2s_initialization_rule"           : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_local_vpn_interface_rule"      : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_access_list_rule"              : {"execution_order": 3, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_vpn_network_rule"              : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_remote_ip_rule"                : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_tunnel_group_rule"             : {"execution_order": 6, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_ipsec_proposal_rule"           : {"execution_order": 7, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_pfs_group_rule"                : {"execution_order": 8, "tags": ["ipv4", "ipv6", "cdo"]},
+        "s2s_meta_creation_rule"            : {"execution_order": 9, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "TunnelGroupRules" : {
+        "tunnel_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6", "cdo"]},
+        "tunnel_ike_parameters_rule"        : {"execution_order": 2, "tags": ["ipv4", "ipv6", "cdo"]},
+        "tunnel_acl_bidirectional_rule"     : {"execution_order": 3, "tags": ["cdo"]},
+        "tunnel_group_default_group_policy_rule" : {"execution_order": 4, "tags": ["ipv4", "ipv6", "cdo"]},
+        "tunnel_meta_creation_rule"         : {"execution_order": 5, "tags": ["ipv4", "ipv6", "cdo"]}
+      },
+      "DynamicRouteObjectRules" : {
+        "dynamic_route_object_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_object_name_rule"                  : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_object_sequence_action_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_object_network_rule"               : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_regex_rule"                        : {"execution_order": 5, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_reference_rule"                    : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "dynamic_route_object_meta_creation_rule"         : {"execution_order": 7, "tags": ["ipv4", "ipv6"]}
+      },
+      "AccessListStandardRules" : {
+        "access_list_standard_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "access_list_standard_name_rule"                  : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "access_list_standard_action_network_rule"        : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "access_list_standard_meta_creation_rule"         : {"execution_order": 4, "tags": ["ipv4", "ipv6"]}
+      },
+      "RouteMapObjectRules" : {
+        "route_map_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "route_map_name_rule"                  : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "route_map_object_rule"                : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "route_map_meta_creation_rule"         : {"execution_order": 4, "tags": ["ipv4", "ipv6"]}
+      },
+      "BGPRules" : {
+        "bgp_initialization_rule"             : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "bgp_general_attributes_rule"         : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "bgp_network_rule"                    : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "bgp_neighbour_rule"                  : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+        "bgp_filtering_rule"                  : {"execution_order": 5, "tags": ["ipv4", "ipv6"]},
+        "bgp_aggregate_rule"                  : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "bgp_redistribution_rule"             : {"execution_order": 7, "tags": ["ipv4", "ipv6"]},
+        "bgp_meta_creation_rule"              : {"execution_order": 8, "tags": ["ipv4", "ipv6"]}
+      },
+      "AddressPoolRules" : {
+        "address_pool_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "address_pool_object_name_rule"         : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "address_pool_ip_mask_rule"             : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "adress_pool_meta_creation_rule"        : {"execution_order": 4, "tags": ["ipv4", "ipv6"]}
+      },
+      "CertificateMapRules" : {
+        "certificate_map_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "certificate_map_object_name_rule"         : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "certificate_map_field_attributes_rule"    : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "certificate_map_meta_creation_rule"       : {"execution_order": 4, "tags": ["ipv4", "ipv6"]}
+      },
+      "AAAServerRules" : {
+        "aaa_server_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_object_name_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_protocol_rule"              : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_radius_attribute_rule"      : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_ldap_attribute_rule"        : {"execution_order": 5, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_saml_attribute_rule"        : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_ldap_attribute_map_rule"        : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "aaa_server_meta_creation_rule"         : {"execution_order": 7, "tags": ["ipv4", "ipv6"]}
+      },
+       "GlobalRavpnRules" : {
+        "webvpn_initialization_rule"               : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "webvpn_access_interface_rule"             : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "webvpn_address_assignment_policy_rule"    : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "webvpn_certificate_map_rule"              : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+        "webvpn_anyconnect_image_rule"             : {"execution_order": 5, "tags": ["ipv4", "ipv6"]},
+        "webvpn_saml_rule"                         : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "webvpn_meta_creation_rule"                : {"execution_order": 7, "tags": ["ipv4", "ipv6"]}
+      },
+       "AnyConnectProfileRules" : {
+        "any_connect_initialization_rule" : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "any_connect_object_name_rule"    : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "any_connect_meta_creation_rule"  : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+       "CustomAttributeRules" : {
+        "custom_attribute_initialization_rule" : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "custom_attribute_type_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "custom_attribute_meta_creation_rule"  : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+       "LdapAttributeMapRules" : {
+        "ldap_attribute_map_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "ldap_attribute_map_meta_creation_rule"    : {"execution_order": 2, "tags": ["ipv4", "ipv6"]}
+      },
+       "GroupPolicyRules" : {
+        "group_policy_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "group_policy_object_name_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "group_policy_tunnel_protocol_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_address_pool_rule"          : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_banner_rule"                : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_dns_wins_rule"              : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_anyconnect_profile_rule"    : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_custom_attribute_rule"      : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_client_module_rule"         : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_ssl_settings_rule"          : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_vpn_filter_rule"            : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_session_settings_rule"      : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_connection_settings_rule"   : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_split_tunneling_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "group_policy_meta_creation_rule"         : {"execution_order": 4, "tags": ["ipv4", "ipv6"]}
+      },
+      "DapRules" : {
+        "dap_record_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "dap_record_object_name_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "dap_record_priority_rule"              : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dap_record_user_message_rule"          : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dap_record_description_rule"           : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dap_record_network_acl_rule"           : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dap_custom_attribute_rule"             : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "dap_record_meta_creation_rule"         : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+      "ConnectionProfileRules":{
+        "connection_profile_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_object_name_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_address_pool_rule"          : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_dhcp_server_rule"           : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_aaa_method_rule"            : {"execution_order":  5, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_authorization_rule"         : {"execution_order": 6, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_accounting_rule"            : {"execution_order": 7, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_group_policy_rule"          : {"execution_order": 8, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_group_aliase_rule"          : {"execution_order": 8, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_global_ravpn_rule"          : {"execution_order": 9, "tags": ["ipv4", "ipv6"]},
+        "connection_profile_meta_creation_rule"         : {"execution_order": 10, "tags": ["ipv4", "ipv6"]}
+      },
+      "GroupAliaseRules" : {
+        "group_aliase_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "group_aliase_object_name_rule"           : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "group_aliase_meta_creation_rule"         : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+      "EigrpRules": {
+        "egirp_initialization_rule"            : {"execution_order": 1, "tags": ["ipv4"]},
+        "eigrp_general_attributes_rule"        : {"execution_order": 2, "tags": ["ipv4"]},
+        "eigrp_neighbour_rule"                 : {"execution_order": 3, "tags": ["ipv4"]},
+        "eigrp_network_rule"                   : {"execution_order": 4, "tags": ["ipv4"]},
+        "eigrp_filtering_rule"                 : {"execution_order": 5, "tags": ["ipv4"]},
+        "eigrp_redistribution_rule"            : {"execution_order": 6, "tags": ["ipv4"]},
+        "eigrp_default_information_rule"       : {"execution_order": 7, "tags": ["ipv4"]},
+        "eigrp_meta_creation_rule"              : {"execution_order": 8, "tags": ["ipv4"]}
+      },
+      "EigrpInterfaceRules": {
+        "eigrp_interface_initialization_rule"    : {"execution_order": 1, "tags": ["ipv4"]},
+        "eigrp_interface_attributes_rule"        : {"execution_order": 2, "tags": ["ipv4"]},
+        "eigrp_interface_meta_creation_rule"     : {"execution_order": 3, "tags": ["ipv4"]}
+      },
+      "SummaryAddressRules": {
+        "summary_address_initialization_rule"    : {"execution_order": 1, "tags": ["ipv4"]},
+        "summary_address_network_rule"        : {"execution_order": 2, "tags": ["ipv4"]},
+        "summary_address_meta_creation_rule"     : {"execution_order": 3, "tags": ["ipv4"]}
+      },
+      "CryptoAdvancedSettingsRules": {
+        "crypto_advanced_settings_initialization_rule"  : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "crypto_advanced_settings_rule" : {"execution_order": 1, "tags": ["ipv4", "ipv6"]}
+      },
+      "EcmpZoneRules" : {
+        "zone_initialization_rule" : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "zone_name_rule"      : {"execution_order": 2, "tags": ["ipv4", "ipv6"]}
+      },
+      "IntrusionRules" : {
+        "intrusion_rule_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "intrusion_rule_meta_creation_rule"        : {"execution_order": 2, "tags": ["ipv4", "ipv6"]}
+      },
+      "IntrusionPolicyRules" : {
+        "intrusion_policy_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "intrusion_policy_name_rule"                : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "intrusion_policy_meta_creation_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+      "PathMonitoringRules" : {
+        "path_monitoring_object_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "path_monitoring_cost_rule"                       : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "path_monitoring_object_meta_creation_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+      "pbrRules" : {
+        "pbr_object_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "pbr_object_meta_creation_rule"       : {"execution_order": 2, "tags": ["ipv4", "ipv6"]}
+      },
+       "VpnLoadBalanceRules" : {
+        "load_balance_object_initialization_rule"      : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "load_balance_interface_rule"                  : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "load_balance_attibute_rule"                   : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+        "load_balance_object_meta_creation_rule"       : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+       "DhcpdServerRules" : {
+        "dhcpd_server_initialization_rule"             : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+        "dhcpd_server_range_rule_check"                : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+        "dhcpd_server_lease_rule"                      : {"execution_order": 3, "tags": ["ipv4", "ipv6"]}
+      },
+       "DhcpRelayServerRules" : {
+         "dhcprelay_server_initialization_rule"        : {"execution_order": 1, "tags": ["ipv4", "ipv6"]},
+         "dhcprelay_server_enable_apply"               : {"execution_order": 2, "tags": ["ipv4", "ipv6"]},
+         "dhcprelay_server_setroute_apply"             : {"execution_order": 3, "tags": ["ipv4", "ipv6"]},
+         "dhcprelay_server_timeout_apply"              : {"execution_order": 4, "tags": ["ipv4", "ipv6"]},
+         "dhcprelay_server_trusted_apply"              : {"execution_order": 5, "tags": ["ipv4", "ipv6"]}
+       },
+      "DDNSRules": {
+        "ddns_interface_initialization_rule"    : {"execution_order": 1, "tags": ["ipv4"]}
+      },
+      "SNMPRules": {
+        "snmp_interface_initialization_rule_asa" : {"execution_order": 1, "tags": ["ipv4"]},
+        "snmp_network_object_creation_rule_asa" : {"execution_order": 2, "tags": ["ipv4"]},
+        "snmp_interface_management_rule_asa" :{"execution_order": 3, "tags": ["ipv4"]},
+        "snmp_meta_creation_rule" :{"execution_order": 4, "tags": ["ipv4"]}
+
+      }
+    }
+  },
+  "CHECKPOINT_TO_FMC" : {
+    "CHECKPOINT_VERSION" : ["R77", "R80"],
+    "FMC_VERSION" : "6.2.3",
+    "MIGRATED_FEATURES" : {
+      "Interfaces"            : [true, "InterfaceRules"],
+      "Network_Objects"       : [true, "ObjectNetworkRules"],
+      "Port_Objects"          : [true, "ObjectServiceRules", "ObjectGroupRules"],
+      "Access_List"           : [true, "AccessListRules"],
+      "NAT"                   : [true, "ManualNatRules", "AutoNatRules"],
+      "Routes"                : [true, "RouteRules"],
+      "Ike_Policies"          : [true, "IkePolicyRules"],
+      "S2S_Vpn"               : [true, "S2SVpnRules"]
+    },
+    "RULES"       : {
+      "InterfaceRules" : {
+        "interface_initialization_rule"         : {"execution_order": 1, "tags": ["cp","cpR80"]},
+        "interface_nameif_rule"                 : {"execution_order": 2, "tags": ["cp","cpR80"]},
+        "interface_vlan_rule"                   : {"execution_order": 3, "tags": ["cp","cpR80"]},
+        "interface_bridge_group_rule"           : {"execution_order": 4, "tags": ["cp","cpR80"]},
+        "interface_bvi_rule"                    : {"execution_order": 5, "tags": ["cp","cpR80"]},
+        "interface_port_channel_rule"           : {"execution_order": 6, "tags": ["cp","cpR80"]},
+        "interface_channel_group_rule"          : {"execution_order": 7, "tags": ["cp","cpR80"]},
+        "interface_checkpoint_mtu_rule"         : {"execution_order": 8, "tags": ["cp","cpR80"]},
+        "interface_loopback_alias_rule"         : {"execution_order": 8, "tags": ["cp","cpR80"]},
+        "interface_checkpoint_enable_ipv6_rule" : {"execution_order": 9, "tags": ["cp","cpR80"]},
+        "interface_meta_creation_rule"          : {"execution_order": 10, "tags": ["cp","cpR80"]},
+        "interface_validate_duplicate_vlan"     : {"execution_order": 11, "tags": ["cp","cpR80"]}
+      },
+      "ObjectNetworkRules" : {
+        "object_network_initialization_rule"         : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "object_network_object_name_rule"            : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "object_network_description_rule"            : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "object_network_host_ip_rule"                : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "object_network_subnet_rule"                 : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "object_network_range_rule"                  : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "object_network_fqdn_rule"                    : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "object_network_unsupported_type_rule"       : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "object_network_ipv6_rule"                   : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "object_network_meta_creation_rule"          : {"execution_order": 6, "tags": ["cp", "cpR80"]}
+      },
+      "ObjectServiceRules" : {
+        "object_service_initialization_rule"            : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "object_service_object_name_rule"               : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "object_service_description_rule"               : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "object_service_range_operator_rule"            : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "object_service_eq_range_model_creation_rule"   : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "object_service_meta_creation_rule"             : {"execution_order": 5, "tags": ["cp", "cpR80"]}
+      },
+      "ObjectGroupRules" : {
+        "object_group_network_group_rule"             : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "object_group_service_group_checkpoint_rule"  : {"execution_order": 1, "tags": ["cp", "cpR80"]}
+      },
+      "AccessListRules" : {
+        "access_list_1_initialization_rule" : {"execution_order": 1, "tags": ["cp","cpR80"]},
+        "access_list_2_name_creation_rule_for_cp" : {"execution_order": 2, "tags": ["cp","cpR80"]},
+        "access_list_3_handling_unsupported_action_for_cp": {"execution_order": 3, "tags": ["cp","cpR80"]},
+        "access_list_3_handling_more_than_two_grp_exclusion_for_cp": {"execution_order": 3, "tags": ["cp","cpR80"]},
+        "access_list_5_initial_meta_initialization_rule" : {"execution_order": 4, "tags": ["cp","cpR80"]},
+        "access_list_7_service_object_group_rule_cp" : {"execution_order": 5, "tags": ["cp","cpR80"]},
+        "access_list_10_processing_objects_rule_cp" : {"execution_order": 7, "tags": ["cp","cpR80"]},
+        "access_list_11_marking_unsupported_rule" : {"execution_order": 8, "tags": ["cp","cpR80"]},
+        "access_list_12_unsupported_logging_rule_for_cp" : {"execution_order": 9, "tags": ["cp","cpR80"]},
+        "access_list_12_exclusion_group_logging_rule_for_cp" : {"execution_order": 9, "tags": ["cp","cpR80"]},
+        "access_list_99_copy_data_to_new_acl_rule" : {"execution_order": 10, "tags": ["cp","cpR80"]},
+        "access_list_13_route_lookup_cp" : {"execution_order": 11,"tags": ["cp","cpR80","zoneBasedAcl"]},
+        "access_list_split_acl_greater_than_50_references" : {"execution_order": 11, "tags": ["cp","cpR80"]}
+
+      },
+      "ManualNatRules" : {
+        "manual_nat_initialization_rule"                      : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "manual_nat_source_rule"                              : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "manual_nat_destination_rule"                         : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "manual_nat_service_rule"                             : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "manual_nat_cp_ingress_interface_rule"                : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "manual_nat_cp_egress_interface_rule"                 : {"execution_order": 6, "tags": ["cp", "cpR80"]},
+        "manual_nat_cp_translated_any_rule"                   : {"execution_order": 7, "tags": ["cp", "cpR80"]},
+        "manual_nat_meta_creation_rule"                       : {"execution_order": 8, "tags": ["cp", "cpR80"]}
+      },
+      "AutoNatRules" : {
+        "auto_nat_initialization_rule"                        : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "auto_nat_cp_original_source_rule"                    : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "auto_nat_cp_translated_source_rule"                  : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "auto_nat_cp_egress_interface_rule"                   : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "auto_nat_cp_ingress_interface_rule"                  : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "auto_nat_meta_creation_rule"                         : {"execution_order": 6, "tags": ["cp", "cpR80"]}
+      },
+      "RouteRules" : {
+        "route_initialization_rule"         : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "route_interface_rule"              : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "route_destination_network_rule"    : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "route_network_address_exists_rule" : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "route_gateway_rule"                : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "route_gateway_logical"             : {"execution_order": 6, "tags": ["cp", "cpR80"]},
+        "route_meta_creation_rule"          : {"execution_order": 7, "tags": ["cp", "cpR80"]}
+      },
+      "IkePolicyRules" : {
+        "ike_initialization_rule"           : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "ike_encryption_rule"               : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "ike_hash_rule"                     : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "ike_authentication_rule"           : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "ike_prf_hash_rule"                 : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "ike_diffie_hellman_group_rule"     : {"execution_order": 6, "tags": ["cp", "cpR80"]},
+        "ike_lifetime_rule"                 : {"execution_order": 6, "tags": ["cp", "cpR80"]},
+        "ike_meta_creation_rule"            : {"execution_order": 7, "tags": ["cp", "cpR80"]}
+      },
+      "S2SVpnRules" : {
+        "s2s_initialization_rule"           : {"execution_order": 1, "tags": ["cp", "cpR80"]},
+        "s2s_local_vpn_interface_rule"      : {"execution_order": 2, "tags": ["cp", "cpR80"]},
+        "s2s_access_list_rule"              : {"execution_order": 3, "tags": ["cp", "cpR80"]},
+        "s2s_vpn_network_rule"              : {"execution_order": 4, "tags": ["cp", "cpR80"]},
+        "s2s_remote_ip_rule"                : {"execution_order": 5, "tags": ["cp", "cpR80"]},
+        "s2s_tunnel_group_rule"             : {"execution_order": 6, "tags": ["cp", "cpR80"]},
+        "s2s_ipsec_proposal_rule"           : {"execution_order": 7, "tags": ["cp", "cpR80"]},
+        "s2s_pfs_group_rule"                : {"execution_order": 8, "tags": ["cp", "cpR80"]},
+        "s2s_meta_creation_rule"            : {"execution_order": 9, "tags": ["cp", "cpR80"]}
+      }
+    }
+  },
+  "PAN_TO_FMC" : {
+    "PAN_VERSION" : 6.1,
+    "FMC_VERSION" : 6.2,
+    "MIGRATED_FEATURES" : {
+      "Interfaces"            : [true, "InterfaceRules", "ZoneRules"],
+      "Network_Objects"       : [true, "ObjectNetworkRules"],
+      "Port_Objects"          : [true, "ObjectServiceRules", "ObjectGroupRules"],
+      "Access_List"           : [true, "AccessListRules"],
+      "NAT"                   : [true, "ManualNatRules"],
+      "Routes"                : [true, "RouteRules"],
+      "Ike_Policies"          : [true, "IkePolicyRules"],
+      "S2S_Vpn"               : [true, "S2SVpnRules"],
+      "Address_Pool"          : [true, "AddressPoolRules"],
+      "AAA_Server"            : [true, "AAAServerRules"],
+      "Any_Connect_Profile"   : [true, "AnyConnectProfileRules"],
+      "Group_Policy"          : [true, "GroupPolicyRules"],
+      "Global_Ravpn"          : [true, "GlobalRavpnRules"],
+      "Connection_Profile"    : [true, "ConnectionProfileRules"]
+    },
+    "RULES"       : {
+      "InterfaceRules" : {
+        "interface_initialization_rule"         : {"execution_order": 1, "tags": ["pan"]},
+        "interface_vlan_rule"                   : {"execution_order": 2, "tags": ["pan"]},
+        "interface_bvi_rule"                    : {"execution_order": 3, "tags": ["pan"]},
+        "interface_port_channel_rule"           : {"execution_order": 4, "tags": ["pan"]},
+        "interface_channel_group_rule"          : {"execution_order": 5, "tags": ["pan"]},
+        "interface_checkpoint_mtu_rule"         : {"execution_order": 6, "tags": ["pan"]},
+        "interface_loopback_tunnel_rule"        : {"execution_order": 7, "tags": ["pan"]},
+        "interface_ip_address_rule"             : {"execution_order": 8, "tags": ["pan"]},
+        "interface_meta_creation_rule"          : {"execution_order": 10, "tags": ["pan"]}
+      },
+      "ZoneRules" : {
+        "zone_initialization_rule" : {"execution_order": 1, "tags": ["pan"]},
+        "zone_interface_rule"      : {"execution_order": 2, "tags": ["pan"]}
+      },
+      "ObjectNetworkRules" : {
+        "object_network_initialization_rule"         : {"execution_order": 1, "tags": ["pan"]},
+        "object_network_host_subnet_rule"            : {"execution_order": 2, "tags": ["pan"]},
+        "object_network_range_rule"                  : {"execution_order": 2, "tags": ["pan"]},
+        "object_network_fqdn_rule"                   : {"execution_order": 2, "tags": ["pan"]},
+        "object_network_ipv6_rule"                   : {"execution_order": 3, "tags": ["pan"]},
+        "object_network_description_rule"            : {"execution_order": 4, "tags": ["pan"]},
+        "object_network_meta_creation_rule"          : {"execution_order": 5, "tags": ["pan"]},
+        "object_mcd_network_name_rule"               : {"execution_order": 5, "tags": ["pan"]}
+      },
+      "ObjectServiceRules" : {
+        "object_service_initialization_rule"            : {"execution_order": 1, "tags": ["pan"]},
+        "object_service_object_name_rule"               : {"execution_order": 2, "tags": ["pan"]},
+        "object_service_description_rule"               : {"execution_order": 2, "tags": ["pan"]},
+        "object_service_range_operator_rule"            : {"execution_order": 3, "tags": ["pan"]},
+        "object_service_eq_range_model_creation_rule"   : {"execution_order": 4, "tags": ["pan"]},
+        "object_service_meta_creation_rule"             : {"execution_order": 5, "tags": ["pan"]},
+        "object_mcd_service_name_rule"                  : {"execution_order": 6, "tags": ["pan"]}
+      },
+      "ObjectGroupRules" : {
+        "object_group_network_group_rule"            : {"execution_order": 1, "tags": ["pan"]},
+        "object_group_service_group_pan_rule"        : {"execution_order": 1, "tags": ["pan"]},
+        "object_group_network_group_mcd_split_rule"  : {"execution_order": 16, "tags": ["pan"]}
+      },
+      "AccessListRules" : {
+        "access_list_1_initialization_rule"                 : {"execution_order": 1, "tags": ["pan"]},
+        "access_list_2_name_creation_rule_for_cp"           : {"execution_order": 2, "tags": ["pan"]},
+        "access_list_3_handling_unsupported_action_for_pan" : {"execution_order": 3, "tags": ["pan"]},
+        "access_list_5_initial_meta_initialization_rule"    : {"execution_order": 4, "tags": ["pan"]},
+        "access_list_7_service_object_group_rule_cp"        : {"execution_order": 5, "tags": ["pan"]},
+        "access_list_10_processing_objects_rule_pan"        : {"execution_order": 6, "tags": ["pan"]},
+        "access_list_9_processing_applicaton"               : {"execution_order": 7, "tags": ["pan"]},
+        "access_list_11_marking_unsupported_rule"           : {"execution_order": 8, "tags": ["pan"]},
+        "access_list_12_logging_rule_for_pan"               : {"execution_order": 9, "tags": ["pan"]},
+        "access_list_split_acl_greater_than_50_references"  : {"execution_order": 10, "tags": ["pan"]},
+        "access_list_99_copy_data_to_new_acl_rule"          : {"execution_order": 11, "tags": ["pan"]},
+        "access_list_rule_for_src_dest_greater_than_50_references_for_pan"  : {"execution_order": 12, "tags": ["pan"]},
+        "access_list_15_pan_zone_based_rule"                : {"execution_order": 13, "tags": ["pan"]},
+        "acl_url_filter_reference_pan"                      : {"execution_order": 14, "tags": ["pan"]},
+        "access_list_16_pan_invalid_ip_literal_rule"        : {"execution_order": 15, "tags": ["pan"]},
+        "access_list_mcd_acl_split"                         : {"execution_order": 16, "tags": ["pan"]},
+        "acl_rule_for_route_based_vpn_with_proxy_ids"       : {"execution_order": 17, "tags": ["pan"]}
+      },
+      "ManualNatRules" : {
+        "manual_nat_initialization_rule"          : {"execution_order": 1, "tags": ["pan"]},
+        "manual_nat_egress_interface_rule_pan"    : {"execution_order": 2, "tags": ["pan"]},
+        "manual_nat_ingress_interface_rule_pan"   : {"execution_order": 3, "tags": ["pan"]},
+        "manual_nat_source_rule"                  : {"execution_order": 4, "tags": ["pan"]},
+        "manual_nat_destination_rule"             : {"execution_order": 5, "tags": ["pan"]},
+        "manual_nat_service_rule_pan"             : {"execution_order": 6, "tags": ["pan"]},
+        "manual_nat_reverse_ace_pan"              : {"execution_order": 7, "tags": ["pan"]},
+        "manual_nat_route_lookup"                 : {"execution_order": 8, "tags": ["pan"]},
+        "manual_nat_meta_creation_rule"           : {"execution_order": 9, "tags": ["pan"]}
+      },
+      "RouteRules" : {
+        "route_initialization_rule"         : {"execution_order": 1, "tags": ["pan"]},
+        "route_gateway_rule"                : {"execution_order": 2, "tags": ["pan"]},
+        "route_interface_rule"              : {"execution_order": 3, "tags": ["pan"]},
+        "route_destination_network_rule"    : {"execution_order": 4, "tags": ["pan"]},
+        "route_network_address_exists_rule" : {"execution_order": 5, "tags": ["pan"]},
+        "route_meta_creation_rule"          : {"execution_order": 6, "tags": ["pan"]}
+      },
+      "IkePolicyRules" : {
+        "ike_initialization_rule"           : {"execution_order": 1, "tags": ["pan"]},
+        "ike_encryption_rule"               : {"execution_order": 2, "tags": ["pan"]},
+        "ike_hash_rule"                     : {"execution_order": 3, "tags": ["pan"]},
+        "ike_authentication_rule"           : {"execution_order": 4, "tags": ["pan"]},
+        "ike_prf_hash_rule"                 : {"execution_order": 5, "tags": ["pan"]},
+        "ike_diffie_hellman_group_rule"     : {"execution_order": 6, "tags": ["pan"]},
+        "ike_lifetime_rule"                 : {"execution_order": 6, "tags": ["pan"]},
+        "ike_meta_creation_rule"            : {"execution_order": 7, "tags": ["pan"]}
+      },
+      "S2SVpnRules" : {
+        "s2s_initialization_rule"           : {"execution_order": 1, "tags": ["pan"]},
+        "s2s_local_vpn_interface_rule"      : {"execution_order": 2, "tags": ["pan"]},
+        "s2s_access_list_rule"              : {"execution_order": 3, "tags": ["pan"]},
+        "s2s_vpn_network_rule"              : {"execution_order": 4, "tags": ["pan"]},
+        "s2s_remote_ip_rule"                : {"execution_order": 5, "tags": ["pan"]},
+        "s2s_tunnel_group_rule"             : {"execution_order": 6, "tags": ["pan"]},
+        "s2s_ipsec_proposal_rule"           : {"execution_order": 7, "tags": ["pan"]},
+        "s2s_pfs_group_rule"                : {"execution_order": 8, "tags": ["pan"]},
+        "s2s_meta_creation_rule"            : {"execution_order": 9, "tags": ["pan"]}
+      },
+      "AddressPoolRules" : {
+        "address_pool_initialization_rule"      : {"execution_order": 1, "tags": ["pan"]},
+        "address_pool_object_name_rule"         : {"execution_order": 2, "tags": ["pan"]},
+        "address_pool_ip_mask_rule"             : {"execution_order": 3, "tags": ["pan"]},
+        "adress_pool_meta_creation_rule"        : {"execution_order": 4, "tags": ["pan"]}
+      },
+      "AAAServerRules" : {
+        "aaa_server_initialization_rule"        : {"execution_order": 1, "tags": ["pan"]},
+        "aaa_server_object_name_rule"           : {"execution_order": 2, "tags": ["pan"]},
+        "aaa_server_protocol_rule"              : {"execution_order": 3, "tags": ["pan"]},
+        "aaa_server_radius_attribute_rule"      : {"execution_order": 4, "tags": ["pan"]},
+        "aaa_server_ldap_attribute_rule"        : {"execution_order": 5, "tags": ["pan"]},
+        "aaa_server_saml_attribute_rule"        : {"execution_order": 6, "tags": ["pan"]},
+        "aaa_server_ldap_attribute_map_rule"        : {"execution_order": 6, "tags": ["pan"]},
+        "aaa_server_meta_creation_rule"         : {"execution_order": 7, "tags": ["pan"]}
+      },
+       "AnyConnectProfileRules" : {
+        "any_connect_initialization_rule" : {"execution_order": 1, "tags": ["pan"]},
+        "any_connect_object_name_rule"    : {"execution_order": 2, "tags": ["pan"]},
+        "any_connect_meta_creation_rule"  : {"execution_order": 3, "tags": ["pan"]}
+      },
+       "GroupPolicyRules" : {
+        "group_policy_initialization_rule"        : {"execution_order": 1, "tags": ["pan"]},
+        "group_policy_object_name_rule"           : {"execution_order": 2, "tags": ["pan"]},
+        "group_policy_tunnel_protocol_rule"       : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_address_pool_rule"          : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_banner_rule"                : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_dns_wins_rule"              : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_anyconnect_profile_rule"    : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_custom_attribute_rule"      : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_client_module_rule"         : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_ssl_settings_rule"          : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_vpn_filter_rule"            : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_session_settings_rule"      : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_connection_settings_rule"   : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_split_tunneling_rule"       : {"execution_order": 3, "tags": ["pan"]},
+        "group_policy_meta_creation_rule"         : {"execution_order": 4, "tags": ["pan"]}
+      },
+      "GlobalRavpnRules" : {
+        "webvpn_initialization_rule"               : {"execution_order": 1, "tags": ["pan"]},
+        "webvpn_access_interface_rule"             : {"execution_order": 2, "tags": ["pan"]},
+        "webvpn_address_assignment_policy_rule"    : {"execution_order": 3, "tags": ["pan"]},
+        "webvpn_certificate_map_rule"              : {"execution_order": 4, "tags": ["pan"]},
+        "webvpn_anyconnect_image_rule"             : {"execution_order": 5, "tags": ["pan"]},
+        "webvpn_saml_rule"                         : {"execution_order": 6, "tags": ["pan"]},
+        "webvpn_meta_creation_rule"                : {"execution_order": 7, "tags": ["pan"]}
+      },
+      "ConnectionProfileRules":{
+        "connection_profile_initialization_rule"        : {"execution_order": 1, "tags": ["pan"]},
+        "connection_profile_object_name_rule"           : {"execution_order": 2, "tags": ["pan"]},
+        "connection_profile_address_pool_rule"          : {"execution_order": 3, "tags": ["pan"]},
+        "connection_profile_dhcp_server_rule"           : {"execution_order": 4, "tags": ["pan"]},
+        "connection_profile_aaa_method_rule"            : {"execution_order":  5, "tags": ["pan"]},
+        "connection_profile_authorization_rule"         : {"execution_order": 6, "tags": ["pan"]},
+        "connection_profile_accounting_rule"            : {"execution_order": 7, "tags": ["pan"]},
+        "connection_profile_group_policy_rule"          : {"execution_order": 8, "tags": ["pan"]},
+        "connection_profile_group_aliase_rule"          : {"execution_order": 8, "tags": ["pan"]},
+        "connection_profile_meta_creation_rule"         : {"execution_order": 9, "tags": ["pan"]}
+
+      }
+    }
+  },
+  "FORTINET_TO_FMC" : {
+    "FORTINET_VERSION" : 5.0,
+    "FMC_VERSION" : 6.5,
+    "MIGRATED_FEATURES" : {
+      "Interfaces"            : [true, "InterfaceRules", "ZoneRules"],
+      "Network_Objects"       : [true, "ObjectNetworkRules"],
+      "Port_Objects"          : [true, "ObjectServiceRules", "ObjectGroupRules"],
+      "Time_Ranges"           : [true, "TimeRangeObjectRule"],
+      "Access_List"           : [true, "AccessListRules"],
+      "NAT"                   : [true, "ManualNatRules", "NatObjectRules"],
+      "Routes"                : [true, "RouteRules"],
+      "Ike_Policies"          : [true, "IkePolicyRules"],
+      "S2S_Vpn"               : [true, "S2SVpnRules"],
+      "Address_Pool"          : [true, "AddressPoolRules"],
+      "AAA_Server"            : [true, "AAAServerRules"],
+      "Any_Connect_Profile"   : [true, "AnyConnectProfileRules"],
+      "Group_Policy"          : [true, "GroupPolicyRules"],
+      "Connection_Profile"    : [true, "ConnectionProfileRules"],
+      "Global_Ravpn"          : [true, "GlobalRavpnRules"]
+    },
+    "RULES"       : {
+      "InterfaceRules" : {
+        "interface_initialization_rule"         : {"execution_order": 1, "tags": ["fortinet"]},
+        "interface_nameif_rule"                 : {"execution_order": 2, "tags": ["fortinet"]},
+        "interface_vlan_rule"                   : {"execution_order": 3, "tags": ["fortinet"]},
+        "interface_bvi_rule"                    : {"execution_order": 4, "tags": ["fortinet"]},
+        "interface_port_channel_rule"           : {"execution_order": 5, "tags": ["fortinet"]},
+        "interface_loopback_tunnel_rule"        : {"execution_order": 6, "tags": ["fortinet"]},
+        "interface_ip_address_rule"             : {"execution_order": 7, "tags": ["fortinet"]},
+        "interface_meta_creation_rule"          : {"execution_order": 8, "tags": ["fortinet"]},
+        "interface_validate_duplicate_vlan"     : {"execution_order": 9, "tags": ["fortinet"]}
+      },
+      "ZoneRules" : {
+        "zone_initialization_rule" : {"execution_order": 1, "tags": ["fortinet"]},
+        "zone_interface_rule"      : {"execution_order": 2, "tags": ["fortinet"]}
+      },
+      "ObjectNetworkRules" : {
+        "object_network_initialization_rule"         : {"execution_order": 1, "tags": ["fortinet"]},
+        "object_network_object_name_rule"            : {"execution_order": 2, "tags": ["fortinet"]},
+        "object_network_description_rule"            : {"execution_order": 3, "tags": ["fortinet"]},
+        "object_network_host_ip_rule"                : {"execution_order": 3, "tags": ["fortinet"]},
+        "object_network_subnet_rule"                 : {"execution_order": 4, "tags": ["fortinet"]},
+        "object_network_range_rule"                  : {"execution_order": 4, "tags": ["fortinet"]},
+        "object_network_fqdn_rule"                   : {"execution_order": 4, "tags": ["fortinet"]},
+        "object_network_ipv6_rule"                   : {"execution_order": 5, "tags": ["fortinet"]},
+        "object_network_unsupported_type_rule"       : {"execution_order": 6, "tags": ["fortinet"]},
+        "object_network_meta_creation_rule"          : {"execution_order": 7, "tags": ["fortinet"]}
+      },
+      "ObjectServiceRules" : {
+        "object_service_initialization_rule"            : {"execution_order": 1, "tags": ["fortinet"]},
+        "object_service_object_name_rule"               : {"execution_order": 2, "tags": ["fortinet"]},
+        "object_service_description_rule"               : {"execution_order": 2, "tags": ["fortinet"]},
+        "object_service_range_operator_rule"            : {"execution_order": 3, "tags": ["fortinet"]},
+        "object_service_eq_range_model_creation_rule"   : {"execution_order": 4, "tags": ["fortinet"]},
+        "object_service_meta_creation_rule"             : {"execution_order": 5, "tags": ["fortinet"]}
+      },
+      "ObjectGroupRules" : {
+        "object_group_network_group_rule"            : {"execution_order": 1, "tags": ["fortinet"]},
+        "object_group_service_group_fortinet_rule"   : {"execution_order": 1, "tags": ["fortinet"]}
+      },
+      "NatObjectRules" : {
+        "nat_object_ippool_rule"                    : {"execution_order": 1, "tags": ["fortinet"]},
+        "nat_object_vip_rule"                       : {"execution_order": 1, "tags": ["fortinet"]},
+        "nat_group_vip_rule"                        : {"execution_order": 1, "tags": ["fortinet"]}
+      },
+      "TimeRangeObjectRule" : {
+        "time_range_object_initialization_rule"         : {"execution_order": 1, "tags": ["fortinet"]},
+        "time_range_name_rule"                          : {"execution_order": 2, "tags": ["fortinet"]},
+        "time_range_periodic_rule"                      : {"execution_order": 3, "tags": ["fortinet"]},
+        "time_range_meta_creation_rule"                 : {"execution_order": 4, "tags": ["fortinet"]}
+      },
+      "AccessListRules" : {
+        "access_list_1_initialization_rule"                 : {"execution_order": 1, "tags": ["fortinet"]},
+        "access_list_2_name_creation_rule_for_cp"           : {"execution_order": 2, "tags": ["fortinet"]},
+        "access_list_3_handling_unsupported_action_for_pan" : {"execution_order": 3, "tags": ["fortinet"]},
+        "access_list_5_initial_meta_initialization_rule"    : {"execution_order": 4, "tags": ["fortinet"]},
+        "access_list_7_service_object_group_rule_cp"        : {"execution_order": 5, "tags": ["fortinet"]},
+        "access_list_10_processing_objects_rule_cp"         : {"execution_order": 6, "tags": ["fortinet"]},
+        "access_list_11_marking_unsupported_rule"           : {"execution_order": 7, "tags": ["fortinet"]},
+        "access_list_12_logging_rule_for_fortinet"          : {"execution_order": 8, "tags": ["fortinet"]},
+        "access_list_99_copy_data_to_new_acl_rule"          : {"execution_order": 9, "tags": ["fortinet"]},
+        "access_list_split_acl_greater_than_50_references"  : {"execution_order": 10, "tags": ["fortinet"]},
+        "access_list_time_range_rule_for_fortinet"          : {"execution_order": 11, "tags": ["fortinet"]},
+        "access_list_15_fortinet_zone_based_rule"           : {"execution_order": 12, "tags": ["fortinet"]},
+        "access_list_application_mapping_fortinet_rule"     : {"execution_order": 13, "tags": ["fortinet"]},
+        "access_list_url_mapping_fortinet_rule"             : {"execution_order": 14, "tags": ["fortinet"]}
+      },
+      "ManualNatRules" : {
+        "manual_nat_initialization_rule"          : {"execution_order": 1, "tags": ["fortinet"]},
+        "manual_nat_network_rule"                 : {"execution_order": 2, "tags": ["fortinet"]},
+        "manual_nat_fortinet_service_rule"        : {"execution_order": 3, "tags": ["fortinet"]},
+        "manual_nat_fortinet_zone_rule"           : {"execution_order": 4, "tags": ["fortinet"]},
+        "manual_nat_meta_creation_rule"           : {"execution_order": 5, "tags": ["fortinet"]}
+      },
+      "RouteRules" : {
+        "route_initialization_rule"         : {"execution_order": 1, "tags": ["fortinet"]},
+        "vtiInterface_gatewayIp_update_rule": {"execution_order": 2, "tags": ["fortinet"]},
+        "route_unsupported_rule"            : {"execution_order": 3, "tags": ["fortinet"]},
+        "route_max_metric_rule"             : {"execution_order": 4, "tags": ["fortinet"]},
+        "route_interface_rule"              : {"execution_order": 5, "tags": ["fortinet"]},
+        "route_metric_rule"                 : {"execution_order": 6, "tags": ["fortinet"]},
+        "route_destination_network_rule"    : {"execution_order": 7, "tags": ["fortinet"]},
+        "route_network_address_exists_rule" : {"execution_order": 8, "tags": ["fortinet"]},
+        "route_destination_object_rule"     : {"execution_order": 9, "tags": ["fortinet"]},
+        "route_gateway_rule"                : {"execution_order": 10, "tags": ["fortinet"]},
+        "route_meta_creation_rule"          : {"execution_order": 11, "tags": ["fortinet"]}
+      },
+       "IkePolicyRules" : {
+        "ike_initialization_rule"           : {"execution_order": 1, "tags": ["fortinet"]},
+        "ike_encryption_rule"               : {"execution_order": 2, "tags": ["fortinet"]},
+        "ike_hash_rule"                     : {"execution_order": 3, "tags": ["fortinet"]},
+        "ike_authentication_rule"           : {"execution_order": 4, "tags": ["fortinet"]},
+        "ike_prf_hash_rule"                 : {"execution_order": 5, "tags": ["fortinet"]},
+        "ike_diffie_hellman_group_rule"     : {"execution_order": 6, "tags": ["fortinet"]},
+        "ike_lifetime_rule"                 : {"execution_order": 6, "tags": ["fortinet"]},
+        "ike_meta_creation_rule"            : {"execution_order": 7, "tags": ["fortinet"]}
+      },
+      "S2SVpnRules" : {
+        "s2s_initialization_rule"           : {"execution_order": 1, "tags": ["fortinet"]},
+        "s2s_local_vpn_interface_rule"      : {"execution_order": 2, "tags": ["fortinet"]},
+        "s2s_access_list_rule"              : {"execution_order": 3, "tags": ["fortinet"]},
+        "s2s_vpn_network_rule"              : {"execution_order": 4, "tags": ["fortinet"]},
+        "s2s_remote_ip_rule"                : {"execution_order": 5, "tags": ["fortinet"]},
+        "s2s_tunnel_group_rule"             : {"execution_order": 6, "tags": ["fortinet"]},
+        "s2s_ipsec_proposal_rule"           : {"execution_order": 7, "tags": ["fortinet"]},
+        "s2s_pfs_group_rule"                : {"execution_order": 8, "tags": ["fortinet"]},
+        "s2s_meta_creation_rule"            : {"execution_order": 9, "tags": ["fortinet"]}
+      },
+      "AddressPoolRules" : {
+        "address_pool_initialization_rule"      : {"execution_order": 1, "tags": ["fortinet"]},
+        "address_pool_object_name_rule"         : {"execution_order": 2, "tags": ["fortinet"]},
+        "address_pool_ip_mask_rule"             : {"execution_order": 3, "tags": ["fortinet"]},
+        "adress_pool_meta_creation_rule"        : {"execution_order": 4, "tags": ["fortinet"]}
+      },
+      "AAAServerRules" : {
+        "aaa_server_initialization_rule"        : {"execution_order": 1, "tags": ["fortinet"]},
+        "aaa_server_object_name_rule"           : {"execution_order": 2, "tags": ["fortinet"]},
+        "aaa_server_protocol_rule"              : {"execution_order": 3, "tags": ["fortinet"]},
+        "aaa_server_radius_attribute_rule"      : {"execution_order": 4, "tags": ["fortinet"]},
+        "aaa_server_ldap_attribute_rule"        : {"execution_order": 5, "tags": ["fortinet"]},
+        "aaa_server_saml_attribute_rule"        : {"execution_order": 6, "tags": ["fortinet"]},
+        "aaa_server_ldap_attribute_map_rule"    : {"execution_order": 7, "tags": ["fortinet"]},
+        "aaa_server_certificate_rule"           : {"execution_order": 8, "tags": ["fortinet"]},
+        "aaa_server_meta_creation_rule"         : {"execution_order": 9, "tags": ["fortinet"]}
+      },
+       "AnyConnectProfileRules" : {
+        "any_connect_initialization_rule" : {"execution_order": 1, "tags": ["fortinet"]},
+        "any_connect_object_name_rule"    : {"execution_order": 2, "tags": ["fortinet"]},
+        "any_connect_meta_creation_rule"  : {"execution_order": 3, "tags": ["fortinet"]}
+      },
+       "GroupPolicyRules" : {
+        "group_policy_initialization_rule"        : {"execution_order": 1, "tags": ["fortinet"]},
+        "group_policy_object_name_rule"           : {"execution_order": 2, "tags": ["fortinet"]},
+        "group_policy_tunnel_protocol_rule"       : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_address_pool_rule"          : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_banner_rule"                : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_dns_wins_rule"              : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_anyconnect_profile_rule"    : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_custom_attribute_rule"      : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_client_module_rule"         : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_ssl_settings_rule"          : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_vpn_filter_rule"            : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_session_settings_rule"      : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_connection_settings_rule"   : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_split_tunneling_rule"       : {"execution_order": 3, "tags": ["fortinet"]},
+        "group_policy_meta_creation_rule"         : {"execution_order": 4, "tags": ["fortinet"]}
+      },
+      "ConnectionProfileRules":{
+        "connection_profile_initialization_rule"        : {"execution_order": 1, "tags": ["fortinet"]},
+        "connection_profile_object_name_rule"           : {"execution_order": 2, "tags": ["fortinet"]},
+        "connection_profile_address_pool_rule"          : {"execution_order": 3, "tags": ["fortinet"]},
+        "connection_profile_dhcp_server_rule"           : {"execution_order": 4, "tags": ["fortinet"]},
+        "connection_profile_aaa_method_rule"            : {"execution_order":  5, "tags": ["fortinet"]},
+        "connection_profile_authorization_rule"         : {"execution_order": 6, "tags": ["fortinet"]},
+        "connection_profile_accounting_rule"            : {"execution_order": 7, "tags": ["fortinet"]},
+        "connection_profile_group_policy_rule"          : {"execution_order": 8, "tags": ["fortinet"]},
+        "connection_profile_meta_creation_rule"         : {"execution_order": 9, "tags": ["fortinet"]}
+
+      },
+       "GlobalRavpnRules" : {
+        "webvpn_initialization_rule"               : {"execution_order": 1, "tags": ["fortinet"]},
+        "webvpn_access_interface_rule"             : {"execution_order": 2, "tags": ["fortinet"]},
+        "webvpn_address_assignment_policy_rule"    : {"execution_order": 3, "tags": ["fortinet"]},
+        "webvpn_certificate_map_rule"              : {"execution_order": 4, "tags": ["fortinet"]},
+        "webvpn_anyconnect_image_rule"             : {"execution_order": 5, "tags": ["fortinet"]},
+        "webvpn_saml_rule"                         : {"execution_order": 6, "tags": ["fortinet"]},
+        "webvpn_meta_creation_rule"                : {"execution_order": 7, "tags": ["fortinet"]}
+      }
+    }
+  },
+  "AZURE_TO_FMC" : {
+    "AZURE_VERSION" : 1.0,
+    "FMC_VERSION" : 6.5,
+    "MIGRATED_FEATURES" : {
+      "Network_Objects"       : [true, "ObjectNetworkRules"],
+      "Port_Objects"          : [true, "ObjectServiceRules", "ObjectGroupRules"],
+      "Access_List"           : [true, "AccessListRules"],
+      "NAT"                   : [true, "ManualNatRules"]
+    },
+    "RULES"       : {
+      "ObjectNetworkRules" : {
+        "object_network_initialization_rule"         : {"execution_order": 1, "tags": ["azure"]},
+        "object_network_object_name_rule"            : {"execution_order": 2, "tags": ["azure"]},
+        "object_network_description_rule"            : {"execution_order": 3, "tags": ["azure"]},
+        "object_network_host_ip_rule"                : {"execution_order": 3, "tags": ["azure"]},
+        "object_network_subnet_rule"                 : {"execution_order": 4, "tags": ["azure"]},
+        "object_network_range_rule"                  : {"execution_order": 4, "tags": ["azure"]},
+        "object_network_fqdn_rule"                   : {"execution_order": 4, "tags": ["azure"]},
+        "object_network_ipv6_rule"                   : {"execution_order": 5, "tags": ["azure"]},
+        "object_network_unsupported_type_rule"       : {"execution_order": 6, "tags": ["azure"]},
+        "object_network_meta_creation_rule"          : {"execution_order": 7, "tags": ["azure"]}
+      },
+      "ObjectServiceRules" : {
+        "object_service_initialization_rule"            : {"execution_order": 1, "tags": ["azure"]},
+        "object_service_object_name_rule"               : {"execution_order": 2, "tags": ["azure"]},
+        "object_service_description_rule"               : {"execution_order": 2, "tags": ["azure"]},
+        "object_service_range_operator_rule"            : {"execution_order": 3, "tags": ["azure"]},
+        "object_service_eq_range_model_creation_rule"   : {"execution_order": 4, "tags": ["azure"]},
+        "object_service_meta_creation_rule"             : {"execution_order": 5, "tags": ["azure"]}
+      },
+      "ObjectGroupRules" : {
+        "object_group_network_group_rule"            : {"execution_order": 1, "tags": ["azure"]},
+        "object_group_service_group_rule"           : {"execution_order": 1, "tags": ["azure"]}
+      },
+      "AccessListRules2" : {
+        "access_list_1_initialization_rule"                 : {"execution_order": 1, "tags": ["azure"]},
+        "access_list_3_handling_unsupported_action_for_pan" : {"execution_order": 3, "tags": ["azure"]},
+        "access_list_5_initial_meta_initialization_rule"    : {"execution_order": 4, "tags": ["azure"]},
+        "access_list_7_service_object_group_rule_cp"        : {"execution_order": 5, "tags": ["azure"]},
+        "access_list_10_processing_objects_rule_cp"         : {"execution_order": 6, "tags": ["azure"]},
+        "access_list_11_marking_unsupported_rule"           : {"execution_order": 7, "tags": ["azure"]},
+        "access_list_12_logging_rule_for_fortinet"          : {"execution_order": 8, "tags": ["azure"]},
+        "access_list_99_copy_data_to_new_acl_rule"          : {"execution_order": 9, "tags": ["azure"]},
+        "access_list_split_acl_greater_than_50_references"  : {"execution_order": 10, "tags": ["azure"]},
+        "access_list_time_range_rule_for_fortinet"          : {"execution_order": 11, "tags": ["azure"]},
+        "access_list_15_fortinet_zone_based_rule"           : {"execution_order": 12, "tags": ["azure"]},
+        "access_list_application_mapping_fortinet_rule"     : {"execution_order": 13, "tags": ["azure"]},
+        "access_list_url_mapping_fortinet_rule"             : {"execution_order": 14, "tags": ["azure"]}
+      },
+      "AccessListRules" : {
+        "access_list_1_initialization_rule"               : {"execution_order": 1, "tags": ["azure"]},
+        "access_list_5_initial_meta_initialization_rule"  : {"execution_order": 2, "tags": ["azure"]}
+      },
+      "ManualNatRules" : {
+        "manual_nat_initialization_rule"          : {"execution_order": 1, "tags": ["azure"]},
+        "manual_nat_network_rule"                 : {"execution_order": 2, "tags": ["azure"]},
+        "manual_nat_destination_rule"             : {"execution_order": 3, "tags": ["azure"]},
+        "manual_nat_service_rule"                 : {"execution_order": 4, "tags": ["azure"]},
+        "manual_nat_meta_creation_rule"           : {"execution_order": 5, "tags": ["azure"]}
+      }
+    }
+  }
+}

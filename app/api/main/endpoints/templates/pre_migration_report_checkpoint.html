@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta content="text/html; charset="UTF-8">
+      {% include 'fonts.html' %}
+      <style>
+         body {
+         font-family: "CiscoSansTT";
+         line-height: 1.5;
+         font-weight: 300;
+         font-size: 14pt;}
+         h4 {
+         display: block;
+         -webkit-margin-before: 1.33em;
+         -webkit-margin-after: 1.33em;
+         -webkit-margin-start: 0px;
+         -webkit-margin-end: 0px;}
+         .cui .text--secondary, .cui .text-secondary {
+         color: #049fd9!important;
+         }
+         .header-container {
+         /*margin: 0 10px 10px 30px;
+         width: 100%;*/
+         font-family: 'CiscoSansTT';
+         margin: 0 auto;
+         height: 30px;
+         padding: 1.2em;
+         border-bottom: 1px solid #d2d2d2;
+         }
+         .img-span {
+         height: 52px;
+         width: 72px;
+         display: inline-block;
+         color: #049fd9;
+         }
+         .report-title {
+         font-size: 22px;
+         color: #4a4a4a;
+         margin-left: 25px;
+         margin-top: 5px;
+         font-family: "CiscoSansTTLight";
+         }
+         .date-wrapper {
+         font-size: 16px;
+         margin-left: 5px;
+         color: #58585B;
+         }
+         .container {
+         margin-right: 20px;
+         margin-left: 20px;
+         font-family: 'CiscoSansTT';
+         font-size: 14px;
+         margin-top: 30px;
+         }
+         .pre_mig_note-container span {
+         font-size: 12px;
+         color: #9E9EA2;
+         font-family: 'CiscoSansTT-Oblique'
+         }
+         .pre-mig p {
+         margin: 0 0 0 5px;
+         font-size: 14px;
+         }
+         h1 {
+         font-family: 'CiscoSansTT' !important;
+         font-weight: normal;
+         font-size: 20px;
+         color: #4A4A4A;
+         }
+         h2 {
+         font-family: 'CiscoSansTT' !important;
+         font-weight: normal;
+         font-size: 16px;
+         margin-left: 5px;
+         }
+         table {
+         color: #58585B;
+         border-collapse: collapse;
+         margin-left: 10px;
+         font-size: 14px;
+         }
+         th, td {
+         border: 0.75px solid #dfdfdf;
+         padding: 0.8rem;
+         }
+         th {
+         text-align: left;
+         background: #f2f2f2;
+         }
+         path {
+         fill: #049fd9;
+         }
+         label,span {
+            cursor: pointer;
+         }
+         .right {
+         float: right;
+         margin-right: 50px;
+         }
+         .left {
+         float: left;
+         }
+         .section {
+         margin-top: 20px;
+         }
+         .section-bg {
+         background-color: #f9f9f9;
+         border-radius: 3px;
+         }
+         .section-heading {
+         margin-left: 5px;
+         font-size: 18px;
+         color: #4a4a4a;
+         font-family: 'CiscoSansTTLight'
+         }
+         .section-heading span {
+         font-style: oblique;
+         }
+         .section-desc {
+         font-size: 14px;
+         color: #4a4a4a;
+         margin-left: 5px;
+         padding-top: 10px;
+         }
+         .summary-container {
+         margin: 0 10px 0 20px;
+         font-family: 'CiscoSansTT';
+         font-size: 14px;
+         padding-top: 10px;
+         }
+         .summary-container table {
+         width: 60%;
+         }
+         .summary-container tr {
+         background: white;
+         }
+         .summary-container tr:nth-child(4n+1), .summary-container tr:nth-child(4n+2) {
+         background: #f2f2f2;
+         }
+         .script-box {
+         margin: 0 10px 0 20px;
+         padding-top: 10px;
+         max-height: 500px;
+         overflow-y: auto;
+         }
+         .script-box table {
+         font-size: 15px;
+         color: #58585b;
+         line-height: 10px;
+         border: none;
+         background-color: #f2f2f2;
+         width: 70%;
+         font-family: 'CourierNewPSMT';
+         }
+         .script-box td:nth-child(1) {
+         width: 3%;
+         text-align: right;
+         border: none;
+         border-right: 1px solid #dfdfdf;
+         }
+         .script-box td:nth-child(1) {
+         text-align: left !important;
+         }
+         .script-box td:nth-child(2) {
+         width: 67%;
+         border: none;
+         }
+         .no-table-data-wrapper {
+         font-family: CiscoSansTT;
+         font-size: 14px;
+         color: #E59757;
+         background: #FFF8EC;
+         border-radius: 5px;
+         padding: 10px;
+         text-align: left;
+         }
+         .info-icon {
+         background-repeat: no-repeat;
+         background-size: contain;
+         height: 20px;
+         width: 20px;
+         display: inline-block;
+         /*margin: 0 10px 0 0;*/
+         position: relative;
+         top: 5px;
+         }
+         .custom-line {
+         line-height: 16px;
+         color:#FF0000;
+         }
+         .custom-line-1 {
+         line-height: 16px;
+         }
+         .lbl-toggle:hover {
+         color: #dfdfdf;
+         }
+         .wrap-collabsible {
+         margin-left: 10px;
+         }
+         .lbl-toggle::before {
+         content: ' ';
+         display: inline-block;
+         border-top: 5px solid transparent;
+         border-bottom: 5px solid transparent;
+         border-left: 5px solid currentColor;
+         vertical-align: middle;
+         margin-right: .7rem;
+         transform: translateY(-2px);
+         transition: transform .2s ease-out;
+         }
+         .lbl-toggle-arrow::before {
+             content: ' ';
+            display: inline-block;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid currentColor;
+            vertical-align: middle;
+            margin-right: .7rem;
+            transform: translateY(-2px);
+            transition: transform .2s ease-out;
+         }
+         .lbl-toggle-down::before {
+            content: ' ';
+            display: inline-block;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid currentColor;
+            vertical-align: middle;
+            margin-right: .7rem;
+            transform: translateY(-2px);
+            transform: rotate(90deg) translateX(-3px);
+         }
+         .toggle:checked + .lbl-toggle::before {
+         transform: rotate(90deg) translateX(-3px);
+         }
+         .collapsible-content {
+         max-height: 0px;
+         overflow: hidden;
+         transition: max-height .25s ease-in-out;
+         }
+         .toggle:checked + .lbl-toggle + .collapsible-content {
+         max-height: 100%;
+         }
+         .toggle:checked + .lbl-toggle {
+         border-bottom-right-radius: 0;
+         border-bottom-left-radius: 0;
+         }
+         .collapsible-content .content-inner {
+         border-bottom-left-radius: 7px;
+         border-bottom-right-radius: 7px;
+         padding: .5rem 1rem;
+         }
+         .td-pre {
+         background-color: #f2f2f2;
+         max-height: 500px;
+         overflow-y: auto;
+         max-width: 800px;
+         padding: 10px 0;
+         }
+         .td-name {
+         font-size: 15px;
+         font-weight: 500;
+         text-decoration: underline;
+         cursor: pointer;
+         text-underline-position: under;
+         }
+         .keys {
+         font-size: 14px;
+         font-weight: 400;
+         }
+         .section-description-unsupported {
+          padding-left: 47px;
+          margin-bottom: 20px;
+          }
+         .log-path {
+            margin-top: 10px;
+         }
+      </style>
+      <script>
+         function toggle(id) {
+            var tag = document.getElementById(id);
+            if (tag && tag.hasAttribute("class")) {
+               if (tag.getAttribute("class") == "lbl-toggle-down") {
+                    tag.setAttribute("class", "lbl-toggle-arrow")
+               } else {
+                    tag.setAttribute("class", "lbl-toggle-down")
+               }
+            }
+         }
+         function collapse(tag, id) {
+             toggle(id);
+             var childId = id.replace(tag, "");
+             console.log(id, childId);
+             var childElement = document.getElementById(childId)
+             if (childElement && childElement.hasAttribute("class") && childElement.getAttribute("class") == "collapsible-content") {
+                 childElement.removeAttribute("class")
+             } else {
+                 childElement.setAttribute("class", "collapsible-content")
+             }
+         }
+         function un_collapse(tag, id) {
+         collapse(tag, id);
+         }
+      </script>
+   </head>
+   <div>
+      <div class="header-container">
+         <div class="left">
+            <div class="img-span">
+               <?xml version="1.0" encoding="utf-8"?>
+               <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+               <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-275 379 61 35"
+                  style="enable-background:new -275 379 61 35;" xml:space="preserve">
+                  <title>Group</title>
+                  <desc>Created with Sketch.</desc>
+                  <g id="NOTIFICATION" transform="translate(-1886.000000, -362.000000)" sketch:type="MSArtboardGroup">
+                     <g id="Group" transform="translate(1886.016129, 362.000000)" sketch:type="MSLayerGroup">
+                        <path id="Fill-1" sketch:type="MSShapeGroup" d="M-257.8,401.8h2.5v11.9h-2.5V401.8z"/>
+                        <path id="Fill-2" sketch:type="MSShapeGroup" d="M-233.2,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+                           c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+                           c1.3,0,2.3,0.3,2.6,0.4V405.3"/>
+                        <path id="Fill-3" sketch:type="MSShapeGroup" d="M-261.5,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+                           c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+                           c1.3,0,2.3,0.3,2.6,0.4V405.3"/>
+                        <path id="Fill-4" sketch:type="MSShapeGroup" d="M-225.2,404.7c-1.6,0-2.7,1.4-2.7,3c0,1.7,1.2,3,2.7,3
+                           c1.6,0,2.7-1.4,2.7-3C-222.4,406.1-223.6,404.7-225.2,404.7L-225.2,404.7z M-219.6,407.7c0,3.3-2.3,6-5.5,6c-3.2,0-5.5-2.7-5.5-6
+                           c0-3.3,2.3-6,5.5-6C-222,401.8-219.6,404.4-219.6,407.7L-219.6,407.7z"/>
+                        <path id="Fill-5" sketch:type="MSShapeGroup" d="M-245,404.6c0,0-1.2-0.4-2.1-0.4c-1.1,0-1.7,0.4-1.7,0.9
+                           c0,0.7,0.8,0.9,1.2,1.1l0.7,0.3c1.8,0.6,2.6,1.9,2.6,3.3c0,2.9-2.4,3.9-4.4,3.9c-1.4,0-2.8-0.3-2.9-0.3v-2.7
+                           c0.2,0.1,1.4,0.4,2.6,0.4c1.3,0,2-0.4,2-1.1c0-0.6-0.5-0.9-1.2-1.1c-0.2-0.1-0.4-0.1-0.6-0.2c-1.5-0.5-2.8-1.5-2.8-3.4
+                           c0-2.2,1.5-3.6,4-3.6c1.3,0,2.6,0.3,2.6,0.4V404.6"/>
+                        <path id="Fill-6" sketch:type="MSShapeGroup" d="M-272.5,389.8c0-0.7-0.5-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+                           c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+                        <path id="Fill-7" sketch:type="MSShapeGroup" d="M-265.2,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+                           c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+                        <path id="Fill-8" sketch:type="MSShapeGroup" d="M-257.8,380.7c0-0.8-0.6-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+                           c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7"/>
+                        <path id="Fill-9" sketch:type="MSShapeGroup" d="M-250.4,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+                           c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+                        <path id="Fill-10" sketch:type="MSShapeGroup" d="M-243,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+                           c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+                        <path id="Fill-11" sketch:type="MSShapeGroup" d="M-235.6,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+                           c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+                        <path id="Fill-12" sketch:type="MSShapeGroup" d="M-228.3,380.7c0-0.8-0.5-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+                           c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7"/>
+                        <path id="Fill-13" sketch:type="MSShapeGroup" d="M-222.1,385.9c0-0.7-0.5-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+                           c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+                        <path id="Fill-14" sketch:type="MSShapeGroup" d="M-214.7,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+                           c0,0.7,0.5,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+                     </g>
+                  </g>
+               </svg>
+            </div>
+         </div>
+         <div class="left">
+            <div class="report-title">
+               {{title}}
+            </div>
+         </div>
+         <div class="right">
+            <div class="date-wrapper" style="display: inline-block;margin-top: 5px;">
+               Date: {{date_stamp}}
+            </div>
+         </div>
+      </div>
+      <div class="container pre_mig_note-container">
+         <span style="color: #cf2030;">Note: </span>
+         <span>
+         Review all contents of this pre-migration report carefully. Unsupported rules will not be migrated completely, which can
+         potentially alter your original configuration, restrict some traffic, or permit unwanted traffic. We recommend that
+         you update the related rules and policies in Firewall Migration Center to ensure that traffic is appropriately
+         handled by Firepower Threat Defense after the configuration is successfully migrated.
+         </span>
+      </div>
+      <div class="container">
+         <div>
+            <div class="section-bg">
+               <h1 class="section-heading">1. Overall Summary: </h1>
+            </div>
+            <p class="section-desc">
+               A summary of the supported Check Point configuration elements that can be successfully migrated to Firepower Threat Defense.
+            </p>
+            <div class="summary-container">
+               <table>
+                  {% for obj in migration_summary_dict %}
+                  <tr>
+                     <td>{{obj}}</td>
+                     <td>{{migration_summary_dict[obj]}}</td>
+                  </tr>
+                  {% endfor %}
+               </table>
+            </div>
+         </div>
+         <div>
+            <h1 class="section-title"> 2. Configuration Lines with Errors :</h1>
+            <div class="section-container">
+               <div class="section-description">
+                  Details of Check Point configuration elements that cannot be successfully migrated because the Migration Tool could not parse them. Correct these errors on the files mentioned below, export a new configuration file, and then upload the new configuration file to the Migration Tool before proceeding.
+               </div>
+               {% if (not error_lines_config) and (not error_lines|length) and (not error_lines_network|length) and (not error_lines_service|length) and (not error_lines_acl|length) and (not error_lines_nat|length) and (not error_lines_object|length) %}
+               <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+               </div>
+               {% else %}
+               {% set c2 = 0 %}
+               {% if error_lines|length or error_lines_config %}
+               <div class="sub-section">
+               <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in networking.txt file:</h2>
+               {% set c2 = c2+1 %}
+               <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in networking.txt file that cannot be successfully migrated as the Migration Tool could not parse them.
+               </div>
+               {% if error_lines_config %}
+               <h2><ul style="padding-left: 12px;"><li style="list-style-type: none;">General Configuration errors in networking.txt file include: :</li></ul></h2>
+               <p><ul><li>The netststat -rnv output for routing table is expected in expert mode. If the credentials provided for expert mode are wrong it will have netstat -rnv routing table output in clish mode resulting to parse error. Please export a new updated configuration file using FMT-CP-Config-Extractor with valid credentials.</li></ul></p>
+               <p><ul><li>Bridge group interfaces are not supported for migration by the tool which will result to parse error and block the migration. Before proceeding, remove the bridge interface configuration from networking.txt file to proceed. </li></ul></p>
+               {% endif %}
+               <div class="script-box">
+                  {% if error_lines|length %}
+                  <table>
+                     {% for obj in error_lines %}
+                     <tr>
+                        <td class="custom-line-1">{{error_lines[obj]}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+
+                  <div class="log-path">
+                     <p> For more details on this error , refer to the following link:</p>
+                     <a href="{{log_path}}" target="blank">{{log_path}}</a>
+                  </div>
+
+                  {% else %}
+                  <div class="no-table-data-wrapper">
+                     <i class="info-icon"></i>None
+                  </div>
+                  {% endif %}
+               </div>
+               {% endif %}
+               {% if error_lines_object|length and version_check %}
+               <div class="sub-section">
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in Object File:</h2>
+                  {% set c2 = c2+1 %}
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in Object file that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the Network Object file or export a new updated configuration file using the live connect option and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  <div class="script-box" style="background-color:#dfdfdf">
+                     {% for obj in error_lines_object %}
+                     <div class="content-inner">
+                        <div class="wrap-collabsible">
+                           <label id="error_{{obj['id']}}" onclick="collapse('error_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line">{{obj["value"]}}</pre>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+               {% endif %}
+               {% if error_lines_network|length and not version_check %}
+               <div class="sub-section">
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in network_objects.xml file:</h2>
+                  {% set c2 = c2+1 %}
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in Network Object file (network_objects.xml) that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the Network Object file or export a new updated configuration file using Check Point Web Visualisation Tool, and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  <div class="script-box" style="background-color:#dfdfdf">
+                     {% for obj in error_lines_network %}
+                     <div class="content-inner">
+                        <div class="wrap-collabsible">
+                           <label id="error_{{obj['id']}}" onclick="collapse('error_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line">{{obj["value"]}}</pre>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+
+                     <div class="log-path">
+                        <p> For more details on this error , refer to the following link:</p>
+                        <a href="{{log_path}}" target="blank">{{log_path}}</a>
+                    </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% if error_lines_service|length and not version_check %}
+               <div class="sub-section">
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in services.xml file:</h2>
+                  {% set c2 = c2+1 %}
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in Service Object file (services.xml) that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the Service Object file or export a new updated configuration file using Check Point Web Visualisation Tool, and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  <div class="script-box" style="background-color:#dfdfdf">
+                     {% for obj in error_lines_service %}
+                     <div class="content-inner">
+                        <div class="wrap-collabsible">
+                           <label id="error_{{obj['id']}}" onclick="collapse('error_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line">{{obj["value"]}}</pre>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+
+                     <div class="log-path">
+                        <p> For more details on this error , refer to the following link:</p>
+                        <a href="{{log_path}}" target="blank">{{log_path}}</a>
+                    </div>
+
+                  </div>
+               </div>
+               {% endif %}
+               {% if error_lines_acl|length %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in Security Policy File:</h2>
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in ACE Policy file that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, cor-rect the errors in the ACE Policy file or export a new updated configuration file using the live connect option and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in Security_Policy.xml file:</h2>
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in ACE Policy file (Security_Policy.xml) that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the ACE Policy file or export a new updated configuration file using Check Point Web Visualisation Tool, and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c2 = c2+1 %}
+                  <div class="script-box" style="background-color:#dfdfdf">
+                     {% for obj in error_lines_acl %}
+                     <div class="content-inner">
+                        <div class="wrap-collabsible">
+                           <label id="error_{{obj['id']}}" onclick="collapse('error_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line">{{obj["value"]}}</pre>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+
+                     <div class="log-path">
+                        <p> For more details on this error , refer to the following link:</p>
+                        <a href="{{log_path}}" target="blank">{{log_path}}</a>
+                    </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% if error_lines_nat|length %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in NAT Policy File:</h2>
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in NAT Policy file that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, cor-rect the errors in the NAT Policy file or export a new updated configuration file using the live connect option and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  {% else %}
+                   <h2>2.{{ "abcdefghijklmnopqrstuvwxyz"[c2] }}: Configuration Lines with Errors in NAT_Policy.xml file:</h2>
+                  <div class="section-description">
+                     The configuration lines with errors displays the details of Checkpoint configuration lines in NAT Policy file (NAT_Policy.xml) that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the NAT Policy file or export a new updated configuration file using Check Point Web Visualisation Tool, and then upload the updated configuration file on the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c2 = c2+1 %}
+                  <div class="script-box" style="background-color:#dfdfdf">
+                     {% for obj in error_lines_nat %}
+                     <div class="content-inner">
+                        <div class="wrap-collabsible">
+                           <label id="error_{{obj['id']}}" onclick="collapse('error_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line">{{obj["value"]}}</pre>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+
+                     <div class="log-path">
+                        <p> For more details on this error , refer to the following link:</p>
+                        <a href="{{log_path}}" target="blank">{{log_path}}</a>
+                    </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% endif %}
+               </div>
+            </div>
+         <div>
+            <h1 class="section-title">3. Unsupported Configuration:</h1>
+            <div class="section-container">
+               <div class="section-description">
+                  Details of Check Point configuration elements that cannot be migrated because the Migration Tool does not support migration of those features.
+                  Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+               </div>
+               {% if (not un_supported_lines|length) and (not unsupported_network_list|length) and (not unsupported_service_list|length) and (not unsupported_acl_list|length) and (not unsupported_auto_nat_list|length) and (not unsupported_manual_nat_list|length) and (not unsupported_s2s_list|length) %}
+               <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+               </div>
+               {% else %}
+               {% set c3 = 0 %}
+               {% if un_supported_lines|length %}
+               <div class="sub-section">
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in Networking.txt file:</h2>
+                  {% set c3 = c3+1 %}
+                  <div class="section-description">
+                     Details of Check Point Firewall Gateway configuration elements found in networking.txt file that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% if un_supported_lines|length %}
+                  <h2><ul style="padding-left: 12px;"><li style="list-style-type: none;">Unsupported interface configurations include:</li></ul></h2>
+                  <p><ul><li>Loopback interface,6IN4 tunnel interface, alias interface, bridge interface.</li></ul></p>
+                  <h2><ul style="padding-left: 12px;"><li style="list-style-type: none;">Unsupported static route configuration include:</li></ul></h2>
+                  <p><ul><li>Static routes when no egress interface is found in netstat -rnv.</li></ul></p>
+                  <p><ul><li>Static routes having logical gateway as exit interface.</li></ul></p>
+                  <p><ul><li>Static routes of ECMP types.</li></ul></p>
+                  <p><ul><li>Static routes having local scope attribute as Exit Interface.</li></ul></p>
+                  <div class="script-box">
+                  <table>
+                     {% for obj in un_supported_lines %}
+                     <tr>
+                        <td class="custom-line-1">{{un_supported_lines[obj]}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  {% else %}
+                  <div class="no-table-data-wrapper">
+                     <i class="info-icon"></i>None
+                  </div>
+                  {% endif %}
+                    </div>
+               </div>
+               {% endif %}
+               {% if unsupported_network_list or unsupported_auto_nat_list or unsupported_record %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations for Objects:</h2>
+                  {% else %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in network_objects.xml file:</h2>
+                  {% endif %}
+                  {% set c3 = c3+1 %}
+                  {% if unsupported_network_list and not version_check %}
+                  <h2><ul style="padding-left: 40px;"><li>Unsupported Configurations for Network Object in network_objects.xml</li></ul></h2>
+                  <div class="section-description-unsupported">
+                     Details of Check Point Network Object/Group Configuration elements  found in network_objects.xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  <div class="section-description-unsupported">
+                     Check Point Specific Network Objects that are  not supported because the configuration is not supported by FMC or the Migration Tool are as below.
+                  </div>
+                  <table style="margin-left: 43px; margin-bottom: 20px;">
+                     <th>Unsupported Check Point Specific Objects</th>
+                     <tr><td>UTM-1 Edge Gateway</td></tr>
+                     <tr><td>Gateway Cluster</td></tr>
+                     <tr><td>Externally Managed Gateways/Hosts</td></tr>
+                     <tr><td>Interoperable Device</td></tr>
+                     <tr><td>Open Security Extension (OSE) Devices</td></tr>
+                     <tr><td>Logical Servers</td></tr>
+                     <tr><td>VoIP Domains</td></tr>
+                  </table>
+                  <div class="section-description-unsupported">
+                     Check Point Objects which are unsupported and are derived from network_objects.xml:
+                  </div>
+                  <table style="margin-left: 43px; margin-bottom: 20px;">
+                     {% for c1,c2 in unsupported_network_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                        <th>{{c2}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_network_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                        <td style="vertical-align: text-top;">{{obj['type']}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  {% elif version_check and unsupported_record %}
+                  <h2><ul style="padding-left: 40px;"><li>Unsupported Configurations for Objects</li></ul></h2>
+                  <div class="section-description-unsupported">
+                     Details of Check Point Network/Service/Check Point-Specific Object/Group Configuration elements that are found in Objects.json file or extracted-objects.json file that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  <table style="margin-left: 43px; margin-bottom: 20px;">
+                     <tr>
+                        {% for column in unsupported_object_columns %}
+                           <th>{{column}}</th>
+                        {% endfor %}
+                     </tr>
+                     {% for obj in unsupported_record %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['type']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                        <td style="vertical-align: text-top;">{{obj['type']}}</td>
+                        <td style="vertical-align: text-top;">{{obj['uid']}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  {% endif %}
+                  {% if unsupported_auto_nat_list %}
+                  {% if version_check %}
+                  <h2><ul style="padding-left: 40px;"><li>Unsupported Configurations for Auto-NAT configuration</li></ul></h2>
+                  <div class="section-description-unsupported">
+                     Details of Auto NAT configuration for Check Point Network Object elements that are found in object file that cannot be migrated because the Migration Tool does not support migration of those features. These include Auto-NAT (Check Point Hide behind the Gateway) and other Auto NAT configurations. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2><ul style="padding-left: 40px;"><li>Unsupported Configurations for Auto-NAT configurations in network_objects.xml</li></ul></h2>
+                  <div class="section-description-unsupported">
+                     Details of  Auto NAT configuration for Check Point Network Object elements  found in network_objects.xml that cannot be migrated because the Migration Tool does not support migration of those features. These include Auto-NAT(Check Point Hide Behind The Gateway) and other Auto NAT configurations. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  <table style="margin-left: 43px;">
+                     {% for c1 in unsupported_auto_nat_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_auto_nat_list %}
+                     <tr>
+                        <td >
+                           {% if version_check %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['nat_name']}}</span>
+                           {% else %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['nat_name']}}</span>
+                           {% endif %}
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  {% endif %}
+               </div>
+               {% endif %}
+               {% if unsupported_service_list and not version_check %}
+               <div class="sub-section">
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in services.xml file:</h2>
+                  {% set c3 = c3+1 %}
+                  <div class="section-description">
+                     Details of Check Point Service Object/Group Configuration elements found in services.xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  <table>
+                     {% for c1,c2 in unsupported_service_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                        <th>{{c2}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_service_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                        <td style="vertical-align: text-top;">{{obj['type']}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if unsupported_acl_list %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations for Security Policy:</h2>
+                  <div class="section-description">
+                     Details of Check Point ACE Policy Configuration elements found as Security Policies that cannot be migrated because the Migration Tool does not support migration of those features. Details of Check Point ACE Policy Configuration having ACE with more than one occurrence of Exclusion-Groups, ACE with negate feature, ACE with layers and ACE with unsupported actions and unsupported objects are migrated as unsupported ACE. <br>Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in Security_Policy.xml file:</h2>
+                  <div class="section-description">
+                     Details of Check Point ACE Policy Configuration elements found in Security_Policy.xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c3 = c3+1 %}
+                  <table>
+                     {% for c1 in unsupported_acl_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_acl_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="collapse('un_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if unsupported_manual_nat_list %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations for NAT Policy:</h2>
+                  <div class="section-description">
+                     Details of Check Point NAT Policy Configuration elements that are found as NAT Policies that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in NAT_Policy.xml file:</h2>
+                  <div class="section-description">
+                     Details of Check Point NAT Policy Configuration elements found in NAT_Policy xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c3 = c3+1 %}
+                  <table>
+                     {% for c1 in unsupported_manual_nat_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_manual_nat_list %}
+                     <tr>
+                        <td >
+                           {% if version_check %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="un_collapse('un_', this.id)">{{obj['nat_name']}}</span>
+                           {% else %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="un_collapse('un_', this.id)">{{obj['nat_name']}}</span>
+                           {% endif %}
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if unsupported_s2s_list %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations for s2s:</h2>
+                  <div class="section-description">
+                     Details of Check Point NAT Policy Configuration elements that are found as s2s that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[c3] }}: Unsupported Configurations in s2s.xml file:</h2>
+                  <div class="section-description">
+                     Details of Check Point s2s Configuration elements found in s2s xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c3 = c3+1 %}
+                  <table>
+                     {% for c1 in unsupported_s2s_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in unsupported_s2s_list %}
+                     <tr>
+                        <td >
+                           {% if version_check %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="un_collapse('un_', this.id)">{{obj['name']}}</span>
+                           {% else %}
+                           <span class="lbl-toggle" id="un_{{obj['id']}}"  onclick="un_collapse('un_', this.id)">{{obj['name']}}</span>
+                           {% endif %}
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% endif %}
+            </div>
+         </div>
+         <div>
+            <h1 class="section-title"> 4. Partially Supported Configuration:</h1>
+            <div class="section-container">
+               <div class="section-description">
+                  Details of Check Point configuration elements that can be only partially migrated. These configuration elements include Several Interface Types, Several Interface specific attributes, Several Network Object and Object-Group Types, ACL Rules with different parameters and few Static Route Attributes. Review these lines, verify whether these configurations are  supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+               </div>
+               {% if (not partial_lines|length) and (not partial_network_list|length) and (not partial_service_list|length) and (not partial_acl_list|length) and (not partial_nat_list|length) %}
+               <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+               </div>
+               {% else %}
+               {% set c4 = 0 %}
+               {% if partial_lines|length %}
+               <div class="sub-section">
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partial Configurations in Networking.txt file:</h2>
+                  {% set c4 = c4+1 %}
+                  <div class="section-description">
+                     Details of Check Point configuration elements that can be only partially migrated. These configuration elements include interface or static route configurations with additional attributes. Review these lines, verify whether these attributed are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% if partial_lines|length %}
+                  <h2><ul style="padding-left: 12px;"><li style="list-style-type: none;">Partially supported interface configurations include:</li></ul></h2>
+                  <p><ul><li>Bond Interface of type XOR, Active-Backup, Round-Robin and hence types are migrated as partially migrated to LACP type in FMC by FMT.</li></ul></p>
+                  <p><ul><li>Alias Interface Configurations part of parent interfaces like Physical/Bond Interface , alias interface configuration in ignored and parent interface attributes are migrated as is.</li></ul></p>
+                  <h2><ul style="padding-left: 12px;"><li style="list-style-type: none;">Partially supported static route configurations include:</li></ul></h2>
+                  <p><ul><li>Static routes with Rank parameter.</li></ul></p>
+                  <p><ul><li>Static routes with ping parameter.</li></ul></p>
+                  <div class="script-box">
+                   <table>
+                     {% for obj in partial_lines %}
+                     <tr>
+                        <td class="custom-line-1">{{partial_lines[obj]}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  {% else %}
+                  <div class="no-table-data-wrapper">
+                     <i class="info-icon"></i>None
+                  </div>
+                  {% endif %}
+                  </div>
+               </div>
+               {% endif %}
+               {% if partial_network_list and not version_check %}
+               <div class="sub-section">
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configurations in network_objects.xml  file:</h2>
+                  {% set c4 = c4+1 %}
+                  <div class="section-description">
+                     Details of Check Point Network Object/Group configuration elements found in network_objects.xml that can be only partially migrated.  These configurations consists additional features for Network Objects/Groups which corresponds to additional attributes that are partially migrated by the tool. Review these lines, verify whether these attributed are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+                  </div>
+                  <table>
+                     {% for c1,c2 in partial_network_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                        <th>{{c2}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in partial_network_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="partial_{{obj['id']}}"  onclick="collapse('partial_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                        <td style="vertical-align: text-top;">{{obj['type']}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if partial_service_list %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configurations for Service Object:</h2>
+                  <div class="section-description">
+                     Details of Check Point Service Object or Group elements found as service object or group configuration that can be only partially migrated. These configurations consist additional features for Service Objects or Groups which corresponds to additional attributes that are partially migrated by the tool. Review these lines, verify whether these attributed are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% else %}
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configurations in services.xml file:</h2>
+                  <div class="section-description">
+                     Details of Check Point Service Object/Group Configuration elements found in services.xml that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c4 = c4+1 %}
+                  <table>
+                     {% for c1,c2 in partial_service_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                        <th>{{c2}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in partial_service_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="partial_{{obj['id']}}"  onclick="collapse('partial_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                        <td style="vertical-align: text-top;">{{obj['type']}}</td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if partial_acl_list %}
+               <div class="sub-section">
+                  {% if version_check %}
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configuration for Security Policies:</h2>
+                  {% else %}
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configurations in Security_Policy.xml file:</h2>
+                  <div class="section-description">
+                     Details of Check Point Security Policy Configuration elements  found in Security_Policy.xml that can be only partially migrated. These configurations consists additional attributes for ACL Policies such as Time-Range, Additional Logging Types  and  several others which corresponds to additional attributes that are partially migrated by the tool. Review these lines, verify whether these attributed are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+                  </div>
+                  {% endif %}
+                  {% set c4 = c4+1 %}
+                  <table>
+                     {% for c1 in partial_acl_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in partial_acl_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="partial_{{obj['id']}}"  onclick="collapse('partial_', this.id)">{{obj['name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% if partial_nat_list and not version_check %}
+               <div class="sub-section">
+                  <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[c4] }}: Partially Migrated Configurations in NAT_Policy.xml file:</h2>
+                  {% set c4 = c4+1 %}
+                  <div class="section-description">
+                     Details of Check Point NAT Policy Configuration elements  found in NAT_Policy.xml that can be only partially migrated. These configurations consists additional XML tags for NAT Policies which corresponds to additional attributes that are partially migrated by the tool. Review these lines, verify whether these attributed are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+                  </div>
+                  <table>
+                     {% for c1 in partial_nat_columns %}
+                     <tr>
+                        <th>{{c1}}</th>
+                     </tr>
+                     {% endfor %}
+                     {% for obj in partial_nat_list %}
+                     <tr>
+                        <td >
+                           <span class="lbl-toggle" id="partial_{{obj['id']}}"  onclick="un_collapse('partial_', this.id)">{{obj['nat_name']}}</span>
+                           <div id="{{obj['id']}}" class="collapsible-content">
+                              <pre class="custom-line td-pre">{{obj['value']}}</pre>
+                           </div>
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               {% endif %}
+               {% endif %}
+               </div>
+            </div>
+         <div>
+            <h1 class="section-title"> 5. Ignored Configuration:</h1>
+            <div class="section-container">
+               <div class="section-description">
+                  Details of Check Point configuration elements that are ignored because they are not supported by the Firewall Migration Center or the Migration. The Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+               </div>
+               {% if (not ignored_lines|length) and (not rd_lines|length) and (not ignored_lines_network|length) and (not ignored_lines_service|length) and (not ignored_lines_acl|length) and (not ignored_lines_nat|length) and (not ignored_lines_s2s|length) %}
+               <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+               </div>
+               {% else %}
+               {% set c5 = 0 %}
+               {% if  ignored_lines|length %}
+               <div class="sub-section">
+                  <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in Networking.txt file:</h2>
+                  {% set c5 = c5+1 %}
+                  <div class="section-description">
+                     Check Point Interface configuration for types  "VPN Tunnel/VTI Interfaces" , "Alias", "6IN4 Tunnel Interface" and few other configurations found in networking.txt are not migrated because the configuration is not supported by the FMC or the  Migration. Review the configuration carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                  </div>
+                  <div class="script-box">
+                     {% if ignored_lines|length %}
+                     <table>
+                        {% for obj in ignored_lines %}
+                        <tr>
+                           <td class="custom-line-1">{{ignored_lines[obj]}}</td>
+                        </tr>
+                        {% endfor %}
+                     </table>
+                     {% else %}
+                     <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                     </div>
+                     {% endif %}
+                  </div>
+                  {% endif %}
+                  {% if remote_deployment_enabled_on %}
+                  <div class="sub-section">
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in Networking.txt - Remote Deployment.</h2>
+                     <div class="section-description">
+                        <p>Remote Deployment is enabled on Data Interface <b>"{{remote_deployment_enabled_on}}"</b> on FTD.</p>
+                        <p>Below Interfaces and Routes are ignored because tool has detected that Remote Deployment is enabled on data interface.</p>
+                     </div>
+                     {% set c5 = c5+1 %}
+                     <div class="script-box">
+                        <table>
+                           {% for obj in rd_lines %}
+                           <tr>
+                              <td>{{obj}}</td>
+                              {% if rd_lines[obj]|length > 100 %}
+                              <td class="custom-line">{{rd_lines[obj]}}</td>
+                              {% else %}
+                              <td>{{rd_lines[obj]}}</td>
+                              {% endif %}
+                           </tr>
+                           {% endfor %}
+                        </table>
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% if ignored_lines_network|length %}
+                  <div class="sub-section">
+                     {% if version_check %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configuration lines in Network Object or Group Configuration:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements that are found for network object's or group's that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% else %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in network_objects.xml file:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements  found in network_objects.xml that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% endif %}
+                     {% set c5 = c5+1 %}
+                     <div class="script-box" style="background-color:#dfdfdf">
+                        {% for obj in ignored_lines_network %}
+                        <div class="content-inner">
+                           <div class="wrap-collabsible">
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                              <div id="{{obj['id']}}" class="collapsible-content">
+                                 <pre class="custom-line">{{obj["value"]}}</pre>
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% if ignored_lines_service|length %}
+                  <div class="sub-section">
+                     {% if version_check %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configuration Lines for Service Object or Group Configuration:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements that are found as service object or group that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% else %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in services.xml file:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements  found in services.xml that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% endif %}
+                     {% set c5 = c5+1 %}
+                     <div class="script-box" style="background-color:#dfdfdf">
+                        {% for obj in ignored_lines_service %}
+                        <div class="content-inner">
+                           <div class="wrap-collabsible">
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                              <div id="{{obj['id']}}" class="collapsible-content">
+                                 <pre class="custom-line">{{obj["value"]}}</pre>
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% if ignored_lines_acl|length %}
+                  <div class="sub-section">
+                     {% if version_check %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configuration lines in Security Policy Configuration:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration lines found in Security Policy that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% else %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in Security_Policy.xml file:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements  found in Security_Policy.xml that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% endif %}
+                     {% set c5 = c5+1 %}
+                     <div class="script-box" style="background-color:#dfdfdf">
+                        {% for obj in ignored_lines_acl %}
+                        <div class="content-inner">
+                           <div class="wrap-collabsible">
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                              <div id="{{obj['id']}}" class="collapsible-content">
+                                 <pre class="custom-line">{{obj["value"]}}</pre>
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% if ignored_lines_nat|length %}
+                  <div class="sub-section">
+                     {% if version_check %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configuration lines in NAT Policy configuration:</h2>
+                     {% else %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in NAT_Policy.xml file:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements  found in NAT_Policy.xml that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% endif %}
+                     {% set c5 = c5+1 %}
+                     <div class="script-box" style="background-color:#dfdfdf">
+                        {% for obj in ignored_lines_nat %}
+                        <div class="content-inner">
+                           <div class="wrap-collabsible">
+                              {% if version_check %}
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["nat_name"]}}</label>
+                              {% else %}
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["nat_name"]}}</label>
+                              {% endif %}
+                              <div id="{{obj['id']}}" class="collapsible-content">
+                                 <pre class="custom-line">{{obj["value"]}}</pre>
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% if ignored_lines_s2s|length %}
+                  <div class="sub-section">
+                     {% if version_check %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configuration lines in s2s configuration:</h2>
+                     {% else %}
+                     <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Ignored Configurations in s2s.xml file:</h2>
+                     <div class="section-description">
+                        Details of Check Point configuration elements  found in s2s.xml that are ignored because they are not supported by the Firewall Migration Center or the Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.
+                     </div>
+                     {% endif %}
+                     {% set c5 = c5+1 %}
+                     <div class="script-box" style="background-color:#dfdfdf">
+                        {% for obj in ignored_lines_s2s %}
+                        <div class="content-inner">
+                           <div class="wrap-collabsible">
+                              {% if version_check %}
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                              {% else %}
+                              <label id="ignored_{{obj['id']}}" onclick="collapse('ignored_', this.id)" class="lbl-toggle">{{obj["name"]}}</label>
+                              {% endif %}
+                              <div id="{{obj['id']}}" class="collapsible-content">
+                                 <pre class="custom-line">{{obj["value"]}}</pre>
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+         {% if s2s_vpn_values %}
+         <div class="section">
+            <div class="section-bg">
+                <h1 class="section-heading">6. Deprecated DH group details  </h1>
+           </div>
+            <p class="section-desc">
+               The configuration lines display the details of DH groups which are deprecated in FMT v7.0 and above.
+               The Migration Tool migrates them to FMC, kindly review and change the DH values after migration.
+           </p>
+            <div class="table-container two-object">
+               {% if s2s_vpn_values|length %}
+               <table>
+                   <tr>
+                       {% for column in s2s_vpn_columns %}
+                           <th>{{column}}</th>
+                       {% endfor %}
+                   </tr>
+                   {% for obj in s2s_vpn_values %}
+                   <tr>
+                       {% for sub_obj in obj %}
+                           <td>{{sub_obj}}</td>
+                       {% endfor %}
+                   </tr>
+                   {% endfor %}
+               </table>
+               {% else %}
+               <div class="no-table-data-wrapper">
+                   <i class="info-icon"></i>None
+               </div>
+               {% endif %}
+           </div>
+            {% endif %}
+         </div>
+   </body>
+</html>

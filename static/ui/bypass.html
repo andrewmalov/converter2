@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Migration Tool - Авторизация отключена</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            opacity: 0.9;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 20px;
+        }
+        .navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .nav-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .nav-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .nav-card h3 {
+            margin: 0 0 10px 0;
+            color: #0073e6;
+        }
+        .nav-card p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+        .info-section h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Firewall Migration Tool</h1>
+            <p>Version 7.7 - Авторизация отключена</p>
+        </div>
+        
+        <div class="success-message">
+            <strong>Успешно!</strong> Авторизация была отключена. Теперь вы можете использовать приложение без входа в систему.
+        </div>
+        
+        <div class="navigation">
+            <div class="nav-card" onclick="alert('Функция ASA доступна')">
+                <h3>ASA Migration</h3>
+                <p>Миграция конфигураций Cisco ASA</p>
+            </div>
+            
+            <div class="nav-card" onclick="alert('Функция FDM доступна')">
+                <h3>FDM Migration</h3>
+                <p>Миграция Firepower Device Manager</p>
+            </div>
+            
+            <div class="nav-card" onclick="alert('Функция CheckPoint доступна')">
+                <h3>CheckPoint Migration</h3>
+                <p>Миграция конфигураций CheckPoint</p>
+            </div>
+            
+            <div class="nav-card" onclick="alert('Функция Fortinet доступна')">
+                <h3>Fortinet Migration</h3>
+                <p>Миграция конфигураций Fortinet</p>
+            </div>
+            
+            <div class="nav-card" onclick="alert('Функция PAN доступна')">
+                <h3>Palo Alto Networks</h3>
+                <p>Миграция конфигураций PAN</p>
+            </div>
+            
+            <div class="nav-card" onclick="alert('Настройки доступны')">
+                <h3>Settings</h3>
+                <p>Настройки приложения</p>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3>Доступные функции (авторизация отключена):</h3>
+            <ul class="feature-list">
+                <li>Миграция конфигураций между различными платформами firewall</li>
+                <li>Поддержка ASA, FDM, CheckPoint, Fortinet, Palo Alto Networks</li>
+                <li>Конвертация правил безопасности</li>
+                <li>Экспорт и импорт конфигураций</li>
+                <li>Валидация конфигураций</li>
+                <li>Генерация отчетов о миграции</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center; color: #6c757d; font-size: 12px;">
+            © 2015-2024 Cisco Systems, Inc. Cisco, Cisco Systems and Cisco Systems logo are registered trademarks of Cisco Systems, Inc.
+        </div>
+    </div>
+    
+    <script>
+        // Имитация функциональности приложения
+        console.log('Firewall Migration Tool - Авторизация отключена');
+        console.log('Все API запросы будут обходиться через прокси-сервер');
+        
+        // Добавляем обработчики для демонстрации функциональности
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Приложение загружено успешно без авторизации');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset="UTF-8">
+	{% include 'fonts.html' %}
+    <style>
+    /* New Styling */
+:root {
+  --Sans: CiscoSansTT;
+  --Sans-Oblique: CiscoSansTT-Oblique;
+  --SansTTLight: CiscoSansTTLight;
+  --CourierNewPSMT: CourierNewPSMT;
+}
+
+
+    body {
+        font-family: var(--Sans);
+        line-height: 1.5;
+        font-weight: 300;
+        font-size: 14pt;
+        margin: 0;
+        position: relative;
+    }
+
+    .main-container {
+        width: 97%;
+        min-height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 10px;
+    }
+
+    path {
+        fill: #049fd9;
+    }
+
+    .header-container {
+        font-family: var(--Sans);
+        padding: 1.2em 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .img-span {
+        height: 52px;
+        width: 72px;
+        display: inline-block;
+        color: #049fd9;
+    }
+
+    .report-title {
+        font-size: 22px;
+        font-family: var(--SansTTLight);
+        color: #4A4A4A;
+        margin-left: 20px;
+        display: inline-block;
+        position: relative;
+        top: -10px;
+    }
+
+    .date-wrapper {
+        float: right;
+        font-size: 16px;
+        margin-left: 5px;
+        color: #58585B;
+        display: inline-block;
+        position: relative;
+        top: 15px;
+    }
+
+    .note {
+        margin: 25px 5px;
+        line-height: 1;
+    }
+
+    .note span {
+        font-size: 13px;
+        color: #4A4A4A;
+        font-family: var(--Sans-Oblique);
+    }
+
+    .section-container {
+        margin: 0 20px;
+    }
+
+    .section-description {
+        margin: 15px 0 15px 10px;
+        font-size: 14px;
+        color: #4A4A4A;
+    }
+
+    .section-title {
+        font-family: var(--SansTTLight) !important;
+        font-weight: normal;
+        font-size: 20px;
+        color: #4A4A4A;
+        background: #F9F9F9;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    /*.two-object table {
+        width: 40%;
+    }*/
+
+    table {
+        color: #58585B;
+        border-collapse: collapse;
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+
+    th,
+    td {
+        border: 0.75px solid #dfdfdf;
+        padding: 0.8rem;
+    }
+    .securityzone td{
+    word-break: break-all;
+    }
+    .securityzone th{
+        width: 20%;
+    }
+
+    th {
+        text-align: left;
+        background: #f2f2f2;
+    }
+
+    h2 {
+        font-family: var(--Sans) !important;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .table-container {
+        font-family: var(--Sans);
+        font-size: 12px;
+        overflow-x: auto;
+    }
+
+    .no-table-data-wrapper {
+        font-family: var(--Sans);
+        font-size: 14px;
+        color: #E59757;
+        background: #FFF8EC;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .migration-summary tr:nth-child(4n+1),
+    .migration-summary tr:nth-child(4n+2) {
+        background: #f2f2f2;
+    }
+
+    .info-icon {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        /*margin: 0 10px 0 0;*/
+        position: relative;
+        top: 5px;
+    }
+
+    .sub-section {
+        margin-left: 15px;
+        font-family: var(--SansTTLight) !important;
+        font-weight: normal;
+        font-size: 18px;
+    }
+
+    .end-of-report-wrapper {
+        width: 100%;
+        margin: 30px 0 20px 0;
+    }
+
+    .horizontal-line {
+        border-bottom: 1px solid #dcdcdc;
+        display: inline-block;
+        width: 45%;
+    }
+
+    .end-report-text {
+        margin: 0 2px;
+        display: inline-block;
+        width: 8%;
+        text-align: center;
+        position: relative;
+        top: 3px;
+        font-size: 14px;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .error-desc {
+        border: 1px solid #000;
+        padding: 2px 5px;
+        font-size: 15px;
+    }
+    .error-heading {
+        font-size: 15px;
+        font-weight: bold;
+        margin: 25px 0 10px 10px;
+    }
+    .align-center {
+        text-align: center;
+    }
+
+    .bold_text {
+        font-weight: bold;
+    }
+.script-box {
+    margin: 0 90px 0 20px;
+    padding-top: 10px;
+}
+.script-box table {
+    font-size: 15px;
+    color: #58585b;
+    line-height: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    width: 100%;
+    font-family: var(--CourierNewPSMT);
+}
+.script-box td:nth-child(1) {
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+.script-box td:nth-child(2) {
+    width: 100%;
+    border: none;
+}
+
+.custom-line {
+    line-height: 16px;
+}
+
+.table-ha-interface tr:nth-child(1) th {
+    overflow: hidden;
+    width: 100px;
+}
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="img-span">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-275 379 61 35" style="enable-background:new -275 379 61 35;" xml:space="preserve">
+                <title>Group</title>
+                <desc>Created with Sketch.</desc>
+                <g id="NOTIFICATION" transform="translate(-1886.000000, -362.000000)" sketch:type="MSArtboardGroup">
+                    <g id="Group" transform="translate(1886.016129, 362.000000)" sketch:type="MSLayerGroup">
+                        <path id="Fill-1" sketch:type="MSShapeGroup" d="M-257.8,401.8h2.5v11.9h-2.5V401.8z" />
+                        <path id="Fill-2" sketch:type="MSShapeGroup" d="M-233.2,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3" />
+                        <path id="Fill-3" sketch:type="MSShapeGroup" d="M-261.5,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3" />
+                        <path id="Fill-4" sketch:type="MSShapeGroup" d="M-225.2,404.7c-1.6,0-2.7,1.4-2.7,3c0,1.7,1.2,3,2.7,3
+          c1.6,0,2.7-1.4,2.7-3C-222.4,406.1-223.6,404.7-225.2,404.7L-225.2,404.7z M-219.6,407.7c0,3.3-2.3,6-5.5,6c-3.2,0-5.5-2.7-5.5-6
+          c0-3.3,2.3-6,5.5-6C-222,401.8-219.6,404.4-219.6,407.7L-219.6,407.7z" />
+                        <path id="Fill-5" sketch:type="MSShapeGroup" d="M-245,404.6c0,0-1.2-0.4-2.1-0.4c-1.1,0-1.7,0.4-1.7,0.9
+          c0,0.7,0.8,0.9,1.2,1.1l0.7,0.3c1.8,0.6,2.6,1.9,2.6,3.3c0,2.9-2.4,3.9-4.4,3.9c-1.4,0-2.8-0.3-2.9-0.3v-2.7
+          c0.2,0.1,1.4,0.4,2.6,0.4c1.3,0,2-0.4,2-1.1c0-0.6-0.5-0.9-1.2-1.1c-0.2-0.1-0.4-0.1-0.6-0.2c-1.5-0.5-2.8-1.5-2.8-3.4
+          c0-2.2,1.5-3.6,4-3.6c1.3,0,2.6,0.3,2.6,0.4V404.6" />
+                        <path id="Fill-6" sketch:type="MSShapeGroup" d="M-272.5,389.8c0-0.7-0.5-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                        <path id="Fill-7" sketch:type="MSShapeGroup" d="M-265.2,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-8" sketch:type="MSShapeGroup" d="M-257.8,380.7c0-0.8-0.6-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7" />
+                        <path id="Fill-9" sketch:type="MSShapeGroup" d="M-250.4,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-10" sketch:type="MSShapeGroup" d="M-243,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                        <path id="Fill-11" sketch:type="MSShapeGroup" d="M-235.6,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-12" sketch:type="MSShapeGroup" d="M-228.3,380.7c0-0.8-0.5-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7" />
+                        <path id="Fill-13" sketch:type="MSShapeGroup" d="M-222.1,385.9c0-0.7-0.5-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-14" sketch:type="MSShapeGroup" d="M-214.7,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.5,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="report-title">
+            {{title}}
+        </div>
+        <div class="date-wrapper">
+            {{date_stamp}}
+        </div>
+    </div>
+    <!-- main content -->
+    <div class="main-container">
+        <!-- note container -->
+        <div class="note">
+            <span style="color: #cf2030;">Note: </span>
+            <span>
+            	Review all contents of this post-migration report carefully. Confirm that the configurations, rules, interfaces, and other mappings were migrated as expected. Review any rules that were disabled by the Migration Tool and were not migrated. Make a note of any unsupported or partially supported rules or other configuration items that were not migrated.
+ 				<br/>
+                Since the unsupported rules were not migrated completely and are in disabled state, these can potentially alter your original configuration, restrict some traffic, or permit unwanted traffic. We recommend that you update the related rules and policies in Firewall Migration Center  to ensure that traffic is appropriately handled by Firepower Threat Defense.
+
+            </span>
+            <br>
+            <span> 
+                Post - Migration report in excel format "Non migrated configuration.xlsx" that lists the source firewall configurations that require additional review and verification from your end has been downloaded. 
+                <a href="{{failure_report_excel}}" target="blank">Click Here</a> for more details.
+            </span>
+        </div>
+        <!--  -->
+        <!-- Section 1 -->
+        <div>
+            <h1 class="section-title">1. Migration Summary: </h1>
+            <div class="section-container">
+                <div class="section-description">
+                    A summary of the configuration that was successfully migrated from ASA to Firepower Threat Defense, including information about the source ASA device, target Firepower Threat Defense device, and the successfully migrated configuration elements.
+                </div>
+                <div class="table-container two-object migration-summary">
+                    {% if post_migration_summary|length %}
+                    <table>
+                        {% for obj in post_migration_summary %}
+                        <tr>
+                            <td>{{obj}}</td>
+                            <td>{{post_migration_summary[obj]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 2 -->
+        <div>
+           <h1 class="section-title">2. Selective policy:</h1>
+           <div class="section-container">
+              <div class="table-container two-object">
+                 <table>
+                    <tr>
+                       <th>Category</th>
+                       <th>Enabled for Migration</th>
+                    </tr>
+                    <tr>
+                       <td><b>Device Configuration</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>Interface</td>
+                       <td>{{selective_policy_columns.get("interface")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Routes<br>&nbsp&nbsp&nbsp&nbsp
+                            ECMP Zones<br>&nbsp&nbsp&nbsp&nbsp
+                            Static routes<br>&nbsp&nbsp&nbsp&nbsp
+                            PBR<br>&nbsp&nbsp&nbsp&nbsp
+                            BGP<br>&nbsp&nbsp&nbsp&nbsp
+                            EIGRP
+                       </td>
+                       <td>{{selective_policy_columns.get("routes")}}<br>
+                           {{selective_policy_columns.get("ecmp")}}<br>
+                           {{selective_policy_columns.get("static")}}<br>
+                           {{selective_policy_columns.get("pbr_flag")}}<br>
+                           {{selective_policy_columns.get("bgp")}}<br>
+                           {{selective_policy_columns.get("eigrp")}}
+                       </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp; DHCP</td>
+                        <td>{{selective_policy_columns.get("dhcp")}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp; SNMP</td>
+                        <td>{{selective_policy_columns.get("snmp")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Site-to-Site VPN (Peer to Peer)<br>&nbsp&nbsp&nbsp&nbsp
+                             Policy Based (crypto map)<br>&nbsp&nbsp&nbsp&nbsp
+                             Route Based (VTI)
+                       </td>
+                       <td>{{selective_policy_columns.get("s2s_vpn_flag")}}<br>
+                           {{selective_policy_columns.get("policy_based_crypto_map")}}<br>
+                           {{selective_policy_columns.get("route_based_vti")}}
+                       </td>
+                    </tr>
+                    <tr>
+                        <td>Remote Access VPN</td>
+                        <td>{{selective_policy_columns.get("ra_vpn")}}</td>
+                     </tr>
+                     <tr>
+                        <td>WebVPN</td>
+                        <td>{{selective_policy_columns.get("web_vpn")}}</td>
+                     </tr>
+                    <tr>
+                       <td><b>Shared Configuration</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>ACL<br>&nbsp&nbsp&nbsp&nbsp
+                            With Destination Security Zone Specified<br>&nbsp&nbsp&nbsp&nbsp
+                            Migration with Pre-filter
+                       </td>
+                       <td>{{selective_policy_columns.get("acl")}}<br>
+                           {{selective_policy_columns.get("populate_sz")}}<br>
+                           {{selective_policy_columns.get("migrate_tunneled_routes")}}
+                       </td>
+                    </tr>
+                    <tr>
+                       <td>NAT</td>
+                       <td>{{selective_policy_columns.get("nat")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Network Objects</td>
+                       <td>{{selective_policy_columns.get("network_object")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Port Objects</td>
+                       <td>{{selective_policy_columns.get("port_object")}}</td>
+                    </tr>
+                    <tr>
+                        <td>Access List Objects(Standard, Extended)</td>
+                        <td>{{selective_policy_columns.get("access_list_objects") }}</td>
+                     </tr>
+                    <tr>
+                       <td>Time Based Objects</td>
+                       <td>{{selective_policy_columns.get("time_based_acl_flag")}}</td>
+                    </tr>
+                    <tr>
+                       <td><b>Optimzation</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>Migrate Referenced Objects only</td>
+                       <td>{{selective_policy_columns.get("unreferenced")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Object Group Search</td>
+                       <td>{{selective_policy_columns.get("object_group_search_flag")}}</td>
+                    </tr>
+                    <tr>
+                       <td><b>Inline Grouping</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>CSM/ASDM</td>
+                       <td>{{selective_policy_columns.get("csm")}}</td>
+                    </tr>
+                 </table>
+              </div>
+           </div>
+        </div>
+        <!--  -->
+        <!-- Section 3 -->
+        <div>
+            <h1 class="section-title">3. ASA Interface to FTD Interface Mapping: </h1>
+            <div class="section-container">
+                <div class="section-description">
+                   Details of the successfully migrated interfaces and how you mapped the interfaces on the ASA device to the interfaces on the Firepower Threat Defense device.
+                </div>
+                {% if not interface_mapping_list and not modified_vlan_mappings_list and not context_vrf_mapping_list %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set d2 = 0 %}
+                <div class="table-container two-object">
+                    {% if ha_pair_flag and interface_mapping_list|length %}
+                    <table class="table-ha-interface">
+                        <tr>
+                            {% for column in interface_mapping_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for interface_object in interface_mapping_list %}
+                            <tr>
+                                {% for value in interface_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                    {% if interface_mapping_list|length and not ha_pair_flag %}
+                    <table>
+                        <tr>
+                            {% for column in interface_mapping_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for interface_object in interface_mapping_list %}
+                            <tr>
+                                {% for value in interface_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+                {% if modified_vlan_mappings_list|length > 0 %}
+                <div class="sub-section">
+                    <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[d2] }}: Modified VLAN Mappings:</h2>
+                    {% set d2 = d2+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in modified_vlan_mappings_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for modified_value_mapping_object in modified_vlan_mappings_list %}
+                            <tr>
+                                 {% for value in modified_value_mapping_object %}
+                                    <td>{{value}}</td>
+                                 {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if context_vrf_mapping_list|length > 0 %}
+                <div class="sub-section">
+                    <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[d2] }}: Context to VRF Mapping Details:</h2>
+                    {% set d2 = d2+1 %}
+                    <div class="section-description">
+                        Note: This section will contain information only on the contexts that user have selected for merging.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in context_vrf_mapping_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for context_vrf_mapping_object in context_vrf_mapping_list %}
+                            <tr>
+                                 {% for value in context_vrf_mapping_object %}
+                                    <td>{{value}}</td>
+                                 {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+
+        <!-- Section 4 -->
+        <div>
+            <h1 class="section-title">4. Interface to ECMP zone mapping: </h1>
+            <div class="section-container">
+                <div class="table-container two-object">
+                    {% if interface_to_ecmp_zone_list|length %}
+                    <table>
+                        <tr>
+                            {% for column in interface_to_ecmp_zone_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for ecmp_object in interface_to_ecmp_zone_list %}
+                            <tr>
+                                {% for value in ecmp_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--  -->
+
+        <!-- Section 5 -->
+        <div>
+            <h1 class="section-title">5. ASA Interface Names to FTD Security Zones and Interface Groups: </h1>
+            <div class="section-container">
+                <div class="section-description">
+                    Details of the successfully migrated ASA logical interfaces and name ifs and how you mapped them to security zones and interface groups in Firepower Threat Defense.
+                </div>
+                {% if ha_pair_flag and asa_nameif_ftd_interface_columns[0]|length == 6 %}
+                <div class="table-container two-object">
+                    {% if asa_nameif_ftd_interface_list|length %}
+                    <table>
+                        {% for c1, c2, c3, c4, c5, c6 in asa_nameif_ftd_interface_columns %}
+                        <tr>
+
+                            <th style="border-bottom: none;">{{c1}}</th>
+                            <th style="border-bottom: none;">{{c2}}</th>
+                            <th colspan="2" >{{c3}}
+                            </th>
+                            <th colspan="2" >{{c4}}
+                            </th>
+                            <th colspan="2" >{{c5}}
+                            </th>
+                            <th colspan="2" >{{c6}}
+                            </th>
+                        </tr>
+                         <tr>
+                            <th style="border-top: none;"></th>
+                            <th style="border-top: none;"></th>
+                            <th>SZ Name</th>
+                            <th>Derived from</th>
+                            <th>IG Name</th>
+                            <th>Derived from</th>
+                             <th>SZ Name</th>
+                            <th>Derived from</th>
+                            <th>IG Name</th>
+                            <th>Derived from</th>
+                        </tr>
+                        {% endfor %}
+						{% for one, two, three, four, five, six in asa_nameif_ftd_interface_list %}
+                        <tr>
+                            <td>{{one}}</td>
+                            <td>{{two}}</td>
+                            {% for key,value in three.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                            {% for key,value in four.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                            {% for key,value in five.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                            {% for key,value in six.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+                {% elif asa_nameif_ftd_interface_columns[0]|length == 4 and not ha_pair_flag %}
+                <div class="table-container two-object">
+                    {% if asa_nameif_ftd_interface_list|length %}
+                    <table>
+                        {% for c1, c2, c3, c4 in asa_nameif_ftd_interface_columns %}
+                        <tr>
+
+                            <th style="border-bottom: none;">{{c1}}</th>
+                            <th style="border-bottom: none;">{{c2}}</th>
+                            <th colspan="2" >{{c3}}
+                            </th>
+                            <th colspan="2" >{{c4}}
+                            </th>
+                        </tr>
+                         <tr>
+                            <th style="border-top: none;"></th>
+                            <th style="border-top: none;"></th>
+                            <th>SZ Name</th>
+                            <th>Derived from</th>
+                            <th>IG Name</th>
+                            <th>Derived from</th>
+                        </tr>
+                        {% endfor %} 
+						{% for one, two, three, four in asa_nameif_ftd_interface_list %}
+                        <tr>
+                            <td>{{one}}</td>
+                            <td>{{two}}</td>
+                            {% for key,value in three.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                            {% for key,value in four.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="table-container two-object">
+                    {% if asa_nameif_ftd_interface_list|length %}
+                    <table>
+                        {% for c1, c2, c3, c4, c5 in asa_nameif_ftd_interface_columns %}
+                        <tr>
+
+                            <th style="border-bottom: none;">{{c1}}</th>
+                            <th style="border-bottom: none;">{{c2}}</th>
+                            <th style="border-bottom: none;">{{c3}}</th>
+                            <th colspan="2" >{{c4}}
+                            </th>
+                            <th colspan="2" >{{c5}}
+                            </th>
+                        </tr>
+                         <tr>
+                            <th style="border-top: none;"></th>
+                            <th style="border-top: none;"></th>
+                            <th style="border-top: none;"></th>
+                            <th>SZ Name</th>
+                            <th>Derived from</th>
+                            <th>IG Name</th>
+                            <th>Derived from</th>
+                        </tr>
+                        {% endfor %}
+						{% for one, two, three, four, five in asa_nameif_ftd_interface_list %}
+                        <tr>
+                            <td>{{one}}</td>
+                            <td>{{two}}</td>
+                            <td>{{three}}</td>
+                            {% for key,value in four.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                            {% for key,value in five.items() %}
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 6 -->
+        <div>
+            <h1 class="section-title">6. Object Conflict Handling:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    The following table displays the details of the ASA objects identified as having conflicts with the existing objects in Firewall Migration Center. If the objects have the same name but a different configuration, you can rename these objects. Review these objects carefully and verify that the conflicts are appropriately resolved.
+                </div>
+                {% if not group_object_split_list %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c5 = 0 %}
+                {% if group_object_split_list|length %}
+                <div class="sub-section">
+                    <h2>6.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Object groups that were split:</h2>
+                    {% set c5 = c5+1 %}
+                    <div class="section-description">
+                        The following table displays the number of objects or literals inside an object-group which exceeds the number 100, the objects are grouped. Review these objects and verify that the associated rules updated.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            {% for c1,c2,c3 in group_object_split_columns %}
+                            <tr>
+                                <th>{{c1}}</th>
+                                <th>{{c2}}</th>
+                                <th>{{c3}}</th>
+                            </tr>
+                            {% endfor %}
+                            {% for one,two,three in group_object_split_list %}
+                            <tr>
+                                <td style = "vertical-align: top;">{{one}}</td>
+                                <td>
+                                {% for value in two %}
+                                    {{value}}<br>
+                                {% endfor %}
+                                </td>
+                                <td style = "vertical-align: top;">{{three}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 7 -->
+        <div>
+            <h1 class="section-title">7. Optimization:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    The following table displays the details of the ASA objects and ASA ACL optimization. If the objects
+                    have the same name and configuration, the Migration Tool reuses the Firewall Migration Center
+                    object. Review these objects carefully and verify that the conflicts are appropriately resolved.
+                </div>
+                {% if not renamed_objects_list and not reused_objects_list and not unused_network_objects and not unused_service_objects and not optimization_summary and not object_optimization_split_values%}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set d6 = 0 %}
+                {% set c5 = 1 %}
+                {% if optimization_summary %}
+                <div class="sub-section">
+                    <h2>7.{{ "abcdefghijklmnopqrstuvwxyz"[d6] }}: ACL Optimization:</h2>
+                    {% set d6 = d6+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                <th rowspan="3">{{optimization_summary_columns[0]}}</th>
+                                <th colspan="4" class="align-center">{{optimization_summary_columns[1]}}</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">{{optimization_summary_columns[2]}}</th>
+                                <th colspan="3" class="align-center">{{optimization_summary_columns[3]}}</th>
+                            </tr>
+                            <tr>
+                                <th>{{optimization_summary_columns[4]}}</th>
+                                <th>{{optimization_summary_columns[5]}}</th>
+                                <th>{{optimization_summary_columns[6]}}</th>
+                            </tr>
+                            {% for key in optimization_summary %}
+                            <tr>
+                                {% if key == "Total Original ACL rules (Source Configuration)" or key == "Total ACL rules considered for Optimization"%}
+                                    <td class="bold_text" >{{key}}</td>
+                                    {% for item in optimization_summary[key] %}
+                                        <td class="align-center bold_text">{{item}}</td>
+                                    {% endfor %}
+                                {% else %}
+                                    <td>{{key}}</td>
+                                    {% for item in optimization_summary[key] %}
+                                        <td class="align-center">{{item}}</td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="sub-section">
+                        <h2>Please click <a href="{{ optimization_report_path }}">here</a> for detailed Optimization excel report (.xls) that additionally confirms reviewed and validated actions on all ACLs.</h2>
+                    </div>
+                </div>
+                {% endif %}
+                {% if renamed_objects_list %}
+                <div class="sub-section">
+                    <h2>7.{{ "abcdefghijklmnopqrstuvwxyz"[d6] }}: Renamed Objects:</h2>
+                    {% set d6 = d6+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in renamed_objects_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for renamed_object in renamed_objects_list %}
+                                <tr>
+                                    {% for value in renamed_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if reused_objects_list %}
+                <div class="sub-section">
+                    <h2>7.{{ "abcdefghijklmnopqrstuvwxyz"[d6] }}: Reused Objects:</h2>
+                    {% set d6 = d6+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in reused_objects_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for reused_object in reused_objects_list %}
+                                <tr>
+                                    {% for value in reused_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if unused_network_objects or unused_service_objects or unused_accesslist_objects%}
+                <div class="sub-section">
+                    <h2>7.{{ "abcdefghijklmnopqrstuvwxyz"[d6] }}: Unreferenced Objects:</h2>
+                    <div class="section-description">
+                        List of objects that are optimized as they are not referenced in any supported config section.
+                    </div>
+                    <div class="container post_mig_note-container">
+                    <span style="color: #cf2030;">Note: </span>
+                    <span>
+                        List of objects that are optimized as they are not referenced in any supported config section.
+                        <a href="{{unused_objects_excel}}" target="blank">Click Here</a> for more details.
+                    </span>
+                </div>
+                </div>
+                {% if object_optimization_split_values|length %}
+                <div class="sub-section">
+                    <h2>7.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Duplicate Objects:</h2>
+                    {% set c5 = c5+1 %}
+                    <div class="section-description">
+                        The following table displays the object optimization detials.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            {% for c1,c2,c3 in object_optimization_split_columns %}
+                            <tr>
+                                <th>{{c1}}</th>
+                                <th>{{c2}}</th>
+                                <th>{{c3}}</th>
+                            </tr>
+                            {% endfor %}
+                            {% for one,two,three in object_optimization_split_values %}
+                            <tr>
+                                <td style = "vertical-align: top;">{% for value in one %}
+                                    {{value}}<br>
+                                {% endfor %}</td>
+                                <td>
+                                {% for value in two %}
+                                    {{value}}<br>
+                                {% endfor %}
+                                </td>
+                                <td style = "vertical-align: top;">{% for value in three %}
+                                    {{value}}<br>
+                                {% endfor %}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <!-- {% endif %} -->
+                <!-- {% endif %}    -->
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 8 -->
+        <div>
+            <h1 class="section-title">8. ACL Category Conflict Handling:</h1>
+            <div class="section-container">
+                {% if (not acl_conflict_handling_list|length) and (not other_unsupported_zone_list|length) and (not interfaces_without_access_group_values) %}
+                <div class="section-description">
+                    The following table displays the details of the ASA ACL Rule categories identified as having conflicts with naming limitation on Firewall Migration Center. The category names are trimmed as it exceeded the supported limit on Firewall Migration Center. Review these categories carefully.
+                </div>
+                {% else %}
+                {% set c6 = 0 %}
+                {% if interfaces_without_access_group_values|length %}
+                <div class="sub-section">
+                    <h2>8.{{ "abcdefghijklmnopqrstuvwxyz"[c6] }}: Interfaces with no access-group command:</h2>
+                    <div class="section-description">
+                        These interfaces does not have any access-group command associated with it.If there is traffic flowing from higher security level to lower security or same security level through these interfaces, manually create an accessrule on FMC to replicate traffic flow.
+                    </div>
+                    {% set c6 = c6+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in interfaces_without_access_group_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for element in interfaces_without_access_group_values %}
+                                <tr>
+                                    {% for value in element %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if acl_conflict_handling_list|length %}
+                <div class="sub-section">
+                <h2>8.{{ "abcdefghijklmnopqrstuvwxyz"[c6] }}: ACL Category Conflict Handling:</h2>
+                {% set c6 = c6+1 %}
+                <div class="table-container two-object">
+                    <table>
+                        <tr>
+                            {% for column in acl_conflict_handling_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for acl_object in acl_conflict_handling_list %}
+                            <tr>
+                                {% for value in acl_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                </div>
+                {% endif %}
+                {% if other_unsupported_zone_list|length %}
+                <div class="sub-section">
+                    <h2>8.{{ "abcdefghijklmnopqrstuvwxyz"[c6] }}: Security Zone limit exceeded :</h2>
+                    {% set c6 = c6+1 %}
+                    <div class="section-description">
+                        In FMC versions less that 7.3, maximum number of security zones supported in an accessrule is 50. If there are more that 50, the first 50 will be considered for migration. The details of the ignored security zones and the corresponding access control list will be in the table below.
+                    </div>
+                    <div class="table-container two-object">
+                        <table  class="securityzone">
+                            <tr>
+                                {% for column in other_unsupported_zone_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in other_unsupported_zone_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for zone_object in other_unsupported_zone_list %}
+                                <tr>
+                                    {% for value in zone_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in zone_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+        </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 9 -->
+        <div>
+            <h1 class="section-title">9. Pre-filter Tunnel Rules Teredo Flow:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    The following table displays the details of the ASA ACL Rule identified as Teredo flow (UDP:3544) and migrated as Pre-filter tunnel rule on the Firewall Migration Center. Review these rules carefully. If the rules are not handling Teredo flow, then correct them manually on the Firewall Migration Center:
+                </div>
+                {% if (not acl_teredo_literal_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c7 = 0 %}
+                <div class="table-container two-object">
+                    <table>
+                        <tr>
+                            {% for column in acl_teredo_literal_columns[:11] %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                            {% if connection_type=="live_connect" %}
+                                {% for column in acl_teredo_literal_columns[11:] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            {% endif %}
+                        </tr>
+                        {% for acl_object in acl_teredo_literal_list %}
+                            <tr>
+                                {% for value in acl_object[:11] %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for value in acl_object[11:] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 10 -->
+        <div>
+            <h1 class="section-title">10. Partially Migrated Configuration:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    Details of the ASA rules that were only partially migrated, including rules with advanced options where the rule could be migrated without the advanced options. Review these lines, verify whether the advanced options are supported in Firewall Migration Center, and if so, configure these options manually.
+                </div>
+                {% if (not nat_pat_block_allocation_list|length) and (not static_routes_list|length) and (not additional_log_acp_rules_list|length) and (not additional_log_acp_rules_pf_list|length) and (not ipsla_list|length) and (not additional_log_sfr_acp_rules_list|length) and (not dynamic_route_obj_list|length) and (not migrated_bgp_config_list|length) and (not ravpn_partial_objects|length) and (not ravpn_types_list|length) and (not migrated_eigrp_config_list|length) and (not migrated_eigrp_with_bgp_config_list|length) and (not partial_migrate_acl_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c8 = 0 %}
+                {% if nat_pat_block_allocation_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: NAT Rules with Block Allocation Option:</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Details of all NAT rules that were only partially migrated because they were configured with the block allocation option in ASA. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for c1 in nat_pat_block_allocation_columns %}
+                                    <th>{{c1}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for nat_pat_object in nat_pat_block_allocation_list %}
+                            <tr>
+                                {% for object in nat_pat_object %}
+                                    <td>{{object}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if static_routes_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Static Routes with Track Option:</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Details of all static routes that were only partially migrated because they were configured with the track option in ASA. Review these static routes carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for c1 in static_routes_columns %}
+                                    <th>{{c1}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for route_object in static_routes_list %}
+                            <tr>
+                                {% for object in route_object %}
+                                    <td>{{object}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if additional_log_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Access Control Policy Rules with additional log settings :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Additional logging settings such as "time interval" and "severity" under Access Control Policy Rules are not migrated. Review these rules and configure additional logging settings manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in additional_log_acp_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in additional_log_acp_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in additional_log_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if additional_log_acp_rules_pf_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Pre-filter Tunnel Rules with additional log settings  :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the additional logging settings such as "time interval" and "severity" under Pre-filter Tunnel Rules that are not migrated. Review these rules and configure the additional logging settings manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in additional_log_acp_columns_pf[:additional_log_acp_columns_pf|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in additional_log_acp_columns_pf[additional_log_acp_columns_pf|length - 2:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in additional_log_acp_rules_pf_list %}
+                                <tr>
+                                    {% for value in acl_object[:additional_log_acp_columns_pf|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[additional_log_acp_columns_pf|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if ipsla_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: SLA Monitor Objects :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the "sla monitor schedule" such as "start time", "pending", "ageout" etc under SLA Monitor Objects that are not migrated. Review these objects and use/delete SLA objects and apply or remove from static route manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ipsla_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for sla_object in ipsla_list %}
+                                <tr>
+                                    {% for value in sla_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if additional_log_sfr_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: FPS Access-rules with modified Zones :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        The following table displays the details of ACLs where one or more Zones Modified has selected source FPS device or unsupported.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in additional_log_sfr_acp_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in additional_log_sfr_acp_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in additional_log_sfr_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="section-description">
+                        Note: If FPS-redirection ACLs are not found in Source ASA config file, they cannot be migrated in to destination FMC.
+                    </div>
+                </div>
+                {% endif %}
+                {% if dynamic_route_obj_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Dynamic Route Objects  :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Following Dynamic Route objects are partially migrated.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in dynamic_route_obj_list_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in dynamic_route_obj_list_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for dynamic_object in dynamic_route_obj_list %}
+                                <tr>
+                                    {% for value in dynamic_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in dynamic_object %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="section-description">
+                        Note: If FPS-redirection ACLs are not found in Source ASA config file, they cannot be migrated in to destination FMC.
+                    </div>
+                </div>
+                {% endif %}
+                {% if migrated_bgp_config_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Migrated BGP Configuration  :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Note: Following ASA BGP configuration are supported and are migrated into FMC.
+                    </div>
+                    <div class="script-box">
+                        {% if migrated_bgp_config_list|length %}
+                        <table>
+                            {% for obj in migrated_bgp_config_list %}
+                            <tr>
+                                <td>{{obj}}</td>
+                                {% if migrated_bgp_config_list[obj]|length > 100 %}
+                                <td class="custom-line">{{migrated_bgp_config_list[obj]}}</td>
+                                {% else %}
+                                <td>{{migrated_bgp_config_list[obj]}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% else %}
+                        <div class="no-table-data-wrapper">
+                            <i class="info-icon"></i>None
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if ravpn_types_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Remote Access VPN  :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Note: Following Remote Access VPN Objects are partially migrated.
+                    </div>
+                    <div class="table-container two-object">
+                        {% if ravpn_type_bool_value %}
+                        <table>
+                            <tr>
+                                {% for column in ravpn_types_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for key,value in ravpn_types_list[0].items() %}
+                            <tr>
+                                {% if ravpn_types_list[0].get(key)|length > 0 %}
+                                    <td>{{key}}</td>
+                                    <td>{{(', ').join(value)}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% else %}
+                        <div class="no-table-data-wrapper">
+                            <i class="info-icon"></i>None
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if partial_migrate_acl_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Extended ACL :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Note: Following Extended Acl are partially migrated.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in partial_migrate_acl_columns[:10] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in partial_migrate_acl_list %}
+                                <tr>
+                                    {% for value in acl_object[:10] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if migrated_eigrp_config_list|length %}
+                <div class="sub-section">
+                    <h2>10.{{ "abcdefghijklmnopqrstuvwxyz"[c8] }}: Migrated EIGRP Configuration  :</h2>
+                    {% set c8 = c8+1 %}
+                    <div class="section-description">
+                        Note: Following ASA EIGRP configuration are supported and are migrated into FMC.
+                    </div>
+                    <div class="script-box">
+                        {% if migrated_eigrp_config_list|length %}
+                        <table>
+                            {% for obj in migrated_eigrp_config_list %}
+                            <tr>
+                                <td>{{obj}}</td>
+                                {% if migrated_eigrp_config_list[obj]|length > 100 %}
+                                <td class="custom-line">{{migrated_eigrp_config_list[obj]}}</td>
+                                {% else %}
+                                <td>{{migrated_eigrp_config_list[obj]}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% else %}
+                        <div class="no-table-data-wrapper">
+                            <i class="info-icon"></i>None
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if migrated_eigrp_with_bgp_config_list %}
+                    <div class="section-description">
+                        Note: BGP has not been selected for feature migration, but EIGRP contains BGP configuration lines.
+                        The following configuration has been enabled on FMC for the completeness of EIGRP configuration -
+                    </div>
+                    <div class="script-box">
+                        {% if migrated_eigrp_with_bgp_config_list|length %}
+                        <table>
+                            {% for obj in migrated_eigrp_with_bgp_config_list %}
+                            <tr>
+                                <td>{{obj}}</td>
+                                {% if migrated_eigrp_with_bgp_config_list[obj]|length > 100 %}
+                                <td class="custom-line">{{migrated_eigrp_with_bgp_config_list[obj]}}</td>
+                                {% else %}
+                                <td>{{migrated_eigrp_with_bgp_config_list[obj]}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% else %}
+                        <div class="no-table-data-wrapper">
+                            <i class="info-icon"></i>None
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 11 -->
+        <div>
+            <h1 class="section-title">11. Unsupported Configuration:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    Details of ASA configuration elements that were not migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firepower Threat Defense. If so, configure those features manually in Firewall Migration Center
+                </div>
+                {% if (not fqdn_acp_rules_list|length) and (not time_based_acp_rules_list|length) and (not sgt_based_acp_rules_list|length) and (not user_based_acp_rules_list|length) and (not ipv6_based_acp_rules_list|length) and (not icmp_based_acp_rules_list|length) and (not tunnel_based_acp_rules_list|length) and (not other_unsupported_acp_rules_list|length) and (not sctp_nats|length) and (not zero_host_nats|length) and (not other_unsupported_nat_list|length) and (not object_group_search|length) and (not sfr_user_based_acl_list|length) and (not ravpn_unsupported_data_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c9 = 0 %}
+                {% if fqdn_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: FQDN based Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all FQDN-based access control policy rules that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in fqdn_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in fqdn_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in fqdn_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if time_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Time-Based Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all time-based access control policy rules that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in time_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in time_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in time_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if sgt_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: SGT-Based Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all SGT-based access control policy rules that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in sgt_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in sgt_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in sgt_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if user_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: User-Based Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all user-based access control policy rules that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in user_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in user_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in user_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if ipv6_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: IPv6 Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all ICMP6 and IPv6 access control policy rules that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ipv6_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in ipv6_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in ipv6_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if icmp_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: ICMP Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all access control policy rules with unsupported ICMP type and code that were not migrated because the configuration is not supported by the Migration Tool. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in icmp_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in icmp_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in icmp_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if tunnel_based_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Tunneling Protocol-Based Access Control Policy Rules :</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of the tunneling protocol-based access control policy rules that were disabled because the Firepower Threat Defense support for unencrypted tunnel protocols is not identical to the ASA support. Please move these rules to the pre-filter policy and configure the action as FastPath for 'permit ACE' and the action as Block for 'deny ACE'.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in tunnel_based_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in tunnel_based_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in tunnel_based_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if other_unsupported_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Other Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in other_unsupported_acp_rules_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in other_unsupported_acp_rules_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in other_unsupported_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if sctp_nats|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: NAT Rules with SCTP:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all NAT rules that were not migrated because they were configured with SCTP in ASA. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for c1 in sctp_nats_columns %}
+                                    <th>{{c1}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for sctp_object in sctp_nats %}
+                            <tr>
+                                {% for object in sctp_object %}
+                                    <td>{{object}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if zero_host_nats|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: NAT Rules with host '0.0.0.0':</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Details of all NAT rules that were not migrated because they were configured with host 0.0.0.0 in ASA. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense. If so, configure the feature manually in Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for c1 in  zero_host_nats_columns %}
+                                    <th>{{c1}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for zero_nat_obj in zero_host_nats %}
+                            <tr>
+                                {% for object in zero_nat_obj %}
+                                    <td>{{object}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if other_unsupported_nat_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Other NAT Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for c1 in other_unsupported_nat_columns %}
+                                    <th>{{c1}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for other_nat in other_unsupported_nat_list %}
+                            <tr>
+                                {% for object in other_nat %}
+                                    <td>{{object}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if (object_group_search|length) and (object_group_search[0] == "No") %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Object Group Search:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        object-group-search access-control
+                    </div>
+                </div>
+                {% endif %}
+                {% if selective_policy_columns.get("s2s_vpn_flag") == "Yes"%}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Site-to-Site VPN Tunnels:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Virtual Tunnel interface running tunnel protection migration is not supported at this time.
+                    </div>
+                </div>
+                {% endif %}
+                {% if sfr_user_based_acl_list|length %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Firepower Services(FPS) User-Based Access Control Rules :</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        Following table displays the details of FPS Access-Rules that are Unsupported due to the use of "Users" field in them (These ACLs will be migrated as disabled after removing Unsupported field). Review these rules and configure the additional Identity-Policy & Users settings manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in sfr_user_based_acl_columns[:11] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in sfr_user_based_acl_columns[11:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in sfr_user_based_acl_list %}
+                                <tr>
+                                    {% for value in acl_object[:11] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[11:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if ravpn_unsupported_data_list|length or ravpn_trustpoint_bool_value %}
+                <div class="sub-section">
+                    <h2>11.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Remote Access VPN :</h2>
+                    {% set c9 = c9+1 %}
+                    {% if ravpn_unsupported_data_list|length %}
+                    <div class="section-description">
+                        Following table displays the details of Anyconnect profiles that are Unsupported due to the profile not being uploaded by the user. Review and configure the profiles manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ravpn_unsupported_data_columns[:3] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in ravpn_unsupported_data_columns[3:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for ravpn_object in ravpn_unsupported_data_list %}
+                                <tr>
+                                    {% for value in ravpn_object[:3] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in ravpn_object[3:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
+                    {% if ravpn_trustpoint_bool_value %}
+                    <div class="section-description">
+                        Following  table displays the details of  Trustpoint that are Unsupported due to the trustpoint not being selected by the user. Trustpoint ignored can belong to SAML SP, SAML override in Connection profile or applied to an interface.  Review and configure the Trustpoint manually in the Firewall Migration Center.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ravpn_trustpoint_data_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in ravpn_trustpoint_data_list %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for override_object in override_trustpoint_data_list %}
+                                <tr>
+                                    {% for value in override_object.values() %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in override_object.values() %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            {% for sp_object in sp_trustpoint_data_list %}
+                                <tr>
+                                    {% for value in sp_object.values() %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in sp_object.values() %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 12 -->
+        <div>
+            <h1 class="section-title">12. Policy Rules Migrated failing zone Lookup</h1>
+            <div class="section-container">
+                <div class="section-description">
+                   The following table displays the details of the access control policy rules which have failed the “Route-lookup operation” for the destination network in the rule by the Migration Tool. Review these rules carefully and if required update them manually in Firewall Migration Center.                </div>
+                {% if (not route_lookup_any_zone_list|length) and (not route_lookup_fqdn_zone_list|length) and (not route_lookup_range_more_than_hundred_list|length)  and (not route_lookup_network_failed_list|length) and (not route_lookup_ecmp_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c10 = 0 %}
+                {% if route_lookup_any_zone_list|length %}
+                <div class="sub-section">
+                    <h2>12.{{ "abcdefghijklmnopqrstuvwxyz"[c10] }}: Rules with Any Destination Network:</h2>
+                    {% set c10 = c10+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_lookup_any_zone_columns[:route_lookup_any_zone_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in route_lookup_any_zone_columns[route_lookup_any_zone_columns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in route_lookup_any_zone_list %}
+                                <tr>
+                                    {% for value in acl_object[:route_lookup_any_zone_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[route_lookup_any_zone_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if route_lookup_network_failed_list|length %}
+                <div class="sub-section">
+                    <h2>12.{{ "abcdefghijklmnopqrstuvwxyz"[c10] }}: Rules with No Prefix Match in Routing Table for Destination Network:</h2>
+                    {% set c10 = c10+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_lookup_network_failed_coumns[:route_lookup_network_failed_coumns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in route_lookup_network_failed_coumns[route_lookup_network_failed_coumns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in route_lookup_network_failed_list %}
+                                <tr>
+                                    {% for value in acl_object[:route_lookup_network_failed_coumns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[route_lookup_network_failed_coumns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if route_lookup_ecmp_list|length %}
+                <div class="sub-section">
+                    <h2>12.{{ "abcdefghijklmnopqrstuvwxyz"[c10] }}: Rules with ECMP or Multiple routes in Routing Table for Destination Network:</h2>
+                    {% set c10 = c10+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_lookup_ecmp_coumns[:route_lookup_ecmp_coumns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in route_lookup_ecmp_coumns[route_lookup_ecmp_coumns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in route_lookup_ecmp_list %}
+                                <tr>
+                                    {% for value in acl_object[:route_lookup_ecmp_coumns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[route_lookup_ecmp_coumns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if route_lookup_fqdn_zone_list|length %}
+                <div class="sub-section">
+                    <h2>12.{{ "abcdefghijklmnopqrstuvwxyz"[c10] }}: Rules with FQDN destination objects:</h2>
+                    {% set c10 = c10+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_lookup_any_fqdn_columns[:route_lookup_any_fqdn_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in route_lookup_any_fqdn_columns[route_lookup_any_fqdn_columns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in route_lookup_fqdn_zone_list %}
+                                <tr>
+                                    {% for value in acl_object[:route_lookup_any_fqdn_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[route_lookup_any_fqdn_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if route_lookup_range_more_than_hundred_list|length %}
+                <div class="sub-section">
+                    <h2>12.{{ "abcdefghijklmnopqrstuvwxyz"[c10] }}: Rules with Destination Range Objects having more than 100 Values:</h2>
+                    {% set c10 = c10+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_lookup_range_more_than_hundred_columns[:route_lookup_range_more_than_hundred_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in route_lookup_range_more_than_hundred_columns[route_lookup_range_more_than_hundred_columns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in route_lookup_range_more_than_hundred_list %}
+                                <tr>
+                                    {% for value in acl_object[:route_lookup_range_more_than_hundred_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[route_lookup_range_more_than_hundred_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 13 -->
+        <div>
+            <h1 class="section-title">13. Expanded Access Control Policy Rules:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    Details of ASA access control policy rules that were expanded from a single ASA rule into multiple Firepower Threat Defense rules during migration.
+                </div>
+                {% if expanded_acp_cli_list.items()|length %}
+                {% for acl_line, expanded_acp_rules in expanded_acp_cli_list.items() %}
+                {% if expanded_acp_rules|length >1 %}
+                <div class="table-container two-object sub-section">
+                    <h2>ASA ACE:</h2>
+                    <p>{{acl_line}}</p>
+                    <h2>FMC Rules:</h2>
+                    <table>
+                        <tr>
+                            {% for column in expanded_acp_rules_columns[:expanded_acp_rules_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                            {% endfor %}
+                            {% for column in expanded_acp_rules_columns[expanded_acp_rules_columns|length - 2:] %}
+                                {% if connection_type=="live_connect" %}
+                                    <th>{{column}}</th>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% for acl_object in expanded_acp_rules %}
+                            <tr>
+                                {% for value in acl_object[:expanded_acp_rules_columns|length - 2] %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for value in acl_object[expanded_acp_rules_columns|length - 2:] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 14 -->
+        <div>
+            <h1 class="section-title">14. Action Taken on Converted Features</h1>
+            <div class="section-container">
+                {% if (not do_not_migrate_acp_rules_list|length) and (not acl_rule_change_list|length) and (not ips_policy_info_list|length) and (not file_policy_info_list|length) and (not acl_log_change_list|length) and (not nat_donotmigrate_list|length) and (not route_donotmigrate_list|length) and (not inline_grouping_list_less|length) and (not inline_grouping_list_more|length) and (not do_not_migrate_acp_rules_pf_list|length) and (not time_based_acp_rules_supported_list|length) and (not s2s_vpn_rules_list|length) and (not ravpn_policy_list|length) and (not tunnel_group_list|length) and (not tunnel_group_webvpn_list|length) and (not ravpn_ikev2_list|length) and (not local_do_not_migrate_list|length) and (not web_vpn_columns_mapping_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                {% set c12 = 0 %}
+                {% if do_not_migrate_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Access Rules You Chose Not to Migrate</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of the ASA access control rules that you chose not to migrate with the Migration Tool. Review these lines and verify that all the rules you chose are listed in the section. If desired, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in do_not_migrate_acp_rules_columns[:do_not_migrate_acp_rules_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in do_not_migrate_acp_rules_columns[do_not_migrate_acp_rules_columns|length - 2:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in do_not_migrate_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:do_not_migrate_acp_rules_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[do_not_migrate_acp_rules_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if do_not_migrate_acp_rules_pf_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Pre-Filter Tunnel Rules You Chose Not to Migrate</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the ASA Pre-filter tunnel rules that you chose not to migrate with the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If required, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in do_not_migrate_acp_rules_pf_columns[:do_not_migrate_acp_rules_pf_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in do_not_migrate_acp_rules_pf_columns[do_not_migrate_acp_rules_pf_columns|length - 2:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in do_not_migrate_acp_rules_pf_list %}
+                                <tr>
+                                    {% for value in acl_object[:do_not_migrate_acp_rules_pf_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[do_not_migrate_acp_rules_pf_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if nat_donotmigrate_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: NAT Rules You Chose Not to Migrate</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of the ASA Network Address Translation (NAT) rules that you chose not to migrate with the Migration Tool. Review these lines and verify that all the rules you chose are listed in the section. If desired, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in nat_donotmigrate_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for nat_object in nat_donotmigrate_list %}
+                            <tr>
+                                {% for value in nat_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if route_donotmigrate_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Routes You Chose Not to Migrate</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of the ASA static routes that you chose not to migrate with the Migration Tool. Review these lines and verify that all the rules you chose are listed in the section. If desired, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in route_donotmigrate_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for route_object in route_donotmigrate_list %}
+                            <tr>
+                                {% for value in route_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if acl_rule_change_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: 'Rule Action' Change</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of all Access Control Policy Rules that had 'Rule Action' changed using the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If desired, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in acl_rule_change_columns[:acl_rule_change_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% for column in acl_rule_change_columns[acl_rule_change_columns|length - 2:] %}
+                                    {% if connection_type=="live_connect" %}
+                                        <th>{{column}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in acl_rule_change_list %}
+                                <tr>
+                                    {% for value in acl_object[:acl_rule_change_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[acl_rule_change_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if ips_policy_info_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: IPS Policy and Variable Set</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of all Access Control Policy Rules that had IPS Policy applied. Review these rules carefully and determine whether the feature is supported in Firepower Threat Defense.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ips_policy_data_columns %}
+                                        <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in ips_policy_info_list %}
+                            <tr>
+                                {% for value in acl_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if file_policy_info_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: File Policy</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of all Access Control policy Rules that had File Policy applied. Review these rules carefully and determine whether this feature is supported in Firepower Threat Defense.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in file_policy_info_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object in file_policy_info_list %}
+                                <tr>
+                                    {% for value in acl_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if acl_log_change_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Rule 'Log' Setting Change</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        Details of the ASA access control rules that had 'Log' setting changed using the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If desired, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in acl_log_change_columns[:acl_log_change_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in acl_log_change_columns[acl_log_change_columns|length - 2:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in acl_log_change_list %}
+                                <tr>
+                                    {% for value in acl_object[:acl_log_change_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[acl_log_change_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if inline_grouping_list_less.items() or inline_grouping_list_more.items() |length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Inline Grouping</h2>
+                    {% set c12 = c12+1 %}
+                    {% if inline_grouping_list_less.items() |length %}
+                        <div class="section-description">
+                            Details of all Access Control Policy Rules where inline grouping was cleared is mentioned below.
+                        </div>
+                    {% endif %}
+                    <div class="table-container two-object">
+                        {% if inline_grouping_list_less.items() |length %}
+                        <table>
+                            <tr>
+                                {% for column in inline_grouping_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object,data in inline_grouping_list_less.items() %}
+                                <tr>
+                                    {% if acl_object|length and data|length %}
+                                    <td>{{acl_object}}</td>
+                                    <td>{{(',').join(data)}}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                        {% if inline_grouping_list_more.items() |length %}
+                            <div class="section-description">
+                                Inline grouping in the following rules was not cleared because the number of elements exceeded the limit of 50 in more than two columns of the rule.
+                            </div>
+                        {% endif %}
+                        {% if inline_grouping_list_more.items() |length %}
+                        <table>
+                            <tr>
+                                {% for column in inline_grouping_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for acl_object,data in inline_grouping_list_more.items() %}
+                                <tr>
+                                    {% if acl_object|length and data|length %}
+                                    <td>{{acl_object}}</td>
+                                    <td>{{(',').join(data)}}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if time_based_acp_rules_supported_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Time-Based Access Control Policy Rules:</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the policies with Time-Based ACL.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in time_based_acp_rules_supported_columns[:time_based_acp_rules_supported_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                                {% if connection_type=="live_connect" %}
+                                    {% for column in time_based_acp_rules_supported_columns[time_based_acp_rules_supported_columns|length - 2:] %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% for acl_object in time_based_acp_rules_supported_list %}
+                                <tr>
+                                    {% for value in acl_object[:time_based_acp_rules_supported_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                    {% if connection_type=="live_connect" %}
+                                        {% for value in acl_object[time_based_acp_rules_supported_columns|length - 2:] %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="section-description">
+                        Note: You must manually migrate timezone configuration from source ASA to target FTD.
+                    </div>
+                </div>
+                {% endif %}
+                {% if s2s_vpn_rules_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}-1: Site to Site VPN Policy Rules:</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        <div>This section displays the site-to-site VPN which includes peer to peer policies that were migrated.</div>
+                        <div><b>Note:</b> ASA crypto acl will not be migrated , but FMC will auto generate the crypto acl based on the Protected Networks.</div>
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in s2s_vpn_rules_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for s2s_object in s2s_vpn_rules_list %}
+                                <tr>
+                                    {% for value in s2s_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    {% if s2s_hub_spoke_rule_list|length %}
+                        <h2>14.a-2: Site to Site VPN Policy Rules (Hub & Spoke):</h2>
+                        <div class="section-description">
+                            <div>This section displays the site-to-site VPN which includes Hub & Spoke policies that were migrated.</div>
+                        </div>
+                        <div class="table-container two-object">
+                            <table>
+                                <tr>
+                                    {% for column in s2s_vpn_rules_columns %}
+                                        <th>{{column}}</th>
+                                    {% endfor %}
+                                </tr>
+                                {% for s2s_object in s2s_hub_spoke_rule_list %}
+                                    <tr>
+                                        {% for value in s2s_object %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if web_vpn_columns_mapping_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: WebVPN Configuration policy</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        This section displays the Zero Trust Application migrated.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in web_vpn_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% for len in web_vpn_columns_mapping_list %}
+                                  <tr>
+                                    {% for value in len %}
+                                            <td>{{value}}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                    {% if web_vpn_columns_map_group_name_dict_list|length %}
+                    <div class="section-description">
+                        Application details mapped under policy:
+                    </div>
+                    {% for column in web_vpn_application_group_names_list %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                <th>Application Group Name: {{column}}</th>
+                            </tr>
+
+                            <tr>
+                                {% for column in web_vpn_columns_for_group_url_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% for values_list in web_vpn_columns_map_group_name_dict_list %}
+                                <tr>
+                                    {% for value in values_list %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                            </tr>
+                            {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if web_vpn_columns_single_url_dict_list|length %}
+                <div class="section-description">
+                    Individual application mapped under policy :
+                </div>
+                <div class="table-container two-object">
+                    <table>
+                        <tr>
+                            {% for column in web_vpn_columns_for_single_url_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for web_vpn_columns_single_url_dict_list_value in web_vpn_columns_single_url_dict_list %}
+                                <tr>
+                                {% for value in web_vpn_columns_single_url_dict_list_value %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+                {% endif %}
+                {% if tunnel_group_webvpn_list|length %}
+                <div class="section-description">
+                    This section displays webvpn Tunnel-groups that were migrated
+                </div>
+                <div class="table-container two-object">
+                <table>
+                    <tr>
+                        {% for column in tunnel_group_webvpn_columns %}
+                            <th>{{column}}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for tunnel_values in tunnel_group_webvpn_list %}
+                        <tr>
+                            {% for value in tunnel_values %}
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                </div>
+                {% endif %}
+                {% if local_do_not_migrate_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Local users You Chose Not to Migrate:</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in local_do_not_migrate_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for value in local_do_not_migrate_list %}
+                                <tr>
+                                    <td>{{value}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if ravpn_policy_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Remote Access VPN:</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        <div>This section displays RAVPN Policy which is migrated.</div>
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in ravpn_policy_column %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% for ravpn_value in ravpn_policy_list[0] %}
+                                    <td>{{ ravpn_value }}</td>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                        <br/>
+                        {% if tunnel_group_list|length %}
+                        <div class="section-description">
+                            <div>This section displays ravpn Tunnel-groups that were migrated</div>
+                        </div>
+                        <table>
+                            <tr>
+                                {% for column in tunnel_group_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for tunnel_values in tunnel_group_list %}
+                                <tr>
+                                    {% for value in tunnel_values %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                        <br/>
+                        {% if ravpn_ikev2_list|length %}
+                        {% if ikev2_enable_value %}
+                        <div class="section-description">
+                            This section displays Remote Access VPN Ikev2 settings which are migrated. In case of multiple dynamic maps with ikev2 enabled, crypto map with following transform sets are enabled and user can modify it from FMC if required.
+                        </div>
+                        {% endif %}
+                        <table>
+                            <tr>
+                                {% for column in ravpn_ikev2_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for ikev_values in ravpn_ikev2_list %}
+                                <tr>
+                                    {% for value in ikev_values %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if unsupported_dh_group_data|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Remote Access VPN:</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        This section displays unsupported DH group value that will be replaced with supported DH group value. DH group value 1 and 2 has been deprecated from FMC version 7.4.1 and above.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in unsupported_dh_group_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for reused_object in unsupported_dh_group_data %}
+                                <tr>
+                                    {% for value in reused_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+         <!-- Section 15 -->
+         <div >
+            <h1 class="section-title">15. Errors/Failure on Migrated Configuration </h1>
+            <div class=" section-container">
+
+                <div class="section-description">
+                    The following section displays the details on error causing the migration failure while pushing the migrated configuration elements. 
+                The error reported below could be related to the incorrect migrated configuration or else conflict on 
+                Firewall Migration Center due to some existing configuration or unsupported feature.
+
+                Review these errors and verify before proceeding or resuming the configuration push to the target Firewall Migration Center.
+                </div>
+                {% if (error_data.items()|length == 0) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                <div>
+                    <h2 class="section-title">15{{error_data["title"]}}</h2>
+                    <div class="section-description">
+                        <div class="error-heading"> Error Message:</div>
+                        <div class="error-desc">
+                            {{error_data["message"]}}
+                        </div>
+                        <div class="error-heading"> Verbose Message Log:</div>
+                        <div class="error-desc">
+                            {{error_data["description"]}}
+                        </div>
+                        <div class="error-heading">Possible Reasons for the failure : 
+                            <a href="https://www.cisco.com/c/en/us/support/security/firepower-ngfw/products-system-message-guides-list.html" target="_blank">Refer the link for details.</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Section 16 -->
+        <div>
+            <h1 class="section-title">16. Non Migrated Configuration (Error message includes API response):</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    Details of the non migration objects
+                </div>
+                {% if (not bulk_values_present) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                    {% set c17 = 0 %}
+                    {% for record in bulk_failure_records %}
+                        <!-- Sub Section Start -->
+                        {% if record[4]|length %}
+                        <div class="sub-section">
+                            <h2>16.{{ "abcdefghijklmnopqrstuvwxyz"[record[0]] }}:{{ record[1] }} :</h2>
+                            {% set c17 = c17+1 %}
+                            <div class="section-description">
+                                {{ record[2] }}
+                            </div>
+                            <div class="table-container two-object">
+                                <table>
+                                    <tr>
+                                        {% for c1 in record[3] %}
+                                            <th>{{c1}}</th>
+                                        {% endfor %}
+                                    </tr>
+                                    {% for item in record[4] %}
+                                    <tr>
+                                        {% for object in item %}
+                                            <td>{{object}}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                            <!-- {% if record[5]|length %}
+                                Errors : 
+                                {% for a1 in record[5][0] %}
+                                    <span>{{ a1 }} ;</span>
+                                {% endfor %}
+                            {% endif %} -->
+                        </div>
+                        {% endif %}
+                        <!-- Sub Section Ends -->
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 17 -->
+        <div >
+            <h1 class="section-title">17. Ignored Configuration </h1>
+            <div class=" section-container">
+                <div class="section-description">
+                    The following section displays the details on error causing the migration failure while pushing the migrated configuration elements.
+                The error reported below could be related to the incorrect migrated configuration or else conflict on
+                Firewall Migration Center due to some existing configuration or unsupported feature.
+
+                Review these errors and verify before proceeding or resuming the configuration push to the target Firewall Migration Center.
+                </div>
+                {% if multi_flag_transparent %}
+                    {% if ignored_configuration_list|length %}
+                        <table>
+                            {% for obj in ignored_configuration_list %}
+                            <tr>
+                                <td>{{obj}}</td>
+
+                                {% if ignored_configuration_list[obj]|length %}
+                                <td>{{ignored_configuration_list[obj]}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!--  -->
+        {% if deprecated_dh_group_values|length %}
+            <div>
+                <h1 class="section-title">13. Deprecated DH group details:</h1>
+                <div class="section-description">
+                    The configuration lines display the details of DH groups which are deprecated in FMT v7.0 and above.
+                    The Migration Tool migrates them to FMC, kindly review and change the DH values after migration.
+                </div>
+                <div class="table-container two-object">
+                    <table>
+                        <tr>
+                            {% for column in deprecated_dh_group_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for obj in deprecated_dh_group_values%}
+                            <tr>
+                                {% for sub_obj in obj %}
+                                    <td>{{sub_obj}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        <!--  -->
+        <div class="end-of-report-wrapper">
+            <div class="horizontal-line">
+            </div>
+            <div class="end-report-text">
+                End of Report
+            </div>
+            <div class="horizontal-line">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

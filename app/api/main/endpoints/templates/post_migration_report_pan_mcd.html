@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset="UTF-8">
+	{% include 'fonts.html' %}
+    <style>
+    /* New Styling */
+
+    body {
+        font-family: "CiscoSansTT";
+        line-height: 1.5;
+        font-weight: 300;
+        font-size: 14pt;
+        margin: 0;
+        position: relative;
+    }
+
+    .main-container {
+        width: 97%;
+        min-height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 10px;
+    }
+
+    path {
+        fill: #049fd9;
+    }
+
+    .header-container {
+        font-family: 'CiscoSansTT';
+        padding: 1.2em 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .img-span {
+        height: 52px;
+        width: 72px;
+        display: inline-block;
+        color: #049fd9;
+    }
+
+    .report-title {
+        font-size: 22px;
+        font-family: 'CiscoSansTTLight';
+        color: #4A4A4A;
+        margin-left: 20px;
+        display: inline-block;
+        position: relative;
+        top: -10px;
+    }
+
+    .date-wrapper {
+        float: right;
+        font-size: 16px;
+        margin-left: 5px;
+        color: #58585B;
+        display: inline-block;
+        position: relative;
+        top: 15px;
+    }
+
+    .note {
+        margin: 25px 5px;
+    }
+
+    .note span {
+        font-size: 12px;
+        color: #9E9EA2;
+        font-family: 'CiscoSansTT-Oblique';
+    }
+
+    .section-container {
+        margin: 0 20px;
+    }
+
+    .section-description {
+        margin: 15px 0 15px 10px;
+        font-size: 12px;
+        color: #4A4A4A;
+    }
+
+    .section-title {
+        font-family: 'CiscoSansTTLight' !important;
+        font-weight: normal;
+        font-size: 18px;
+        color: #4A4A4A;
+        background: #F9F9F9;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    /*.two-object table {
+        width: 40%;
+    }*/
+
+    table {
+        color: #58585B;
+        border-collapse: collapse;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    th,
+    td {
+        border: 0.75px solid #dfdfdf;
+        padding: 0.8rem;
+    }
+
+    th {
+        text-align: left;
+        background: #f2f2f2;
+    }
+
+    h2 {
+        font-family: 'CiscoSansTT' !important;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .table-container {
+        font-family: 'CiscoSansTT';
+        font-size: 12px;
+        <!--overflow-x: auto;-->
+    }
+
+    .no-table-data-wrapper {
+        font-family: CiscoSansTT;
+        font-size: 14px;
+        color: #E59757;
+        background: #FFF8EC;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .migration-summary tr:nth-child(4n+1),
+    .migration-summary tr:nth-child(4n+2) {
+        background: #f2f2f2;
+    }
+
+    .info-icon {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        /*margin: 0 10px 0 0;*/
+        position: relative;
+        top: 5px;
+    }
+
+    .sub-section {
+        margin-left: 15px;
+    }
+
+    .end-of-report-wrapper {
+        width: 100%;
+        margin: 30px 0 20px 0;
+    }
+
+    .horizontal-line {
+        border-bottom: 1px solid #dcdcdc;
+        display: inline-block;
+        width: 45%;
+    }
+
+    .end-report-text {
+        margin: 0 2px;
+        display: inline-block;
+        width: 8%;
+        text-align: center;
+        position: relative;
+        top: 3px;
+        font-size: 14px;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .note {
+        line-height: 1;
+    }
+
+
+    .lbl-toggle::before {
+         content: ' ';
+         display: inline-block;
+         border-top: 5px solid transparent;
+         border-bottom: 5px solid transparent;
+         border-left: 5px solid currentColor;
+         vertical-align: middle;
+         margin-right: .7rem;
+         transform: translateY(-2px);
+         transition: transform .2s ease-out;
+         }
+         .lbl-toggle-arrow, .lbl-toggle-down  {
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 15px;
+         }
+         .lbl-toggle-arrow::before {
+            content: ' ';
+            display: inline-block;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid currentColor;
+            vertical-align: middle;
+            margin-right: .7rem;
+            transform: translateY(-2px);
+            transition: transform .2s ease-out;
+         }
+         .lbl-toggle-down::before {
+            content: ' ';
+            display: inline-block;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid currentColor;
+            vertical-align: middle;
+            margin-right: .7rem;
+            transform: translateY(-2px);
+            transform: rotate(90deg) translateX(-3px);
+         }
+         .toggle:checked + .lbl-toggle::before {
+         transform: rotate(90deg) translateX(-3px);
+         }
+         .collapsible-content {
+         max-height: 0px;
+         overflow: hidden;
+         transition: max-height .25s ease-in-out;
+         <!--max-height: 100%-->
+         }
+         .toggle:checked + .lbl-toggle + .collapsible-content {
+         max-height: 100%;
+         }
+         .toggle:checked + .lbl-toggle {
+         border-bottom-right-radius: 0;
+         border-bottom-left-radius: 0;
+         }
+         .collapsible-content .content-inner {
+         border-bottom-left-radius: 7px;
+         border-bottom-right-radius: 7px;
+         padding: .5rem 1rem;
+         }
+         .td-pre {
+         background-color: #f2f2f2;
+         max-height: 500px;
+         overflow-y: auto;
+         max-width: 800px;
+         padding: 10px 0;
+         }
+         .td-name {
+         font-size: 15px;
+         font-weight: 500;
+         text-decoration: underline;
+         cursor: pointer;
+         text-underline-position: under;
+         }
+    .custom-line {
+         line-height: 16px;
+         }
+    .script-box {
+         margin: 0 10px 0 20px;
+         padding-top: 10px;
+         max-height: 500px;
+         overflow: auto;
+         }
+         .script-box table {
+         font-size: 15px;
+         color: #58585b;
+         line-height: 10px;
+         border: none;
+         background-color: #f2f2f2;
+         width: 99.05%;
+         font-family: 'CourierNewPSMT';
+         }
+         .script-box td:nth-child(1) {
+         width: 3%;
+         text-align: right;
+         border: none;
+         border-right: 1px solid #dfdfdf;
+         }
+         .script-box td:nth-child(1) {
+         text-align: left !important;
+         }
+         .script-box td:nth-child(2) {
+         width: 67%;
+         border: none;
+         }
+    .wrap-collabsible {
+         margin-left: 10px;
+         }
+
+    .error-desc {
+        border: 1px solid #000;
+        padding: 2px 5px;
+        font-size: 15px;
+    }
+    .error-heading {
+        font-size: 15px;
+        font-weight: bold;
+        margin: 25px 0 10px 10px;
+    }
+
+    </style>
+
+     <script>
+         function toggle(id) {
+            var tag = document.getElementById(id);
+            if (tag && tag.hasAttribute("class")) {
+               if (tag.getAttribute("class") == "lbl-toggle-down") {
+                    tag.setAttribute("class", "lbl-toggle-arrow")
+               } else {
+                    tag.setAttribute("class", "lbl-toggle-down")
+               }
+            }
+         }
+         function collapse(tag, id) {
+             toggle(id);
+             var childId = id.replace(tag, "");
+             console.log(id, childId);
+             var childElement = document.getElementById(childId)
+             if (childElement.hasAttribute("class") && childElement.getAttribute("class") == "collapsible-content") {
+                 childElement.removeAttribute("class")
+             } else {
+                 childElement.setAttribute("class", "collapsible-content")
+             }
+         }
+         function un_collapse(tag, id) {
+             collapse(tag, 'un_'+id);
+         }
+      </script>
+
+
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="img-span">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-275 379 61 35" style="enable-background:new -275 379 61 35;" xml:space="preserve">
+                <title>Group</title>
+                <desc>Created with Sketch.</desc>
+                <g id="NOTIFICATION" transform="translate(-1886.000000, -362.000000)" sketch:type="MSArtboardGroup">
+                    <g id="Group" transform="translate(1886.016129, 362.000000)" sketch:type="MSLayerGroup">
+                        <path id="Fill-1" sketch:type="MSShapeGroup" d="M-257.8,401.8h2.5v11.9h-2.5V401.8z" />
+                        <path id="Fill-2" sketch:type="MSShapeGroup" d="M-233.2,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3" />
+                        <path id="Fill-3" sketch:type="MSShapeGroup" d="M-261.5,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3" />
+                        <path id="Fill-4" sketch:type="MSShapeGroup" d="M-225.2,404.7c-1.6,0-2.7,1.4-2.7,3c0,1.7,1.2,3,2.7,3
+          c1.6,0,2.7-1.4,2.7-3C-222.4,406.1-223.6,404.7-225.2,404.7L-225.2,404.7z M-219.6,407.7c0,3.3-2.3,6-5.5,6c-3.2,0-5.5-2.7-5.5-6
+          c0-3.3,2.3-6,5.5-6C-222,401.8-219.6,404.4-219.6,407.7L-219.6,407.7z" />
+                        <path id="Fill-5" sketch:type="MSShapeGroup" d="M-245,404.6c0,0-1.2-0.4-2.1-0.4c-1.1,0-1.7,0.4-1.7,0.9
+          c0,0.7,0.8,0.9,1.2,1.1l0.7,0.3c1.8,0.6,2.6,1.9,2.6,3.3c0,2.9-2.4,3.9-4.4,3.9c-1.4,0-2.8-0.3-2.9-0.3v-2.7
+          c0.2,0.1,1.4,0.4,2.6,0.4c1.3,0,2-0.4,2-1.1c0-0.6-0.5-0.9-1.2-1.1c-0.2-0.1-0.4-0.1-0.6-0.2c-1.5-0.5-2.8-1.5-2.8-3.4
+          c0-2.2,1.5-3.6,4-3.6c1.3,0,2.6,0.3,2.6,0.4V404.6" />
+                        <path id="Fill-6" sketch:type="MSShapeGroup" d="M-272.5,389.8c0-0.7-0.5-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                        <path id="Fill-7" sketch:type="MSShapeGroup" d="M-265.2,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-8" sketch:type="MSShapeGroup" d="M-257.8,380.7c0-0.8-0.6-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7" />
+                        <path id="Fill-9" sketch:type="MSShapeGroup" d="M-250.4,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-10" sketch:type="MSShapeGroup" d="M-243,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                        <path id="Fill-11" sketch:type="MSShapeGroup" d="M-235.6,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-12" sketch:type="MSShapeGroup" d="M-228.3,380.7c0-0.8-0.5-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7" />
+                        <path id="Fill-13" sketch:type="MSShapeGroup" d="M-222.1,385.9c0-0.7-0.5-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9" />
+                        <path id="Fill-14" sketch:type="MSShapeGroup" d="M-214.7,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.5,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8" />
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <!-- <div style="display: inline-block;"> -->
+        <div class="report-title">
+            {{title}}
+        </div>
+        <!-- </div> -->
+        <div class="date-wrapper">
+            {{date_stamp}}
+        </div>
+    </div>
+    <!-- main content -->
+    <div class="main-container">
+        <!-- note container -->
+        <div class="note">
+            <span style="color: #cf2030;">Note: </span>
+            <span>
+            	Review the contents of the Post-Migration Report carefully. Confirm that the configurations, rules and other mappings are migrated as expected. Review any rules that are disabled by the Migration Tool and that are not migrated. Ensure to note any unsupported or partially supported rules or other configuration items that are not migrated
+ 				<br/>
+                The unsupported rules that are not migrated completely and are in disabled state, can potentially alter the original configuration, restrict some traffic, or permit unwanted traffic. We recommend you update the related rules and policies in Multicloud Defense so that it handles the traffic appropriately.
+
+            </span>
+            <br>
+        </div>
+        <!--  -->
+        <!-- Section 1 -->
+        <div>
+            <h1 class="section-title">1. Migration Summary: </h1>
+            <div class="section-container">
+                <div class="section-description">
+                    A summary of the configuration that was successfully migrated from Palo Alto to Multicloud Defense, including information about the source device and the successfully migrated configuration elements.
+                </div>
+                <div class="table-container two-object migration-summary">
+                    {% if post_migration_summary|length %}
+                    <table>
+                        {% for obj in post_migration_summary %}
+                        <tr>
+                            <td>{{obj}}</td>
+                            <td>{{post_migration_summary[obj]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <div class="no-table-data-wrapper">
+                        <i class="info-icon"></i>None
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- Section 2 -->
+        <div>
+           <h1 class="section-title">2. Selective policy:</h1>
+           <div class="section-container">
+              <div class="table-container two-object">
+                 <table>
+                    <tr>
+                       <th>Category</th>
+                       <th>Enabled for Migration</th>
+                    </tr>
+                    <tr>
+                       <td><b>Device Configuration</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>Interface</td>
+                       <td>Not Applicable</td>
+                    </tr>
+                    <tr>
+                       <td>Routes</td>
+                       <td>Not Applicable</td>
+                    </tr>
+                    <tr>
+                       <td><b>Shared Configuration</b></td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                       <td>Access Rules</td>
+                       <td>{{selective_policy_columns.get("acl")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Network Objects</td>
+                       <td>{{selective_policy_columns.get("network_object")}}</td>
+                    </tr>
+                    <tr>
+                       <td>Port Objects</td>
+                       <td>{{selective_policy_columns.get("port_object")}}</td>
+                    </tr>
+                     <tr>
+                         <td>FQDN Objects</td>
+                         <td>{{selective_policy_columns.get("fqdn")}}</td>
+                     </tr>
+                     <tr>
+                         <td>URL Objects</td>
+                         <td>{{selective_policy_columns.get("url_objects")}}</td>
+                     </tr>
+                     <tr>
+                         <td><b>Optimization</b></td>
+                         <td></td>
+                     </tr>
+                    <tr>
+                       <td>Migrate Referenced Objects only</td>
+                       <td>{{selective_policy_columns.get("unreferenced")}}</td>
+                    </tr>
+                 </table>
+              </div>
+           </div>
+        </div>
+        <!--  -->
+        <!-- Section 3 -->
+        <div>
+            <h1 class="section-title">3. Object Conflict Handling:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    The following table displays the details of the PALO ALTO firewall objects identified as having conflicts with the existing objects in Multicloud Defense. If the objects have the same name but a different configuration, you can rename these objects. Review these objects carefully and verify that the conflicts are appropriately resolved
+                </div>
+
+                {% if not renamed_objects_list  %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+
+                {% set d3 = 0 %}
+                {% if renamed_objects_list %}
+                <div class="sub-section">
+                    <h2>3.{{ "abcdefghijklmnopqrstuvwxyz"[d3] }}: Renamed Objects:</h2>
+                    {% set d3 = d3+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                <th><b>Object Name</b></th>
+                                <th><b>Renamed Objects in Multicloud Defense</b></th>
+                                <th><b>Object Type</b></th>
+                            </tr>
+                            {% for renamed_object in renamed_objects_list %}
+                                <tr>
+                                    {% for value in renamed_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+        <!--  -->
+
+        <!-- Section 4 -->
+        <div>
+            <h1 class="section-title">4. Optimization:</h1>
+            <div class="section-container">
+                <div class="section-description">
+                    The following table displays the details of the PALO ALTO  objects and ACL optimization.
+                    If the objects have the same name and configuration, the Migration Tool reuses the Multicloud Defense object. Review these objects carefully and verify that the conflicts are appropriately resolved.
+
+                </div>
+
+                {% if not optimization_summary and not reused_objects_list and not unused_network_objects and not unused_service_objects %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+
+                {% set d4 = 0 %}
+
+                {% if optimization_summary %}
+                <div class="sub-section">
+                    <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[d4] }}: ACL Optimization:</h2>
+                    {% set d4 = d4+1 %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                <th rowspan="3">{{optimization_summary_columns[0]}}</th>
+                                <th colspan="4" class="align-center">{{optimization_summary_columns[1]}}</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">{{optimization_summary_columns[2]}}</th>
+                                <th colspan="3" class="align-center">{{optimization_summary_columns[3]}}</th>
+                            </tr>
+                            <tr>
+                                <th>{{optimization_summary_columns[4]}}</th>
+                                <th>{{optimization_summary_columns[5]}}</th>
+                                <th>{{optimization_summary_columns[6]}}</th>
+                            </tr>
+                            {% for key in optimization_summary %}
+                            <tr>
+                                {% if key == "Total Original ACL rules (Source Configuration)" or key == "Total ACL rules considered for Optimization"%}
+                                    <td class="bold_text" >{{key}}</td>
+                                    {% for item in optimization_summary[key] %}
+                                        <td class="align-center bold_text">{{item}}</td>
+                                    {% endfor %}
+                                {% else %}
+                                    <td>{{key}}</td>
+                                    {% for item in optimization_summary[key] %}
+                                        <td class="align-center">{{item}}</td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="sub-section">
+                        <h2>Please click <a href="{{ optimization_report_path }}">here</a> for detailed Optimization excel report (.xls) that additionally confirms reviewed and validated actions on all ACLs.</h2>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if unused_network_objects or unused_service_objects or unused_fqdn_objects or unused_accesslist_objects %}
+                <div class="sub-section">
+                    <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[d4] }}: Unreferenced Objects:</h2>
+                    {% set d4 = d4+1 %}
+                    <div class="section-description">
+                        List of objects that are optimized as they are not referenced in any supported config section.
+                    </div>
+                    {% if unused_objects_mcd %}
+                        <div class="sub-section">
+                             <div class="table-container one-object">
+                                 <table>
+                                    <tr>
+                                       <th>Object Name</th>
+                                    </tr>
+                                     {% for unused_obj in unused_objects_mcd %}
+                                        <tr>
+                                            <td> {{ unused_obj }}</td>
+                                        </tr>
+                                     {% endfor %}
+                                 </table>
+                             </div>
+                        </div>
+                    {% endif %}
+                    <div class="container post_mig_note-container">
+                    <span style="color: #cf2030;">Note: </span>
+                    <span>
+                        List of objects that are optimized as they are not referenced in any supported config section.
+                        <a href="{{unused_objects_excel}}" target="blank">Click Here</a> for more details.
+                    </span>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if reused_objects_list %}
+                <div class="sub-section">
+                    <h2>4.{{ "abcdefghijklmnopqrstuvwxyz"[d4] }}: Reused Objects:</h2>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                               <th><b>Object Name</b></th>
+                                <th><b>Reused Object in Multicloud Defense </b></th>
+                                <th><b>Object Type</b></th>
+                            </tr>
+                            {% for reused_object in reused_objects_list %}
+                                <tr>
+                                    {% for value in reused_object %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div>
+            <h1 class="section-title">5. ACL Category Conflict Handling:</h1>
+            <div class="section-container">
+
+                <div class="section-description">
+                    The following table displays the details of the ACL Rule categories identified as having conflicts with naming limitation on Multicloud Defense. The category names are trimmed as it exceeded the supported limit on Multicloud Defense.
+                    Review these categories carefully.
+                </div>
+
+                {% if (not acl_conflict_handling_list|length)  %}
+                 <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+
+                {% if acl_conflict_handling_list|length %}
+                <div class="table-container two-object">
+                    <table>
+                        <tr>
+                            <th><b>ACL Category Real Name</b></th>
+                            <th><b>Trimmed Category name in Multicloud Defense</b></th>
+                        </tr>
+                        {% for acl_object in acl_conflict_handling_list %}
+                            <tr>
+                                {% for value in acl_object %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+
+
+        <!-- Section 6-->
+         <div>
+            <h1 class="section-title">6. Unsupported Configuration:</h1>
+            <div class="section-container">
+
+                <div class="section-description">
+                    The following table displays the details of configuration elements that are not migrated as the
+                    Migration Tool does not support migration of those features. Review these lines and verify whether each feature is
+                    supported or not. If supported, then configure the features manually in Multicloud Defense.
+                </div>
+
+                {% if (not unsupported_acp_rules_list_mcd|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+
+                {% set c9 = 0 %}
+                {% if unsupported_acp_rules_list_mcd|length %}
+                <div class="sub-section">
+                    <h2>6.{{ "abcdefghijklmnopqrstuvwxyz"[c9] }}: Access Control Policy Rules:</h2>
+                    {% set c9 = c9+1 %}
+                    <div class="section-description">
+                        The following table displays the details of all access control policy rules that are not migrated as the configuration
+                        is not supported by the Migration Tool for Multicloud Defense. Review these rules carefully and verify whether the feature is
+                        supported or not. If supported, then configure these features manually in Multicloud Defense.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+
+                                {% for column in unsupported_acp_rules_columns_mcd [:unsupported_acp_rules_columns_mcd|length -2]%}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+
+                            </tr>
+                            {% for acl_object in unsupported_acp_rules_list_mcd %}
+                                <tr>
+                                    {% for value in acl_object  [:unsupported_acp_rules_columns_mcd|length -2]%}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+
+        <!--Section 7 -->
+         <div>
+            <h1 class="section-title">7. Partially Migrated Configuration:</h1>
+            <div class="section-container">
+
+                <div class="section-description">
+                    The following table displays the details of the PALO ALTO rules that are partially migrated.
+                    This includes rules with advanced options or any additional settings, but they are migrated without those.
+                    Review these lines and verify whether the advanced options are supported in Multicloud Defense. If supported,
+                    then configure these options manually.
+                </div>
+
+                {% if (not partial_acl_list|length) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>No partially supported configuration detected
+                </div>
+                {% else %}
+
+                {% if partial_acl_list|length %}
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in partial_acl_columns [:partial_acl_columns | length -2]%}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+
+                            </tr>
+                            {% for acl_object in partial_acl_list %}
+                                <tr>
+                                    {% for value in acl_object [: partial_acl_columns | length -2]%}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Section 8 -->
+        <div>
+            <h1 class="section-title">8. Action Taken on Converted Features</h1>
+
+            <div class="section-container">
+
+                {% if (not do_not_migrate_acp_rules_list|length) and (not acl_rule_change_list|length)  and (not acl_log_change_list|length)  %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+
+                {% set c12 = 0 %}
+
+                {% if do_not_migrate_acp_rules_list|length %}
+                <div class="sub-section">
+                    <h2>8.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Access Rules You Chose Not to Migrate</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the access control rules that you chose not to migrate with the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If required, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in do_not_migrate_acp_rules_columns[:do_not_migrate_acp_rules_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+
+                            </tr>
+                            {% for acl_object in do_not_migrate_acp_rules_list %}
+                                <tr>
+                                    {% for value in acl_object[:do_not_migrate_acp_rules_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if acl_rule_change_list|length %}
+                <div class="sub-section">
+                    <h2>8.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: 'Rule Action' Change</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        The following table displays the details of all the Access Control Policy Rules that had ‘Rule Action’ changed using the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If required, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in acl_rule_change_columns[:acl_rule_change_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+
+                            </tr>
+                            {% for acl_object in acl_rule_change_list %}
+                                <tr>
+                                    {% for value in acl_object[:acl_rule_change_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if acl_log_change_list|length %}
+                <div class="sub-section">
+                    <h2>14.{{ "abcdefghijklmnopqrstuvwxyz"[c12] }}: Rule 'Log' Setting Change</h2>
+                    {% set c12 = c12+1 %}
+                    <div class="section-description">
+                        The following table displays the details of the access control rules that had ‘Log’ setting changed using the Migration Tool. Review these lines and verify that all the rules you chose are listed in this section. If required, you can configure these rules manually.
+                    </div>
+                    <div class="table-container two-object">
+                        <table>
+                            <tr>
+                                {% for column in acl_log_change_columns[:acl_log_change_columns|length - 2] %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+
+                            </tr>
+                            {% for acl_object in acl_log_change_list %}
+                                <tr>
+                                    {% for value in acl_object[:acl_log_change_columns|length - 2] %}
+                                        <td>{{value}}</td>
+                                    {% endfor %}
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Section 9 -->
+        <div >
+            <h1 class="section-title">9. Errors/Failure on Migrated Configuration </h1>
+            <div class=" section-container">
+
+                <div class="section-description">
+                    The following section displays the details on error causing the migration failure while pushing the migrated
+                    configuration elements. The error reported below could be related to the incorrect migrated configuration or
+                    else conflict on Multicloud Defense due to some existing configuration or unsupported feature.
+
+                    Review these errors and verify before proceeding or resuming the configuration push to the target Multicloud Defense.
+
+                </div>
+                {% if (error_data.items()|length == 0) %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+                {% else %}
+                <div>
+                    <h2 class="section-title">9.{{error_data["title"]}}</h2>
+                    <div class="section-description">
+                        <div class="error-heading"> Error Message:</div>
+                        <div class="error-desc">
+                            {{error_data["message"]}}
+                        </div>
+                        <div class="error-heading"> Verbose Message Log:</div>
+                        <div class="error-desc">
+                            {{error_data["description"]}}
+                        </div>
+                        <div class="error-heading">Possible Reasons for the failure :
+                            <a href="https://www.cisco.com/c/en/us/support/security/firepower-ngfw/products-system-message-guides-list.html" target="_blank">Refer the link for details.</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        <div class="end-of-report-wrapper">
+            <div class="horizontal-line">
+            </div>
+            <div class="end-report-text">
+                End of Report
+            </div>
+            <div class="horizontal-line">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

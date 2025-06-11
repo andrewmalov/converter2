@@ -1,0 +1,574 @@
+﻿[
+    {
+        "Fortinet CA Certificates": "ACCVRAIZ1       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "AC_RAIZ_FNMT-RCM        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "ANF_Secure_Server_Root_CA       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Actalis_Authentition_Root_CA  ",
+        "FMC CA Certificates": "Actalis-Authentication-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "AffirmTrust_Commercial  ",
+        "FMC CA Certificates": "AffirmTrust-Commercial"
+    },
+    {
+        "Fortinet CA Certificates": "AffirmTrust_Networking  ",
+        "FMC CA Certificates": "AffirmTrust-Networking"
+    },
+    {
+        "Fortinet CA Certificates": "AffirmTrust_Premium     ",
+        "FMC CA Certificates": "AffirmTrust-Premium"
+    },
+    {
+        "Fortinet CA Certificates": "AffirmTrust_Premium_ECC ",
+        "FMC CA Certificates": "AffirmTrust-Premium-ECC"
+    },
+    {
+        "Fortinet CA Certificates": "Amazon_Root_CA_1        ",
+        "FMC CA Certificates": "Amazon-Root-CA-1"
+    },
+    {
+        "Fortinet CA Certificates": "Amazon_Root_CA_2        ",
+        "FMC CA Certificates": "Amazon-Root-CA-2"
+    },
+    {
+        "Fortinet CA Certificates": "Amazon_Root_CA_3        ",
+        "FMC CA Certificates": "Amazon-Root-CA-3"
+    },
+    {
+        "Fortinet CA Certificates": "Amazon_Root_CA_4        ",
+        "FMC CA Certificates": "Amazon-Root-CA-4"
+    },
+    {
+        "Fortinet CA Certificates": "Atos_TrustedRoot_2011   ",
+        "FMC CA Certificates": "Atos-TrustedRoot-2011"
+    },
+    {
+        "Fortinet CA Certificates": "Atos_TrustedRoot_Root_CA_ECC_TLS_2021   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Atos_TrustedRoot_Root_CA_RSA_TLS_2021   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Autoridad_de_Certificion_Firmaprofesional_CIF_A62634068_-_V1  ",
+        "FMC CA Certificates": "Autoridad-de-Certificacion-Firmaprofesional-CIF-A62634068"
+    },
+    {
+        "Fortinet CA Certificates": "BJCA_Global_Root_CA1    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "BJCA_Global_Root_CA2    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Baltimore_CyberTrust_Root       ",
+        "FMC CA Certificates": "Baltimore-CyberTrust-Root"
+    },
+    {
+        "Fortinet CA Certificates": "Buypass_Class_2_Root_CA ",
+        "FMC CA Certificates": "Buypass-Class-2-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "Buypass_Class_3_Root_CA ",
+        "FMC CA Certificates": "Buypass-Class-3-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "CA_Disig_Root_R2        ",
+        "FMC CA Certificates": "CA-Disig-Root-R2"
+    },
+    {
+        "Fortinet CA Certificates": "CFCA_EV_ROOT    ",
+        "FMC CA Certificates": "CFCA-EV-ROOT"
+    },
+    {
+        "Fortinet CA Certificates": "COMODO_Certifition_Authority  ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "COMODO_ECC_Certifition_Authority      ",
+        "FMC CA Certificates": "COMODO-ECC-Certification-Authority"
+    },
+    {
+        "Fortinet CA Certificates": "COMODO_RSA_Certifition_Authority      ",
+        "FMC CA Certificates": "COMODO-RSA-Certification-Authority"
+    },
+    {
+        "Fortinet CA Certificates": "Certainly_Root_E1       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certainly_Root_R1       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certigna        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certigna_Root_CA        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certum_EC-384_CA        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certum_Trusted_Network_CA       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certum_Trusted_Network_CA_2     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Certum_Trusted_Root_CA  ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Comodo_AAA_Services_root        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "D-TRUST_BR_Root_CA_1_2020       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "D-TRUST_EV_Root_CA_1_2020       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "D-TRUST_Root_Class_3_CA_2_2009  ",
+        "FMC CA Certificates": "D-TRUST-Root-Class-3-CA-2-2009"
+    },
+    {
+        "Fortinet CA Certificates": "D-TRUST_Root_Class_3_CA_2_EV_2009       ",
+        "FMC CA Certificates": "D-TRUST-Root-Class-3-CA-2-EV-2009"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Assured_ID_Root_CA     ",
+        "FMC CA Certificates": "DigiCert-Assured-ID-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Assured_ID_Root_G2     ",
+        "FMC CA Certificates": "DigiCert-Assured-ID-Root-G2"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Assured_ID_Root_G3     ",
+        "FMC CA Certificates": "DigiCert-Assured-ID-Root-G3"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Global_Root_CA ",
+        "FMC CA Certificates": "DigiCert-Global-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Global_Root_G2 ",
+        "FMC CA Certificates": "DigiCert-Global-Root-G2"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Global_Root_G3 ",
+        "FMC CA Certificates": "DigiCert-Global-Root-G3"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_High_Assurance_EV_Root_CA      ",
+        "FMC CA Certificates": "DigiCert-High-Assurance-EV-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_TLS_ECC_P384_Root_G5   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_TLS_RSA4096_Root_G5    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "DigiCert_Trusted_Root_G4        ",
+        "FMC CA Certificates": "DigiCert-Trusted-Root-G4"
+    },
+    {
+        "Fortinet CA Certificates": "Entrust.net_Premium_2048_Secure_Server_CA       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Entrust_Root_Certifition_Authority    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Entrust_Root_Certifition_Authority_-_EC1      ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Entrust_Root_Certifition_Authority_-_G2       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Entrust_Root_Certifition_Authority_-_G4       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Fortinet_CA     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Fortinet_CA2    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Fortinet_Sub_CA ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GDCA_TrustAUTH_R5_ROOT  ",
+        "FMC CA Certificates": "GDCA-TrustAUTH-R5-ROOT"
+    },
+    {
+        "Fortinet CA Certificates": "GLOBALTRUST_2020        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GTS_Root_R1_-_V1        ",
+        "FMC CA Certificates": "GTS-Root-R1"
+    },
+    {
+        "Fortinet CA Certificates": "GTS_Root_R2_-_V1        ",
+        "FMC CA Certificates": "GTS-Root-R2"
+    },
+    {
+        "Fortinet CA Certificates": "GTS_Root_R3_-_V1        ",
+        "FMC CA Certificates": "GTS-Root-R3"
+    },
+    {
+        "Fortinet CA Certificates": "GTS_Root_R4_-_V1        ",
+        "FMC CA Certificates": "GTS-Root-R4"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_ECC_Root_CA_-_R4_-_V1        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_ECC_Root_CA_-_R5     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_Root_CA      ",
+        "FMC CA Certificates": "GlobalSign-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_Root_CA_-_R3 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_Root_CA_-_R6 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_Root_E46     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "GlobalSign_Root_R46     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Go_Daddy_Class_2_CA     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Go_Daddy_Root_Certifite_Authority_-_G2        ",
+        "FMC CA Certificates": "Go-Daddy-Root-Certificate-Authority-G2"
+    },
+    {
+        "Fortinet CA Certificates": "HARICA_TLS_ECC_Root_CA_2021     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "HARICA_TLS_RSA_Root_CA_2021     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Hellenic_Ademic_and_Research_Institutions_ECC_RootCA_2015     ",
+        "FMC CA Certificates": "Hellenic-Academic-and-Research-Institutions-ECC-RootCA-2015"
+    },
+    {
+        "Fortinet CA Certificates": "Hellenic_Ademic_and_Research_Institutions_RootCA_2015 ",
+        "FMC CA Certificates": "Hellenic-Academic-and-Research-Institutions-RootCA-2015"
+    },
+    {
+        "Fortinet CA Certificates": "HiPKI_Root_CA_-_G1      ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Hongkong_Post_Root_CA_3 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "ISRG_Root_X1    ",
+        "FMC CA Certificates": "ISRG-Root-X1"
+    },
+    {
+        "Fortinet CA Certificates": "ISRG_Root_X2    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "IdenTrust_Commercial_Root_CA_1  ",
+        "FMC CA Certificates": "IdenTrust-Commercial-Root-CA-1"
+    },
+    {
+        "Fortinet CA Certificates": "IdenTrust_Public_Sector_Root_CA_1       ",
+        "FMC CA Certificates": "IdenTrust-Public-Sector-Root-CA-1"
+    },
+    {
+        "Fortinet CA Certificates": "Izenpe.com      ",
+        "FMC CA Certificates": "Izenpe.com      "
+    },
+    {
+        "Fortinet CA Certificates": "Microsec_e-Szigno_Root_CA_2009  ",
+        "FMC CA Certificates": "Microsec-e-Szigno-Root-CA-2009"
+    },
+    {
+        "Fortinet CA Certificates": "Microsoft_ECC_Root_Certifite_Authority_2017   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Microsoft_RSA_Root_Certifite_Authority_2017   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "NAVER_Global_Root_Certifition_Authority       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "NetLock_Arany_Class_Gold_Főtanúsítvány  ",
+        "FMC CA Certificates": "NetLock-Arany-Class-Gold-FAtanAosAtvAny"
+    },
+    {
+        "Fortinet CA Certificates": "OISTE_WISeKey_Global_Root_GB_CA ",
+        "FMC CA Certificates": "OISTE-WISeKey-Global-Root-GB-CA"
+    },
+    {
+        "Fortinet CA Certificates": "OISTE_WISeKey_Global_Root_GC_CA ",
+        "FMC CA Certificates": "OISTE-WISeKey-Global-Root-GC-CA"
+    },
+    {
+        "Fortinet CA Certificates": "QuoVadis_Root_CA_1_G3   ",
+        "FMC CA Certificates": "QuoVadis-Root-CA-1-G3"
+    },
+    {
+        "Fortinet CA Certificates": "QuoVadis_Root_CA_2      ",
+        "FMC CA Certificates": "QuoVadis-Root-CA-2"
+    },
+    {
+        "Fortinet CA Certificates": "QuoVadis_Root_CA_2_G3   ",
+        "FMC CA Certificates": "QuoVadis-Root-CA-2-G3"
+    },
+    {
+        "Fortinet CA Certificates": "QuoVadis_Root_CA_3      ",
+        "FMC CA Certificates": "QuoVadis-Root-CA-3"
+    },
+    {
+        "Fortinet CA Certificates": "QuoVadis_Root_CA_3_G3   ",
+        "FMC CA Certificates": "QuoVadis-Root-CA-3-G3"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_EV_Root_Certifition_Authority_ECC     ",
+        "FMC CA Certificates": "SSL.com-EV-Root-Certification-Authority-ECC"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_EV_Root_Certifition_Authority_RSA_R2  ",
+        "FMC CA Certificates": "SSL.com-EV-Root-Certification-Authority-RSA-R2"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_Root_Certifition_Authority_ECC        ",
+        "FMC CA Certificates": "SSL.com-Root-Certification-Authority-ECC"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_Root_Certifition_Authority_RSA        ",
+        "FMC CA Certificates": "SSL.com-Root-Certification-Authority-RSA"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_TLS_ECC_Root_CA_2022    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "SSL.com_TLS_RSA_Root_CA_2022    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "SZAFIR_ROOT_CA2 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Sectigo_Public_Server_Authentition_Root_E46   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Sectigo_Public_Server_Authentition_Root_R46   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "SecureSign_RootCA11     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "SecureTrust_CA  ",
+        "FMC CA Certificates": "SecureTrust-CA"
+    },
+    {
+        "Fortinet CA Certificates": "Secure_Global_CA        ",
+        "FMC CA Certificates": "Secure-Global-CA"
+    },
+    {
+        "Fortinet CA Certificates": "Security_Communition_ECC_RootCA1      ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Security_Communition_RootCA2  ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Security_Communition_RootCA3  ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Security_Communition_Root_CA  ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Starfield_Class_2_CA    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Starfield_Root_Certifite_Authority_-_G2       ",
+        "FMC CA Certificates": "Starfield-Root-Certificate-Authority-G2"
+    },
+    {
+        "Fortinet CA Certificates": "Starfield_Services_Root_Certifite_Authority_-_G2      ",
+        "FMC CA Certificates": "Starfield-Services-Root-Certificate-Authority-G2"
+    },
+    {
+        "Fortinet CA Certificates": "SwissSign_Gold_CA_-_G2  ",
+        "FMC CA Certificates": "SwissSign-Gold-CA-G2"
+    },
+    {
+        "Fortinet CA Certificates": "SwissSign_Silver_CA_-_G2        ",
+        "FMC CA Certificates": "SwissSign-Silver-CA-G2"
+    },
+    {
+        "Fortinet CA Certificates": "T-TeleSec_GlobalRoot_Class_2    ",
+        "FMC CA Certificates": "T-TeleSec-GlobalRoot-Class-2"
+    },
+    {
+        "Fortinet CA Certificates": "T-TeleSec_GlobalRoot_Class_3    ",
+        "FMC CA Certificates": "T-TeleSec-GlobalRoot-Class-3"
+    },
+    {
+        "Fortinet CA Certificates": "TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1   ",
+        "FMC CA Certificates": "TUBITAK-Kamu-SM-SSL-Kok-Sertifikasi-Surum-1"
+    },
+    {
+        "Fortinet CA Certificates": "TWCA_Global_Root_CA     ",
+        "FMC CA Certificates": "TWCA-Global-Root-CA"
+    },
+    {
+        "Fortinet CA Certificates": "TWCA_Root_Certifition_Authority       ",
+        "FMC CA Certificates": "TWCA-Root-Certification-Authority"
+    },
+    {
+        "Fortinet CA Certificates": "TeliaSonera_Root_CA_v1  ",
+        "FMC CA Certificates": "TeliaSonera-Root-CA-v1"
+    },
+    {
+        "Fortinet CA Certificates": "Telia_Root_CA_v2        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Trustwave_Global_Certifition_Authority        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Trustwave_Global_ECC_P256_Certifition_Authority       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "Trustwave_Global_ECC_P384_Certifition_Authority       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "TunTrust_Root_CA        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "UCA_Extended_Validation_Root    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "UCA_Global_G2_Root      ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "USERTrust_ECC_Certifition_Authority   ",
+        "FMC CA Certificates": "USERTrust-ECC-Certification-Authority"
+    },
+    {
+        "Fortinet CA Certificates": "USERTrust_RSA_Certifition_Authority   ",
+        "FMC CA Certificates": "USERTrust-RSA-Certification-Authority"
+    },
+    {
+        "Fortinet CA Certificates": "XRamp_Global_CA_Root    ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "certSIGN_ROOT_CA        ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "certSIGN_Root_CA_G2     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "e-Szigno_Root_CA_2017   ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "ePKI_Root_Certifition_Authority       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "emSign_ECC_Root_CA_-_C3 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "emSign_ECC_Root_CA_-_G3 ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "emSign_Root_CA_-_C1     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "emSign_Root_CA_-_G1     ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "vTrus_ECC_Root_CA       ",
+        "FMC CA Certificates": "Not Available"
+    },
+    {
+        "Fortinet CA Certificates": "vTrus_Root_CA   ",
+        "FMC CA Certificates": "Not Available"
+    }
+]

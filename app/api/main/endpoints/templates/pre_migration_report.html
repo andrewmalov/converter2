@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset="UTF-8">
+    {% include 'fonts.html' %}
+<style>
+:root {
+  --Sans: CiscoSansTT;
+  --Sans-Oblique: CiscoSansTT-Oblique;
+  --SansTTLight: CiscoSansTTLight;
+  --CourierNewPSMT: CourierNewPSMT;
+}
+
+body { 
+    font-family: var(--Sans);
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: 14pt;}
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;}
+.cui .text--secondary, .cui .text-secondary {
+    color: #049fd9!important;
+}
+.header-container {
+  /*margin: 0 10px 10px 30px;
+  width: 100%;*/
+  font-family: var(--Sans);
+  margin: 0 auto;
+  height: 30px;
+  padding: 1.2em;
+  border-bottom: 1px solid #d2d2d2;
+}
+.img-span {
+  height: 52px;
+  width: 72px;
+  display: inline-block;
+  color: #049fd9;
+}
+.report-title {
+  font-size: 22px;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-top: 5px;
+  font-family: var(--Sans);
+}
+.date-wrapper {
+  font-size: 16px;
+  margin-left: 5px;
+  color: #58585B;
+}
+.container {
+  margin-right: 20px;
+  margin-left: 20px;
+  font-family: var(--Sans);
+  font-size: 14px;
+  margin-top: 30px;
+}
+.pre_mig_note-container span {
+    font-size: 12px;
+    color: #9E9EA2;
+    font-family: var(--Sans-Oblique);
+}
+.pre-mig p {
+    margin: 0 0 0 5px;
+    font-size: 14px;
+}
+h1 {
+  font-family: var(--Sans) !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #049fd9;
+}
+h2 {
+  font-family: var(--Sans) !important;
+  font-weight: normal;
+  font-size: 16px;
+  margin-left: 5px;
+}
+table {
+  color: #58585B;
+  border-collapse: collapse;
+  margin-left: 10px;
+}
+th, td {
+    border: 0.75px solid #dfdfdf;
+    padding: 0.8rem;
+}
+th {
+    text-align: left;
+    background: #f2f2f2;
+}
+path {
+  fill: #049fd9;
+}
+.right {
+   float: right;
+   margin-right: 50px;
+} 
+
+.left {
+    float: left;
+}
+.section {
+    margin-top: 20px;
+}
+.section-bg {
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+.section-heading {
+    margin-left: 5px;
+    font-size: 20px;
+    color: #4a4a4a;
+    font-family: var(--SansTTLight);
+}
+.section-heading span {
+    font-style: oblique;
+}
+.section-desc {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-left: 5px;
+    padding-top: 10px;
+}
+.summary-container {
+  margin: 0 10px 0 20px;
+  font-family: var(--Sans);
+  font-size: 14px;
+  padding-top: 10px;
+}
+.summary-container table {
+	width: 60%;
+}
+.summary-container tr {
+    background: white;
+}
+.summary-container tr:nth-child(4n+1), .summary-container tr:nth-child(4n+2) {
+    background: #f2f2f2;
+}
+.script-box {
+    margin: 0 10px 0 20px;
+    padding-top: 10px;
+}
+.script-box table {
+    font-size: 15px;
+    color: #58585b;
+    line-height: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    width: 70%;
+    font-family: var(--CourierNewPSMT);
+}
+.script-box td:nth-child(1) {
+    width: 3%;
+    text-align: right;
+    border: none;
+    border-right: 1px solid #dfdfdf;
+}
+.script-box td:nth-child(2) {
+    width: 67%;
+    border: none;
+}
+.no-table-data-wrapper {
+        font-family: var(--Sans);
+        font-size: 14px;
+        color: #E59757;
+        background: #FFF8EC;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: left;
+}
+.info-icon {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        /*margin: 0 10px 0 0;*/
+        position: relative;
+        top: 5px;
+}
+.custom-line {
+    line-height: 16px;
+}
+.log-path {
+    margin-top: 10px;
+}
+.section-description {
+margin: 15px 0 15px 10px;
+font-size: 12px;
+color: #4A4A4A;
+}
+.sub-section{
+    margin-left:15px;
+    font-family: var(--SansTTLight) !important;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+</style>
+</head>
+<body>
+<div class="header-container">
+  <div class="left">
+  <div class="img-span">
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-275 379 61 35"
+       style="enable-background:new -275 379 61 35;" xml:space="preserve">
+
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="NOTIFICATION" transform="translate(-1886.000000, -362.000000)" sketch:type="MSArtboardGroup">
+      <g id="Group" transform="translate(1886.016129, 362.000000)" sketch:type="MSLayerGroup">
+        <path id="Fill-1" sketch:type="MSShapeGroup" d="M-257.8,401.8h2.5v11.9h-2.5V401.8z"/>
+        <path id="Fill-2" sketch:type="MSShapeGroup" d="M-233.2,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3"/>
+        <path id="Fill-3" sketch:type="MSShapeGroup" d="M-261.5,405.3c-0.1-0.1-1-0.6-2.4-0.6c-1.8,0-3.1,1.3-3.1,3.1
+          c0,1.7,1.2,3.1,3.1,3.1c1.3,0,2.3-0.5,2.4-0.6v3.1c-0.4,0.1-1.3,0.4-2.6,0.4c-3.2,0-6-2.3-6-6c0-3.4,2.5-6,6-6
+          c1.3,0,2.3,0.3,2.6,0.4V405.3"/>
+        <path id="Fill-4" sketch:type="MSShapeGroup" d="M-225.2,404.7c-1.6,0-2.7,1.4-2.7,3c0,1.7,1.2,3,2.7,3
+          c1.6,0,2.7-1.4,2.7-3C-222.4,406.1-223.6,404.7-225.2,404.7L-225.2,404.7z M-219.6,407.7c0,3.3-2.3,6-5.5,6c-3.2,0-5.5-2.7-5.5-6
+          c0-3.3,2.3-6,5.5-6C-222,401.8-219.6,404.4-219.6,407.7L-219.6,407.7z"/>
+        <path id="Fill-5" sketch:type="MSShapeGroup" d="M-245,404.6c0,0-1.2-0.4-2.1-0.4c-1.1,0-1.7,0.4-1.7,0.9
+          c0,0.7,0.8,0.9,1.2,1.1l0.7,0.3c1.8,0.6,2.6,1.9,2.6,3.3c0,2.9-2.4,3.9-4.4,3.9c-1.4,0-2.8-0.3-2.9-0.3v-2.7
+          c0.2,0.1,1.4,0.4,2.6,0.4c1.3,0,2-0.4,2-1.1c0-0.6-0.5-0.9-1.2-1.1c-0.2-0.1-0.4-0.1-0.6-0.2c-1.5-0.5-2.8-1.5-2.8-3.4
+          c0-2.2,1.5-3.6,4-3.6c1.3,0,2.6,0.3,2.6,0.4V404.6"/>
+        <path id="Fill-6" sketch:type="MSShapeGroup" d="M-272.5,389.8c0-0.7-0.5-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+        <path id="Fill-7" sketch:type="MSShapeGroup" d="M-265.2,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+        <path id="Fill-8" sketch:type="MSShapeGroup" d="M-257.8,380.7c0-0.8-0.6-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7"/>
+        <path id="Fill-9" sketch:type="MSShapeGroup" d="M-250.4,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.6,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+        <path id="Fill-10" sketch:type="MSShapeGroup" d="M-243,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.6,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+        <path id="Fill-11" sketch:type="MSShapeGroup" d="M-235.6,385.9c0-0.7-0.6-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+        <path id="Fill-12" sketch:type="MSShapeGroup" d="M-228.3,380.7c0-0.8-0.5-1.5-1.2-1.5c-0.7,0-1.2,0.7-1.2,1.5v15.6
+          c0,0.8,0.6,1.5,1.2,1.5c0.7,0,1.2-0.7,1.2-1.5V380.7"/>
+        <path id="Fill-13" sketch:type="MSShapeGroup" d="M-222.1,385.9c0-0.7-0.5-1.4-1.2-1.4c-0.7,0-1.2,0.6-1.2,1.4v6.6
+          c0,0.8,0.5,1.4,1.2,1.4c0.7,0,1.2-0.6,1.2-1.4V385.9"/>
+        <path id="Fill-14" sketch:type="MSShapeGroup" d="M-214.7,389.8c0-0.7-0.6-1.3-1.2-1.3c-0.7,0-1.2,0.6-1.2,1.3v2.7
+          c0,0.7,0.5,1.3,1.2,1.3c0.7,0,1.2-0.6,1.2-1.3V389.8"/>
+      </g>
+    </g>
+    </svg>
+  </div>
+</div>
+    <div class="left">
+        <div class="report-title">
+            {{title}}
+        </div>
+    </div>
+    <div class="right">
+        <div class="date-wrapper" style="display: inline-block;margin-top: 5px;">
+            Date: {{date_stamp}}
+        </div>
+    </div>
+</div>
+<div class="container pre_mig_note-container">
+    <span style="color: #cf2030;">Note: </span>
+    <span>
+        Review all contents of this pre-migration report carefully. Unsupported rules will not be migrated completely,
+        which can
+        potentially alter your original configuration, restrict some traffic, or permit unwanted traffic. We recommend
+        that
+        you update the related rules and policies in Firewall Migration Center to ensure that traffic is appropriately
+        handled by Firepower Threat Defense after the configuration is successfully migrated.
+        <a href="{{excel_pre_mig_report_file_path}}" target="blank">Click Here</a> to download the pre-migration report in
+        excel format that lists the source firewall configurations that require additional review and verification from
+        your end.
+    </span>
+</div>
+<div class="container">
+    {% set c4 = 1 %}
+    <div>
+        <div class="section-bg">
+            <h1 class="section-heading"> {{c4}}. Overall Summary: </h1>
+            {% set c4 = c4+1 %}
+        </div>
+        {% if fortinet_flag %}
+        <p class="section-desc">
+            A summary of the supported Fortinet configuration elements that can be successfully migrated to Firepower Threat Defense.
+        </p>
+        {% else %}
+            {% if fdm_flag %}
+            <p class="section-desc">
+                A summary of the supported FDM configuration elements that can be successfully migrated to Firepower Threat Defense.
+            </p>
+            {% else %}
+            <p class="section-desc">
+                A summary of the supported ASA configuration elements that can be successfully migrated to Firepower Threat Defense.
+            </p>
+            {% endif %}
+        {% endif %}
+        <div class="summary-container">
+            <table>
+                {% for obj in migration_summary_dict %}
+                <tr>
+                    <td>{{obj}}</td>
+                    <td>{{migration_summary_dict[obj]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% if not fortinet_flag %}
+            <p class="section-desc">
+                Note: ACEs that are applied outbound or not attached to interfaces using the access-group command are ignored.
+                {% if asa_sfr_flag %}
+                <br>
+                Note: ASA-FPS migration into FMC using FMT is on best effort basis, it is not an exact replication of the behaviour experienced in ASA-FPS flow.
+                {% endif %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section">
+        {% if multi_context_flag %}
+        <div class="section-bg">
+            <h1 class="section-heading">{{ c4 }}. Summary of Merged Configuration: </h1>
+            {% set c4 = c4+1 %}
+        </div>
+
+        <div class="summary-container">
+            {% if multi_context_flag %}
+            <table>
+                {% for obj in merging_context_dict %}
+                <tr>
+                    <td>{{obj}}</td>
+                    <td>{{merging_context_dict[obj]}}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+            </table>
+        </div>
+        {% endif %}
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            <h1 class="section-heading">{{ c4 }}. Unreferenced Access-list <span>({{unref_acl_lines_count}} Lines)</span> </h1>
+            {% set c4 = c4+1 %}
+        </div>
+        <p class="section-desc">
+            List of extended access-list that are not referenced in any access-group list, prefix-list and VPNs.
+        </p>
+        <div class="script-box">
+            {% if unref_acl_lines|length %}
+            <table>
+                {% for obj in unref_acl_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if unref_acl_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{unref_acl_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{unref_acl_lines[obj]}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            <h1 class="section-heading">{{ c4 }}. Configuration Lines with Errors <span>({{error_lines_count}} Lines)</span> </h1>
+            {% set c4 = c4+1 %}
+        </div>
+        {% if fortinet_flag %}
+        <p class="section-desc">
+            Details of Fortinet configuration line/elements that cannot be successfully migrated because the Migration Tool could not parse them. Correct these errors on the .conf file, export a new configuration file, and then upload the new configuration file to the Migration Tool before proceeding.
+        </p>
+        {% else %}
+            {% if fdm_flag %}
+            <p class="section-desc">
+                The configuration lines with errors displays the details of FDM configuration elements that cannot be successfully migrated as the Migration Tool could not parse them. Before proceeding, correct the errors in the FDM , export a new updated configuration file or connect to FDM again, and then upload the updated configuration file on the Migration Tool.
+            </p>
+            {% else %}
+            <p class="section-desc">
+                Details of ASA configuration elements that cannot be successfully migrated because the Migration Tool could not parse them.
+                Correct these errors on the ASA device, export a new configuration file, and then upload the new configuration
+                file to the Migration Tool before proceeding.
+            </p>
+            <p class="section-desc">
+                Note: Please donot use comma(,) in interface name, as this may lead to parse error in NAT section.
+            </p>
+            {% if multi_context_flag %}
+            <p class="section-desc">
+                Note: These configuration lines are derived from the merged single configuration file.
+            </p>
+            {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="script-box">
+            {% if error_lines|length %}
+            <table>
+                {% for obj in error_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if error_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{error_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{error_lines[obj]}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="log-path">
+                <p> For more details on this error , refer to the following link:</p>
+                <a href="{{log_path}}" target="blank">{{log_path}}</a>
+            </div>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            <h1 class="section-heading">{{ c4 }}. Unsupported Configuration <span>({{un_supported_lines_count}} Lines)</span> </h1>
+            {% set c4 = c4+1 %}
+        </div>
+        {% if fortinet_flag %}
+        <p class="section-desc">
+            Details of Fortinet configuration elements that cannot be migrated because the Migration Tool does not support migration of those features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually after you complete the migration with the Migration Tool.
+        </p>
+        {% else %}
+            {% if fdm_flag %}
+            <p class="section-desc">
+                The configuration lines displays the details of FDM configuration elements that cannot be migrated as Migration Tool do not support migration for those features. Before proceeding, review the lines and verify if the feature is supported on the Firewall Migration Center. If supported, then configure those features manually after completing the migration.
+            </p>
+            <p class="section-desc">
+                When the FDM configuration for service-group has icmp objects which is valid for ICMPv4, the migration tool parses them as supported. For ICMPv6 with the similar FDM configuration, it is invalid and is reported as unsupported in the migration report.
+            </p>
+            {% else %}
+            <p class="section-desc">
+                Details of ASA configuration elements that cannot be migrated because the Migration Tool does not support migration of those
+                features. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if
+                so, plan to configure the features manually within Firewall Migration Center after you complete the migration with the Tool.
+                <a href="{{excel_unsuppored_config_path}}" target="blank">Click Here</a> <b>to download the unsupported configuration which contains detailed information about unsupported command lines.</b>
+
+            </p>
+            <p class="section-desc">
+                When the ASA configuration for service-group has icmp objects which is valid for ICMPv4, the migration tool parses them as supported. For ICMPv6 with the similar ASA configuration, it is invalid and is reported as unsupported in the migration report.
+            </p>
+            {% if multi_context_flag %}
+            <p class="section-desc">
+                Note: These configuration lines are derived from the merged single configuration file.
+            </p>
+            {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="script-box">
+            {% if un_supported_lines|length %}
+            <table>
+                {% for obj in un_supported_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if un_supported_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{un_supported_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{un_supported_lines[obj]}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section">
+    {% if multi_context_flag %}
+    <div class="section-bg">
+        <h1 class="section-heading">{{ c4 }}. Object and Object Groups Conflict Resolution (Includes details report):</h1>
+        {% set c4 = c4+1 %}
+    </div>
+    <p class="section-desc">
+        Details of the objects (network and service) and object-group (network, service and protocol) that were conflicting across the contexts.
+    </p>
+
+    <div class="table-container two-object">
+        {% if multi_context_flag %}
+        <table>
+            <tr>
+                {% for column in multicontext_object_count_column %}
+                    <th>{{column}}</th>
+                {% endfor %}
+            </tr>
+            {% for multi_context_object_and_group in multicontext_object_count_value %}
+            <tr>
+                 {% for value in multi_context_object_and_group %}
+                    <td>{{value}}</td>
+                 {% endfor %}
+            {% endfor %}
+            </tr>
+        </table>
+        {% endif %}
+    </div>
+        <div class="sub-section">
+            <h2>Click on the link for additional details of each component <a href="{{path_for_report_of_conflict}}" target="blank">Link for conflict Count</a></h2>
+        </div>
+    {% endif %}
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            {% if modified_vlan_mappings_list|length > 0 %}
+                {% if multi_context_flag %}
+                    <h1 class="section-heading">{{ c4 }}. Modified VLAN Mappings </h1>
+                    {% set c4 = c4+1 %}
+                {% endif %}
+            {% endif %}
+        </div>
+                {% if modified_vlan_mappings_list|length > 0 %}
+                <div class="table-container two-object">
+                    {% if multi_context_flag %}
+                    <table>
+                        <tr>
+                            {% for column in modified_vlan_mappings_columns %}
+                                <th>{{column}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for modified_value_mapping_object in modified_vlan_mappings_list %}
+                        <tr>
+                             {% for value in modified_value_mapping_object %}
+                                <td>{{value}}</td>
+                             {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+                {% endif %}
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            {% if context_vrf_mapping_list|length > 0 %}
+                {% if multi_context_flag %}
+                    {% if routed_mode_flag %}
+                    <h1 class="section-heading">{{ c4 }}. Context to VRF Mapping Details </h1>
+                    {% set c4 = c4+1 %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+                {% if context_vrf_mapping_list|length > 0 %}
+                <p class="section-desc">
+                    Note: This section will contain information only on the contexts that the user have selected for merging.
+                </p>
+                <div class="table-container two-object">
+                    {% if multi_context_flag %}
+                        {% if routed_mode_flag %}
+                        <table>
+                            <tr>
+                                {% for column in context_vrf_mapping_columns %}
+                                    <th>{{column}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for context_vrf_mapping_object in context_vrf_mapping_list %}
+                            <tr>
+                                 {% for value in context_vrf_mapping_object %}
+                                    <td>{{value}}</td>
+                                 {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                {% endif %}
+    </div>
+    <div class="section">
+        <div class="section-bg">
+            {% if multi_context_flag %}
+                <h1 class="section-heading">{{ c4 }}. Partially Supported Configuration <span>({{partial_lines_count}} Lines)</span> </h1>
+            {% else %}
+                <h1 class="section-heading">{{ c4 }}. Partially Supported Configuration <span>({{partial_lines_count}} Lines)</span> </h1>
+            {% endif %}
+        </div>
+        {% if fortinet_flag %}
+        <p class="section-desc">
+            Details of Fortinet configuration elements that can be only partially migrated. These configuration elements include several Interface Types, Interface-specific attributes, Network/Service Object and Object-Group Types, ACL Rules with different parameters and few Static Route attributes. Review these lines, verify whether these configurations are supported in Firewall Migration Center, and if so, plan to configure those options manually after you complete the migration with the Migration Tool.
+        </p>
+        {% else %}
+            {% if fdm_flag %}
+            <p class="section-desc">
+                The configuration lines displays the details of FDM configuration elements that can be migrated partially only. These configuration elements include rules and objects with advanced options where the rule or the object can be migrated without the advanced options. Review these lines and verify whether the advance options are supported in Firewall Migration Center. If supported, the configure the options manually after completing the migration.
+            </p>
+            {% else %}
+            <p class="section-desc">
+                Details of ASA configuration elements that can be only partially migrated. These configuration elements include rules and
+                objects with advanced options where the rule or the object can be migrated without the advanced options. Review
+                these lines, verify whether the advanced options are supported in Firewall Migration Center, and if so, plan to
+                configure those options manually within Firewall Migration Center after you complete the migration with the Tool.
+            </p>
+            {% if multi_context_flag %}
+            <p class="section-desc">
+                Note: These configuration lines are derived from the merged single configuration file.
+            </p>
+            {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="script-box">
+            {% if partial_lines|length %}
+            <table>
+                {% for obj in partial_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if partial_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{partial_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{partial_lines[obj]}}</td>
+					{% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+        {% set c4 = c4+1 %}
+    </div>
+    <div class="section">
+        {% set c5 = 0 %}
+        <div class="section-bg">
+            {% if multi_context_flag %}
+                <h1 class="section-heading">{{ c4 }}. Ignored Configuration <span>({{ignored_lines_count}} Lines)</span> </h1>
+            {% else %}
+                <h1 class="section-heading">{{ c4 }}. Ignored Configuration <span>({{ignored_lines_count}} Lines)</span> </h1>
+            {% endif %}
+        </div>
+        {% if fortinet_flag %}
+        <p class="section-desc">
+            Details of Fortinet configuration elements that are ignored because they are not supported by the Firewall Migration Center or the Migration. The Migration Tool does not parse these lines. Review these lines, verify whether each feature is supported in Firewall Migration Center, and if so, plan to configure the features manually.<span><a href="{{excel_pre_mig_report_file_path_for_ignored_line}}" target="blank">Click Here</a></span><strong> to download the ignored configuration which contains detailed information about ignored command lines.</strong>
+        </p>
+        {% else %}
+            {% if fdm_flag %}
+            <p class="section-desc">
+                The configuration lines displays the details of FDM configuration elements that are ignored, and the Migration Tool does not parse these lines. Review these lines and verify whether each feature is supported in Firewall Migration Center. If supported, then configure the features manually after completing the migration.<span><a href="{{excel_pre_mig_report_file_path_for_ignored_line}}" target="blank">Click Here</a></span><strong> to download the ignored configuration which contains detailed information about ignored command lines.</strong>
+            </p>
+            {% else %}
+                {% if not multi_context_flag %}
+                <p class="section-desc">
+                    Details of ASA configuration elements that are ignored because they are not supported by the Firewall Migration Center
+                    or the Migration Tool does not parse these lines. Review these lines, verify whether each feature
+                    is supported in Firewall Migration Center, and if so, plan to configure the features manually within
+                    Firewall Migration Center. <span><a href="{{excel_pre_mig_report_file_path_for_ignored_line}}" target="blank">Click Here</a></span><strong> to download the ignored configuration which contains detailed information about ignored command lines.</strong>
+                </p>
+                {% else %}
+                <p class="section-desc">
+                    Details of ASA configuration elements that are ignored because they are not supported by the Firewall Migration Center
+                    or the Migration Tool does not parse these lines. Review these lines, verify whether each feature
+                    is supported in Firewall Migration Center, and if so, plan to configure the features manually within
+                    Firewall Migration Center.
+                </p>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="script-box">
+            {% if multi_context_flag %}
+                <div class="no-table-data-wrapper">
+                    <a href="{{excel_pre_mig_report_file_path_for_ignored_line}}" target="blank">Link for the ignored configuration lines</a>
+                </div>
+            {% else %}
+            {% if ignored_lines|length %}
+                <table>
+                    {% for obj in ignored_lines %}
+                        {% if loop.index <= 10 %}
+                            <tr>
+                                <td>{{obj}}</td>
+                                {% if ignored_lines[obj]|length > 100 %}
+                                    <td class="custom-line">{{ignored_lines[obj]}}</td>
+                                {% else %}
+                                    <td>{{ignored_lines[obj]}}</td>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+                {% else %}
+                <div class="no-table-data-wrapper">
+                    <i class="info-icon"></i>None
+                </div>
+            {% endif %}
+            {% endif %}
+        </div>
+        {% if remote_deployment_enabled_on %}
+        <div class="sub-section">
+            <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Remote Deployment:</h2>
+            {% set c5 = c5+1 %}
+            <div class="section-description">
+                <p>Remote Deployment is enabled on Data Interface <b>"{{remote_deployment_enabled_on}}"</b> on FTD.</p>
+                <p>Below Interfaces and Routes are ignored because tool has detected that Remote Deployment is enabled on data interface.</p>
+            </div>
+            <div class="script-box">
+            {% if rd_lines|length %}
+            <table>
+                {% for obj in rd_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if rd_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{rd_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{rd_lines[obj]}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% if dns_si_policy %}
+        <div class="sub-section">
+            <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: DNS and SI Policy:</h2>
+            {% set c5 = c5+1 %}
+            <div class="section-description">
+                <p>Below DNS and Security Intelligence Policy is not copied and has to be manually added to the policy on FMC</p>
+            </div>
+            <div class="script-box" style="background: #f2f2f2;padding: 5px;">
+                {{dns_si_policy}}
+            </div>
+
+        </div>
+        {% endif %}
+
+        {% if intrusion_policy %}
+        <div class="sub-section">
+            <h2>5.{{ "abcdefghijklmnopqrstuvwxyz"[c5] }}: Intrusion Policies:</h2>
+            {% set c5 = c5+1 %}
+            <div class="section-description">
+                <p>Below Snort 2 Intrusion  Policies are not copied as they contain overridden Rules. The policies have to be manually added to the policy on FMC.</p>
+            </div>
+            <div class="script-box" style="background: #f2f2f2;padding: 5px;">
+                {{intrusion_policy}}
+            </div>
+        </div>
+        {% endif %}
+        {% set c4 = c4+1 %}
+    </div>
+    {% if not fortinet_flag %}
+    <div class="section">
+        <div class="section-bg">
+            {% if multi_context_flag %}
+                <h1 class="section-heading">{{ c4 }}. Tunnelled Configuration <span>({{tunnel_lines_count}} Lines)</span> </h1>
+            {% else %}
+                <h1 class="section-heading">{{ c4 }}. Tunnelled Configuration <span>({{tunnel_lines_count}} Lines)</span> </h1>
+            {% set c4 = c4+1 %}
+            {% endif %}
+        </div>
+        {% if fdm_flag %}
+        <p class="section-desc">
+            The configuration lines displays the details of FDM configuration elements where the tunnel protocol/service objects are referenced., The Migration Tool migrates them as Prefilter Tunnel rules.
+            The tunnel service defined in the service-object or object-groups will be referenced as a literal value in the migrated rule.
+        </p>
+        {% else %}
+        <p class="section-desc">
+            The configuration lines displays the details of ASA configuration elements where the tunnel protocol/service objects are referenced.,
+            The Migration Tool migrates them as Prefilter Tunnel rules.
+            The tunnel service defined in the service-object or object-groups will be referenced as a literal value in the migrated rule.
+        </p>
+        {% endif %}
+        <div class="script-box">
+            {% if tunnel_lines|length %}
+            <table>
+                {% for obj in tunnel_lines %}
+                <tr>
+                    <td>{{obj}}</td>
+                    {% if tunnel_lines[obj]|length > 100 %}
+                    <td class="custom-line">{{tunnel_lines[obj]}}</td>
+                    {% else %}
+                    <td>{{tunnel_lines[obj]}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+        {% set c4 = c4+1 %}
+    {% endif %}
+    </div>
+    {% if s2s_vpn_values %}
+    <div class="section">
+        <div class="section-bg">
+            {% if multi_context_flag %}
+                <h1 class="section-heading">{{ c4 }}. Deprecated DH group details  </h1>
+            {% else %}
+                <h1 class="section-heading">{{ c4 }}. Deprecated DH group details  </h1>
+            {% endif %}
+        </div>
+        <p class="section-desc">
+            The configuration lines display the details of DH groups which are deprecated in FMT v7.0 and above.
+            The Migration Tool migrates them to FMC, kindly review and change the DH values after migration.
+        </p>
+        <div class="table-container two-object">
+            {% if s2s_vpn_values|length %}
+            <table>
+                <tr>
+                    {% for column in s2s_vpn_columns %}
+                        <th>{{column}}</th>
+                    {% endfor %}
+                </tr>
+                {% for obj in s2s_vpn_values %}
+                <tr>
+                    {% for sub_obj in obj %}
+                        <td>{{sub_obj}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="no-table-data-wrapper">
+                <i class="info-icon"></i>None
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    
+</div>
+</body>
+</html>

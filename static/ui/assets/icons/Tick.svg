@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4">
+            <circle id="Oval" fill="#6EBE4A" cx="8" cy="8" r="8"></circle>
+            <g id="Group-3" transform="translate(2.000000, 4.000000)" fill="#FFFFFF">
+                <path d="M1.11069677,4.5790679 L5.48901116,4.66520175 L5.45677938,6.31399353 L1.06100776,6.30438422 C0.592728262,6.30336055 0.213942576,5.92291516 0.214966252,5.45463566 C0.214982594,5.44716 0.215097801,5.43968488 0.215311844,5.43221227 L0.215311844,5.43221227 C0.229115025,4.95031916 0.628699274,4.56958564 1.11069677,4.5790679 Z" id="Rectangle-7" transform="translate(2.851988, 5.446444) rotate(45.000000) translate(-2.851988, -5.446444) "></path>
+                <path d="M2.98791986,3.23095898 L11.5513253,3.24893104 L11.5441808,4.82625996 L2.98791611,4.85780103 C2.53903372,4.85945575 2.17380123,4.49690609 2.17214651,4.0480237 C2.17214283,4.04702499 2.17214098,4.04602628 2.17214098,4.04502756 L2.17214098,4.04502756 C2.17214098,3.59542891 2.53661271,3.23095718 2.98621137,3.23095718 C2.98678086,3.23095718 2.98735036,3.23095778 2.98791986,3.23095898 Z" id="Rectangle-7" transform="translate(6.861733, 4.044382) rotate(135.000000) translate(-6.861733, -4.044382) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
