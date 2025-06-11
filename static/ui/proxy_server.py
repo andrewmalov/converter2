@@ -13,8 +13,12 @@ from urllib.parse import urlparse, parse_qs
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        # Перенаправляем главную страницу на страницу без авторизации
+        # Загружаем рабочую версию приложения с отключенной авторизацией
         if self.path == '/' or self.path == '/index.html':
+            self.path = '/working.html'
+        
+        # Доступ к демо-странице через /demo
+        elif self.path == '/demo':
             self.path = '/no_auth.html'
         
         # Доступ к оригинальному приложению через /original
@@ -91,7 +95,7 @@ class ProxyHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == "__main__":
-    PORT = 12000
+    PORT = 12001
     
     # Переходим в директорию с файлами приложения
     #os.chdir('/workspace/converter')
