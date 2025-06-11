@@ -23,7 +23,11 @@ class ProxyHandler(http.server.SimpleHTTPRequestHandler):
         
         # Доступ к оригинальному приложению через /original
         elif self.path == '/original':
-            self.path = '/index_modified.html'
+            self.path = '/index_original.html'
+        
+        # Доступ к старой версии bypass
+        elif self.path == '/bypass':
+            self.path = '/bypass.html'
         
         # Обработка запроса EULA
         elif self.path == '/api/eula_check':
@@ -91,7 +95,7 @@ class ProxyHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == "__main__":
-    PORT = 12000
+    PORT = 12001
     
     # Переходим в директорию с файлами приложения
     #os.chdir('/workspace/converter')
