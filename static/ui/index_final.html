@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" class="cui">
+<head>
+    <meta charset="utf-8">
+    <title>Firewall Migration Tool - Offline Mode</title>
+    <base href="/">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="styles.66774723b32fd013d6d8.bundle.css" rel="stylesheet"/>
+    
+    <!-- Скрипт для отключения авторизации - загружается первым -->
+    <script src="auth-bypass.js"></script>
+    
+    <style>
+        .offline-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .offline-banner.hide {
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .loader--app-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+        }
+        
+        .loader--app-loading .icon-cisco {
+            font-size: 48px;
+            color: #0073e6;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            color: #666;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .loading-steps {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 400px;
+        }
+        
+        .loading-step {
+            padding: 5px 0;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        
+        .loading-step.active {
+            color: #0073e6;
+            font-weight: bold;
+        }
+        
+        .loading-step.completed {
+            color: #28a745;
+        }
+        
+        .loading-step::before {
+            content: "⏳ ";
+            margin-right: 8px;
+        }
+        
+        .loading-step.active::before {
+            content: "🔄 ";
+        }
+        
+        .loading-step.completed::before {
+            content: "✅ ";
+        }
+    </style>
+</head>
+<body class="cui cui--wide">
+    <!-- Баннер автономного режима -->
+    <div id="offline-banner" class="offline-banner">
+        🔓 АВТОНОМНЫЙ РЕЖИМ - Авторизация отключена, все функции доступны
+    </div>
+    
+    <app-root style="overflow: auto; margin-top: 60px;">
+        <div class="loader loader--app-loading">
+            <span class="icon-cisco">🔥</span>
+            <div class="loading-text">
+                Firewall Migration Tool
+            </div>
+            <div class="loading-text" style="font-size: 14px; margin-top: 5px;">
+                Загрузка в автономном режиме...
+            </div>
+            
+            <div class="loading-steps">
+                <div class="loading-step" id="step1">Отключение авторизации</div>
+                <div class="loading-step" id="step2">Инициализация компонентов</div>
+                <div class="loading-step" id="step3">Загрузка интерфейса</div>
+                <div class="loading-step" id="step4">Подготовка к работе</div>
+            </div>
+        </div>
+    </app-root>
+    
+    <!-- Основные скрипты приложения -->
+    <script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script>
+    <script type="text/javascript" src="polyfills.76c2f21d4e2a1188f46c.bundle.js"></script>
+    <!-- Используем патченую версию main.js -->
+    <script type="text/javascript" src="main.patched.js"></script>
+    
+    <script>
+        // Симуляция процесса загрузки
+        const steps = ['step1', 'step2', 'step3', 'step4'];
+        let currentStep = 0;
+        
+        function updateLoadingStep() {
+            if (currentStep > 0) {
+                document.getElementById(steps[currentStep - 1]).classList.remove('active');
+                document.getElementById(steps[currentStep - 1]).classList.add('completed');
+            }
+            
+            if (currentStep < steps.length) {
+                document.getElementById(steps[currentStep]).classList.add('active');
+                currentStep++;
+                setTimeout(updateLoadingStep, 800);
+            } else {
+                // Все шаги завершены
+                setTimeout(function() {
+                    console.log('✅ Загрузка завершена');
+                    
+                    // Скрываем баннер через 3 секунды
+                    setTimeout(function() {
+                        const banner = document.getElementById('offline-banner');
+                        if (banner) {
+                            banner.classList.add('hide');
+                            setTimeout(() => banner.remove(), 500);
+                        }
+                    }, 3000);
+                }, 500);
+            }
+        }
+        
+        // Запускаем симуляцию загрузки
+        setTimeout(updateLoadingStep, 500);
+        
+        // Дополнительные настройки
+        window.addEventListener('load', function() {
+            console.log('🚀 Приложение полностью загружено в автономном режиме');
+            
+            // Принудительно устанавливаем все флаги
+            window.authDisabled = true;
+            window.demoMode = true;
+            window.bypassAuth = true;
+            window.offlineMode = true;
+            window.isAuthenticated = true;
+            
+            // Устанавливаем данные пользователя
+            if (!localStorage.getItem('authToken')) {
+                localStorage.setItem('authToken', 'fake-jwt-token-12345');
+                localStorage.setItem('user', JSON.stringify({
+                    username: 'admin',
+                    role: 'admin',
+                    permissions: ['read', 'write', 'admin'],
+                    authenticated: true
+                }));
+            }
+            
+            // Эмулируем событие успешной авторизации
+            const authEvent = new CustomEvent('authSuccess', {
+                detail: {
+                    user: {
+                        username: 'admin',
+                        role: 'admin',
+                        permissions: ['read', 'write', 'admin']
+                    },
+                    token: 'fake-jwt-token-12345'
+                }
+            });
+            document.dispatchEvent(authEvent);
+            window.dispatchEvent(authEvent);
+        });
+        
+        // Глобальная функция для принудительного обхода авторизации
+        window.forceOfflineMode = function() {
+            console.log('🔧 Принудительная активация автономного режима');
+            
+            // Очищаем все таймеры
+            for (let i = 1; i < 99999; i++) {
+                window.clearTimeout(i);
+                window.clearInterval(i);
+            }
+            
+            // Устанавливаем все флаги
+            const flags = {
+                authDisabled: true,
+                demoMode: true,
+                bypassAuth: true,
+                offlineMode: true,
+                isAuthenticated: true,
+                authenticated: true,
+                userRole: 'admin',
+                authToken: 'fake-jwt-token-12345'
+            };
+            
+            Object.assign(window, flags);
+            
+            // Эмулируем события
+            ['auth-success', 'login-success', 'user-authenticated'].forEach(eventName => {
+                const event = new CustomEvent(eventName, {
+                    detail: { success: true, offline: true }
+                });
+                document.dispatchEvent(event);
+                window.dispatchEvent(event);
+            });
+            
+            console.log('✅ Автономный режим активирован принудительно');
+        };
+        
+        // Автоматически активируем через 3 секунды
+        setTimeout(window.forceOfflineMode, 3000);
+        
+        console.log('🔓 Firewall Migration Tool - Автономный режим активирован');
+    </script>
+</body>
+</html>

@@ -13,17 +13,25 @@ from urllib.parse import urlparse, parse_qs
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        # Загружаем рабочую версию приложения с отключенной авторизацией
+        # Загружаем финальную версию приложения с полностью отключенной авторизацией
         if self.path == '/' or self.path == '/index.html':
+            self.path = '/index_final.html'
+        
+        # Доступ к версии без авторизации через /noauth
+        elif self.path == '/noauth':
+            self.path = '/index_no_auth.html'
+        
+        # Доступ к рабочей версии через /working
+        elif self.path == '/working':
             self.path = '/working.html'
         
         # Доступ к демо-странице через /demo
         elif self.path == '/demo':
-            self.path = '/no_auth.html'
+            self.path = '/bypass.html'
         
         # Доступ к оригинальному приложению через /original
         elif self.path == '/original':
-            self.path = '/index_modified.html'
+            self.path = '/index.html'
         
         # Обработка запроса EULA
         elif self.path == '/api/eula_check':
@@ -91,13 +99,23 @@ class ProxyHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == "__main__":
-    PORT = 12000
+    PORT = 12001
     
     # Переходим в директорию с файлами приложения
     #os.chdir('/workspace/converter')
     
     with socketserver.TCPServer(("0.0.0.0", PORT), ProxyHandler) as httpd:
-        print(f"Сервер запущен на порту {PORT}")
-        print(f"Приложение доступно по адресу: https://work-1-cemqvfpucdetmrkf.prod-runtime.all-hands.dev")
-        print("Авторизация отключена - все API запросы будут возвращать успешные ответы")
+        print(f"🚀 Сервер запущен на порту {PORT}")
+        print(f"🌐 Приложение доступно по адресу: https://work-2-xrvofshduudwgugx.prod-runtime.all-hands.dev")
+        print("🔓 Авторизация отключена - все API запросы будут возвращать успешные ответы")
+        print("")
+        print("📋 Доступные маршруты:")
+        print("   / или /index.html    - Финальная версия с отключенной авторизацией")
+        print("   /noauth             - Версия без авторизации")
+        print("   /working            - Рабочая версия")
+        print("   /demo               - Демо-страница")
+        print("   /original           - Оригинальное приложение")
+        print("")
+        print("🔧 Для принудительного обхода авторизации выполните в консоли браузера:")
+        print("   window.forceOfflineMode()")
         httpd.serve_forever()
