@@ -13,9 +13,13 @@ from urllib.parse import urlparse, parse_qs
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        # Перенаправляем главную страницу на страницу обхода авторизации
+        # Загружаем рабочую версию приложения с отключенной авторизацией
         if self.path == '/' or self.path == '/index.html':
-            self.path = '/bypass.html'
+            self.path = '/working.html'
+        
+        # Доступ к демо-странице через /demo
+        elif self.path == '/demo':
+            self.path = '/no_auth.html'
         
         # Доступ к оригинальному приложению через /original
         elif self.path == '/original':
