@@ -13,13 +13,17 @@ from urllib.parse import urlparse, parse_qs
 
 class ProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        # Перенаправляем главную страницу на страницу обхода авторизации
+        # Перенаправляем главную страницу на страницу без авторизации
         if self.path == '/' or self.path == '/index.html':
-            self.path = '/bypass.html'
+            self.path = '/no_auth.html'
         
         # Доступ к оригинальному приложению через /original
         elif self.path == '/original':
-            self.path = '/index_modified.html'
+            self.path = '/index_original.html'
+        
+        # Доступ к старой версии bypass
+        elif self.path == '/bypass':
+            self.path = '/bypass.html'
         
         # Обработка запроса EULA
         elif self.path == '/api/eula_check':
