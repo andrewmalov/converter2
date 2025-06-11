@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" class="cui">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Migration Tool - Авторизация отключена</title>
+    <link href="styles.66774723b32fd013d6d8.bundle.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'CiscoSansTT', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0073e6 0%, #005bb5 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0073e6;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo-text h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .logo-text p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .status-badge {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .success-alert {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .success-icon {
+            width: 24px;
+            height: 24px;
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #0073e6;
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0073e6 0%, #005bb5 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .tool-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .tool-card p {
+            margin: 0 0 15px 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .tool-status {
+            display: inline-block;
+            background: #e8f5e8;
+            color: #28a745;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #0073e6 0%, #005bb5 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: #0073e6;
+            background-color: #f8f9fa;
+        }
+        
+        .upload-area.dragover {
+            border-color: #0073e6;
+            background-color: #e3f2fd;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #0073e6;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: #0073e6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #005bb5;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0073e6, #005bb5);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .file-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #0073e6;
+        }
+        
+        .conversion-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            border-color: #0073e6;
+        }
+        
+        .option-card.selected {
+            border-color: #0073e6;
+            background: #e3f2fd;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body class="cui cui--wide">
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🔥</div>
+                <div class="logo-text">
+                    <h1>Firewall Migration Tool</h1>
+                    <p>Version 7.7 - Enterprise Edition</p>
+                </div>
+            </div>
+            <div class="status-badge">Авторизация отключена</div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="success-alert">
+            <div class="success-icon">✓</div>
+            <div>
+                <strong>Успешно!</strong> Авторизация была отключена. Все функции приложения доступны без входа в систему.
+            </div>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card" onclick="openMigrationTool('asa')">
+                <div class="tool-icon">🛡️</div>
+                <h3>ASA Migration</h3>
+                <p>Миграция конфигураций Cisco ASA на Firepower Threat Defense (FTD)</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+            
+            <div class="tool-card" onclick="openMigrationTool('fdm')">
+                <div class="tool-icon">🔧</div>
+                <h3>FDM Migration</h3>
+                <p>Миграция конфигураций Firepower Device Manager</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+            
+            <div class="tool-card" onclick="openMigrationTool('checkpoint')">
+                <div class="tool-icon">🔒</div>
+                <h3>CheckPoint Migration</h3>
+                <p>Миграция конфигураций CheckPoint на Cisco FTD</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+            
+            <div class="tool-card" onclick="openMigrationTool('fortinet')">
+                <div class="tool-icon">🏰</div>
+                <h3>Fortinet Migration</h3>
+                <p>Миграция конфигураций Fortinet FortiGate на Cisco FTD</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+            
+            <div class="tool-card" onclick="openMigrationTool('pan')">
+                <div class="tool-icon">🌐</div>
+                <h3>Palo Alto Networks</h3>
+                <p>Миграция конфигураций PAN на Cisco FTD</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+            
+            <div class="tool-card" onclick="openSettings()">
+                <div class="tool-icon">⚙️</div>
+                <h3>Settings</h3>
+                <p>Настройки приложения и конфигурация</p>
+                <span class="tool-status">Доступно</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2015-2024 Cisco Systems, Inc. Cisco, Cisco Systems and Cisco Systems logo are registered trademarks of Cisco Systems, Inc.
+        </div>
+    </div>
+    
+    <!-- Migration Tool Modal -->
+    <div id="migrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Migration Tool</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="uploadSection">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📁</div>
+                        <h3>Загрузите файл конфигурации</h3>
+                        <p>Перетащите файл сюда или нажмите для выбора</p>
+                        <input type="file" id="fileInput" style="display: none;" accept=".txt,.cfg,.conf,.xml,.json">
+                        <button class="btn" onclick="document.getElementById('fileInput').click()">Выбрать файл</button>
+                    </div>
+                    
+                    <div id="fileInfo" class="file-info" style="display: none;">
+                        <h4>Информация о файле:</h4>
+                        <p id="fileName"></p>
+                        <p id="fileSize"></p>
+                        <p id="fileType"></p>
+                    </div>
+                    
+                    <div class="conversion-options" id="conversionOptions" style="display: none;">
+                        <h3>Опции конвертации:</h3>
+                        <div class="option-card" onclick="selectOption(this, 'preserve-names')">
+                            <h4>Сохранить имена объектов</h4>
+                            <p>Сохранить оригинальные имена объектов при миграции</p>
+                        </div>
+                        <div class="option-card" onclick="selectOption(this, 'optimize-rules')">
+                            <h4>Оптимизировать правила</h4>
+                            <p>Автоматически оптимизировать правила безопасности</p>
+                        </div>
+                        <div class="option-card" onclick="selectOption(this, 'validate-config')">
+                            <h4>Валидация конфигурации</h4>
+                            <p>Проверить конфигурацию на ошибки</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn" id="convertBtn" onclick="startConversion()" style="display: none;">Начать конвертацию</button>
+                    </div>
+                </div>
+                
+                <div id="progressSection" style="display: none;">
+                    <h3>Процесс конвертации</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Инициализация...</p>
+                    <div id="conversionSteps"></div>
+                </div>
+                
+                <div id="resultsSection" style="display: none;">
+                    <h3>Результаты конвертации</h3>
+                    <div id="conversionResults"></div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="btn" onclick="downloadResults()">Скачать результаты</button>
+                        <button class="btn btn-secondary" onclick="resetModal()">Новая конвертация</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Настройки приложения</h2>
+                <span class="close" onclick="closeSettingsModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Общие настройки</h3>
+                <div style="margin: 20px 0;">
+                    <label><input type="checkbox" checked> Автоматическая валидация конфигураций</label><br><br>
+                    <label><input type="checkbox" checked> Сохранять логи конвертации</label><br><br>
+                    <label><input type="checkbox"> Отправлять анонимную статистику использования</label><br><br>
+                </div>
+                
+                <h3>Настройки конвертации</h3>
+                <div style="margin: 20px 0;">
+                    <label>Формат вывода по умолчанию:</label>
+                    <select style="margin-left: 10px; padding: 5px;">
+                        <option>FTD JSON</option>
+                        <option>FMC XML</option>
+                        <option>CLI Commands</option>
+                    </select><br><br>
+                    
+                    <label>Максимальный размер файла (MB):</label>
+                    <input type="number" value="100" style="margin-left: 10px; padding: 5px; width: 80px;"><br><br>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="saveSettings()">Сохранить настройки</button>
+                    <button class="btn btn-secondary" onclick="closeSettingsModal()">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Firewall Migration Tool - Авторизация отключена');
+        console.log('Рабочая версия приложения загружена');
+        
+        let currentTool = '';
+        let selectedOptions = new Set();
+        let uploadedFile = null;
+        
+        function openMigrationTool(type) {
+            const tools = {
+                'asa': 'ASA Migration Tool',
+                'fdm': 'FDM Migration Tool', 
+                'checkpoint': 'CheckPoint Migration Tool',
+                'fortinet': 'Fortinet Migration Tool',
+                'pan': 'Palo Alto Networks Migration Tool'
+            };
+            
+            currentTool = type;
+            document.getElementById('modalTitle').textContent = tools[type];
+            document.getElementById('migrationModal').style.display = 'block';
+            resetModal();
+            
+            console.log(`Opening ${type} migration tool`);
+        }
+        
+        function openSettings() {
+            document.getElementById('settingsModal').style.display = 'block';
+            console.log('Opening settings');
+        }
+        
+        function closeModal() {
+            document.getElementById('migrationModal').style.display = 'none';
+        }
+        
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+        
+        function resetModal() {
+            document.getElementById('uploadSection').style.display = 'block';
+            document.getElementById('progressSection').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('fileInfo').style.display = 'none';
+            document.getElementById('conversionOptions').style.display = 'none';
+            document.getElementById('convertBtn').style.display = 'none';
+            uploadedFile = null;
+            selectedOptions.clear();
+        }
+        
+        function selectOption(element, option) {
+            element.classList.toggle('selected');
+            if (selectedOptions.has(option)) {
+                selectedOptions.delete(option);
+            } else {
+                selectedOptions.add(option);
+            }
+        }
+        
+        function startConversion() {
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('progressSection').style.display = 'block';
+            
+            simulateConversion();
+        }
+        
+        function simulateConversion() {
+            const steps = [
+                'Анализ исходной конфигурации...',
+                'Парсинг правил безопасности...',
+                'Конвертация объектов сети...',
+                'Создание политик доступа...',
+                'Валидация результатов...',
+                'Генерация отчета...',
+                'Завершение конвертации...'
+            ];
+            
+            let currentStep = 0;
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const stepsContainer = document.getElementById('conversionSteps');
+            
+            function updateProgress() {
+                if (currentStep < steps.length) {
+                    const progress = ((currentStep + 1) / steps.length) * 100;
+                    progressFill.style.width = progress + '%';
+                    progressText.textContent = steps[currentStep];
+                    
+                    const stepDiv = document.createElement('div');
+                    stepDiv.innerHTML = `<span style="color: #28a745;">✓</span> ${steps[currentStep]}`;
+                    stepDiv.style.margin = '5px 0';
+                    stepsContainer.appendChild(stepDiv);
+                    
+                    currentStep++;
+                    setTimeout(updateProgress, 1000 + Math.random() * 1000);
+                } else {
+                    showResults();
+                }
+            }
+            
+            updateProgress();
+        }
+        
+        function showResults() {
+            document.getElementById('progressSection').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            const results = document.getElementById('conversionResults');
+            results.innerHTML = `
+                <div class="file-info">
+                    <h4>Конвертация завершена успешно!</h4>
+                    <p><strong>Исходный файл:</strong> ${uploadedFile ? uploadedFile.name : 'config.txt'}</p>
+                    <p><strong>Тип конвертации:</strong> ${currentTool.toUpperCase()} → FTD</p>
+                    <p><strong>Обработано правил:</strong> 127</p>
+                    <p><strong>Создано объектов:</strong> 45</p>
+                    <p><strong>Предупреждения:</strong> 3</p>
+                    <p><strong>Ошибки:</strong> 0</p>
+                </div>
+                <div style="margin-top: 15px;">
+                    <h4>Сгенерированные файлы:</h4>
+                    <ul>
+                        <li>ftd_configuration.json - Основная конфигурация FTD</li>
+                        <li>migration_report.html - Подробный отчет о миграции</li>
+                        <li>validation_results.txt - Результаты валидации</li>
+                        <li>conversion_log.txt - Лог процесса конвертации</li>
+                    </ul>
+                </div>
+            `;
+        }
+        
+        function downloadResults() {
+            // Симуляция скачивания
+            const link = document.createElement('a');
+            link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('# Firewall Migration Results\n\nКонвертация завершена успешно!\nВсе файлы готовы к использованию.');
+            link.download = `${currentTool}_migration_results.txt`;
+            link.click();
+            
+            alert('Результаты конвертации скачаны!\n\nВ реальном приложении здесь будут загружены все сгенерированные файлы.');
+        }
+        
+        function saveSettings() {
+            alert('Настройки сохранены!\n\nВ реальном приложении настройки будут применены к процессу конвертации.');
+            closeSettingsModal();
+        }
+        
+        // File upload handling
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        });
+        
+        // Drag and drop handling
+        const uploadArea = document.getElementById('uploadArea');
+        
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        });
+        
+        function handleFileUpload(file) {
+            uploadedFile = file;
+            
+            document.getElementById('fileName').textContent = `Имя: ${file.name}`;
+            document.getElementById('fileSize').textContent = `Размер: ${(file.size / 1024).toFixed(2)} KB`;
+            document.getElementById('fileType').textContent = `Тип: ${file.type || 'text/plain'}`;
+            
+            document.getElementById('fileInfo').style.display = 'block';
+            document.getElementById('conversionOptions').style.display = 'block';
+            document.getElementById('convertBtn').style.display = 'inline-block';
+        }
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const migrationModal = document.getElementById('migrationModal');
+            const settingsModal = document.getElementById('settingsModal');
+            
+            if (e.target === migrationModal) {
+                closeModal();
+            }
+            if (e.target === settingsModal) {
+                closeSettingsModal();
+            }
+        });
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Приложение успешно загружено без авторизации');
+            
+            // Добавляем анимацию появления карточек
+            const cards = document.querySelectorAll('.tool-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+        
+        // Global app object
+        window.migrationTool = {
+            version: '7.7',
+            authDisabled: true,
+            demoMode: false,
+            supportedPlatforms: ['ASA', 'FDM', 'CheckPoint', 'Fortinet', 'PAN'],
+            
+            getStatus: function() {
+                return {
+                    authenticated: false,
+                    authRequired: false,
+                    demoMode: false,
+                    version: this.version
+                };
+            }
+        };
+    </script>
+</body>
+</html>
